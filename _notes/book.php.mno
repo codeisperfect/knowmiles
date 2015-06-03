@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_cityNameDB2" value="name:CityID;datatype:int,name:Name;datatype:string" />
+</info>

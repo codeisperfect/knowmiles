@@ -1,0 +1,11 @@
+
+
+1. all 4 alignments
+2. Put city tab in header like as in homepage
+3. strech the 'fron' and 'to' field spaces and also strech the time-date space so as to meet the alignments, see final image new.png  
+
+4. Regarding listing of cab services, in case of "Taxi for sure", the word sure appears in 2nd line, so, strech the main black outline box so as word can comfortably fit into.
+
+5. Like in new.png, texts to be appeared above map depicting the distances.
+
+ 

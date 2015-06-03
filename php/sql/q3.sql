@@ -1,0 +1,1 @@
+select temp.*,users.* from (select * from teachers where tid=? LIMIT 1 ) temp left join users on users.id=tid

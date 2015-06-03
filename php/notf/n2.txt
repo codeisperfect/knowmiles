@@ -1,0 +1,1 @@
+You booked a teaching slot at <time> with <Teacher Name>
