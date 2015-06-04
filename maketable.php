@@ -52,7 +52,7 @@ function make_table(){
 }
 
 
-//drop_table();
+drop_table();
 make_table();
 
 

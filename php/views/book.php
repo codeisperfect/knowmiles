@@ -425,6 +425,16 @@
     </div>
    </div>
    <div class="col-md-3 col-sm-3 col-xs-12" style="margin-top:70px;">
+  <style type="text/css">
+    #map-canvas
+    {
+      height: 500px;
+      width: 400px;
+      margin: 0px;
+      padding: 0px
+    }
+  </style>
+
     <div id="map-canvas">
     </div>
    </div>

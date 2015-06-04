@@ -77,7 +77,18 @@ if(false){
     });
   }
 
-    $(".form_datetime1").datetimepicker({format: 'yyyy-mm-dd hh:ii', forceParse: true});
+    var dateToday=new Date();
+    $(".form_datetime1").datetimepicker({
+      format: 'yyyy-mm-dd hh:ii', 
+      forceParse: true,
+      minDate:dateToday,
+     onSelect: function(selectedDate) {
+        var option = this.id == "from" ? "minDate" : "maxDate",
+          instance = $(this).data("datepicker"),
+           date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+       dates.not(this).datepicker("option", option, date);
+    }
+  });
     
   </script>
   <script>
