@@ -3,8 +3,8 @@ $config=array('calallcity'=>true);
 include "includes/app.php";
 Funs::setcity();
 
-$distance=floor(0+get("dist"));//in KM.
-$timetaken=floor(0+get("duration_min"));//in Min
+$distance=(0+get("dist"));//in KM.
+$timetaken=(0+get("duration_min"));//in Min
 $cityid=0+gets("city");
 $myf=User::myprofile();
 
@@ -17,7 +17,8 @@ $hournow=date('H',$booktime==0?time():$booktime);
 
 $is_night= "not(((".$hournow."-nighttime_start+24)%24 between 0 AND (nighttime_end-nighttime_start+24)%24 ))";
 
-$query="select * from (select cardata.day_waiting_charge, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, (case when ".$is_night." then ($day_charge) else ($night_charge) end) as charge from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID where CityID=$cityid ) carresult order by charge asc ";//It is not SQL injection ( why ? ask mohit :p ) , so chill  :P 
+$charge="FORMAT( (case when ".$is_night." then ($day_charge) else ($night_charge) end) , 1)";
+$query="select * from (select cardata.day_waiting_charge, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, $charge as charge from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID where CityID=$cityid ) carresult order by charge asc ";//It is not SQL injection ( why ? ask mohit :p ) , so chill  :P 
 
 $carresult=Sql::getArray($query);
 foreach($carresult as $i=>$row){
@@ -50,6 +51,8 @@ $pageinfo["cityolist"]=$_ginfo["allcity"];
 $pageinfo["carresult"]=$carresult;
 $pageinfo["carfilters"]=array("image"=>"images/auto.png","images/car.png", "images/car2.png", "images/suv.png","images/suv2.png");
 $pageinfo["myf"]=$myf;
+$pageinfo["distance"]=$distance;
+$pageinfo["timetaken"]=$timetaken;
 
 load_view("template/book_top.php",$pageinfo);
 load_view("book.php",$pageinfo);
