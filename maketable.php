@@ -48,7 +48,9 @@ function make_table(){
 
 	echo Sql::query("create table cardata ( CarID int, CityID int, CarTypeID int, nighttime_start int,  night_base_fare int, night_base_km int, night_fare_per_km int, night_waiting_charge int, day_base_fare int, day_base_km int, day_fare_per_km int, day_waiting_charge int, nighttime_end int, min_bill int, cancel_charge int   ) ");
 	echo Sql::query("ALTER TABLE cardata add extra_charge int NULL ");
-
+	echo Sql::query("ALTER TABLE cardata add extra_charge_after int NULL ");
+	echo Sql::query("ALTER TABLE cardata add night_extra_charge int NULL ");
+	echo Sql::query("ALTER TABLE cardata add night_extra_charge_after int NULL ");
 }
 
 

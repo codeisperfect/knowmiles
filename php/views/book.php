@@ -9,6 +9,11 @@
     load_view("locsearchform.php");
   ?>
   </div>
+
+  <div>
+    <?php echo "Distance = ".$distance." K.M."."<br>"."Time taken=".$timetaken." min."; ?>
+  </div>
+
   <div class="row">
    <div class="col-md-9 col-sm-9 col-xs-12">
     <div class="row" style="" >

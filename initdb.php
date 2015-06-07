@@ -17,7 +17,13 @@ if(true){
 }
 
 
-$query="insert into cardata select * from (".Fun::makeDummyTableColumns($data["db_cardata"],array("mohit","saini","m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13","m14"),'').")temp ";
+//$query="insert into cardata select * from (".Fun::makeDummyTableColumns($data["db_cardata"],array("mohit","saini","m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13","m14","m15","m16","m17"),'').")temp ";
+
+$query="insert into cardata select * from (".Fun::makeDummyTableColumns($data["db_cardata"]).")temp ";
+
+
+//echo $query;
+
 echo Sql::query($query);
 
 //echo Sql::query("delete from  cardata where day_base_fare=0 OR day_fare_per_km=0");

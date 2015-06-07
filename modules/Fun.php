@@ -391,11 +391,17 @@ abstract class Fun{
 		}
 		return $data;
 	}
-	public static function makeDummyTableColumns($arr,$flds,$params=''){
+	public static function makeDummyTableColumns($arr,$flds=null,$params=''){
 		if(count($arr)==0){
 			return "select 1 as id limit 0";
 		}
 		else{
+			if($flds==null){
+				$flds=array();
+				for($i=0;$i<count($arr[0]);$i++){
+					$flds[]="col".$i;
+				}
+			}
 			$qtexts=array();
 			foreach($arr as $i=>$val){
 				$qtext="(select ";

@@ -27,7 +27,7 @@
 		session_id($config["set_session_id"]);
 
 	if(!isses("city"))
-		sets("city",11);
+		sets("city",9);
 
 
 	include_once( 'includes/data_loadonce.php' ) ;
