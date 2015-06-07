@@ -44,11 +44,11 @@ else{
 
 <section id="sect-buy" class="sect-buy dark ">
  
- <div class="block-wrap">
-  <h2 class="tab-title text-center">
+ <div class="block-wrap" style="padding-bottom:30px;">
+  <h2 class="tab-title text-center" style="padding-top:30px;">
    Why use KnowMiles?
   </h2>
-  <div class="container">
+  <div class="container" style="text-align: center;">
    <div class="row">
     <div class="blog-main">
      <div class="col-md-3 col-sm-3 col-xs-12 blog-left">
@@ -112,6 +112,7 @@ else{
 </section>
 <section class="sect-banner sect-journal js-parallax js-fadie ">
  <div class="row g-full title">
+ <h2>So, Book Your Cab NOW!!!</h2>
  </div>
  <div class="overlay">
  </div>
@@ -136,7 +137,7 @@ else{
      <div class="blog-one wow fadeInDown" data-wow-delay="0.1s">
       <img src="images/quote.png" width="30" height="27" />
       <p>
-       Brilliant App gets better with every update &amp; the Kabbee staff are also very helpful when you call or email with your queries.
+       Brilliant App gets better with every update &amp; the staff are also very helpful when you call or email with your queries.
       </p>
       <p class="author">
        — Boss Lady 74, 18&nbsp;June 2014
@@ -160,6 +161,8 @@ else{
   </div>
  </div>
 </section>
+</main>
+
 
 
 <?php
