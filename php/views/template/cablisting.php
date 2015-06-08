@@ -1,34 +1,48 @@
          <div class="row cab-box" data-filter="<?php echo $filter; ?>" data-filterpic="<?php echo $image; ?>" data-rating="<?php echo $rating; ?>" data-price="<?php echo $charge; ?>" >
-          <div class="col-md-12 col-sm-12">
+          <div class="col-md-12 col-sm-12" style="font-size:80%"> <!-- Master Sector -->
            <div class="row">
-            <div class="col-md-2 name-cab" align="center" >
+            <div class= "col-xs-4 col-sm-4 col-md-4 col-lg-2 name-cab div-centering" align="center" style="margin-top:0; padding:10px;"> <!-- Company Name -->
              <span>
               <?php echo $Name; ?>
              </span>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-4 cad-pad" align="center" >
-             <img src="<?php echo $image; ?>" class="car-img" />
-             <span>
-              <?php echo $TypeName; ?>
-             </span>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 cad-pad div-centering" align="center" style="margin-top:0; padding:10px;"> <!-- Car Image -->
+              <div class="row">
+                <div class="col-xs-12"><img src="<?php echo $image; ?>" class="car-img" /></div>
+                <div class="col-xs-12" style="text-align:center;">
+                  <span>
+                  <?php echo $TypeName; ?>
+                  </span>
+               </div>
+              </div>
             </div>
-            <div class="col-md-2 col-sm-2 col-xs-12 ratin">
-             <p class="per-pd">
-              <?php
-              disp_rating($rating/2);
-              ?>
-              Ratings(<?php echo $rating;?>)
-             </p>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 rating div-centering" style="margin-top:0; padding:10px;" align="center"> <!-- Rating -->
+              <div class="row">
+                <div class="col-xs-12">
+                  <p>
+                    <?php
+                    disp_rating($rating/2);
+                    ?>
+                  </p>
+                </div>
+                <div class="col-xs-12">
+                  <p>
+                    <?php echo $rating;?> Ratings.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="col-md-2 col-sm-1 col-xs-12 ll tooltip-options" style="" >
-             <a  class="off-ti" data-toggle="tooltip" data-placement="bottom" title="" style="<?php echo $isoffer?"display:none;":""; ?>" >
-              <span class="offer">
-               Offers!!!
-              </span>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 tooltip-options div-centering" align="center" style="margin-top:0; padding:10px;"> <!-- Offer -->
+             <a  class="off-it" data-toggle="tooltip" data-placement="bottom" title="" style="<?php echo $isoffer?"display:none;":""; ?>" >
+              <h3>
+                <span class="label label-info">
+                 Offers!!!
+                </span>
+              </h3>
              </a>
             </div>
-            <div class="col-md-2 col-sm-3 col-xs-12 ll tooltip-options">
-             <a class="off-ti" data-toggle="tooltip" title="<?php echo $day_waiting_charge>0?"Waiting Charge Rs.  ".$day_waiting_charge." /min":"No waiting charge"; ?>"  data-placement="top">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 tooltip-options div-centering" style="margin-top:0; padding:10px;" align="center"> <!-- Cost -->
+             <a class="off-it" data-toggle="tooltip" title="<?php echo $day_waiting_charge>0?"Waiting Charge Rs.  ".$day_waiting_charge." /min":"No waiting charge"; ?>"  data-placement="top">
               <span class="rupee">
                <i class="fa fa-rupee">
                </i>
@@ -36,7 +50,7 @@
               </span>
              </a>
             </div>
-            <div class="col-md-2 col-sm-2 col-xs-12 ll-l">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 div-centering " style="margin-top:0; padding:10px;" align="center"> <!-- Book Now -->
               <form method="post" action="<?php echo HOST."profile.php?tab=tabs2-pane2"; ?>" >
                 <?php
                 foreach($hidinps as $key=>$val){
@@ -52,4 +66,11 @@
             </div>
            </div>
           </div>
+          <style>
+            .div-centering {
+              position: relative;
+              top: 50%;
+              transform: translateY(+20%);
+            }
+          </style>
          </div>

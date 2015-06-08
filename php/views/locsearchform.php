@@ -1,11 +1,9 @@
 <!--    <form class="new-search-sec" action="book.php" method="get" onsubmit="if(isallfilled(this)){ page.addiframe( '<?php echo HOST; ?>mapsapi.php?'+$(this).serialize()); };funcs.f1(this);return false;">
  -->
    <form class="new-search-sec" action="book.php" method="get" onsubmit="if(isallfilled(this)){ page.addiframe( '<?php echo HOST; ?>mapsapi.php?'+$(this).serialize());funcs.f1(this); };return false;">
-    <div class="row">
+    <div class="row" style="margin-left:20px; margin-right:20px;">
      <div class="container">
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-11 col-sm-11 sec-tran bac" <?php echo ($page=='book'?'style="background-color:#cccccc;"':'');  ?> >
+      <div class="col-md-12 col-sm-12 sec-tran bac" style="margin-left: 0px; padding-left:25px; padding-right:25px;margin-right: 0px;" <?php echo ($page=='book'?'style="background-color:#cccccc;"':'');  ?> >
        <div class="row">
         <?php
            hidinp("city",getval($_SESSION["city"],$_ginfo["allcityiddict"]));

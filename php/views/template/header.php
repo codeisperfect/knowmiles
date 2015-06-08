@@ -8,7 +8,7 @@ if(!$islogin){
 <header>
  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="z-index:9">
   <div class="container hed" style="width:92.5%;" id="section7">
-   <div class="navbar-header">
+   <div class="navbar-header" style="padding-top:7px;">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
      <span class="sr-only">
       Toggle navigation
@@ -28,29 +28,16 @@ if(!$islogin){
    </div>
    <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right pull-right right-nav">
-     <li>
-      <div class="" style="padding:0px;">
-       <form method="post">
-        <select class="form-control" id="sel1" style="padding:0px;" onchange="$(this).parent().submit();" name="city" >
-        <?php
-          disp_olist($cityolist,array("selected"=>$_SESSION["city"]));
-        ?>
-        </select>
-        <button type="submit" style="display:none;">
-        </button>
-       </form>
-      </div>
-     </li>
      <li style="padding-right: 5px">
       <a class=" boxer" style="color:#fff;" href="#hidden_content">
        Log In
       </a>
       <div id="hidden_content" style="display: none;">
-       <div style="color:#069; width:435px; height:335px;margin:0;padding:0px;">
+       <div style="color:#069; width:450px; height:370px; margin:0; padding:20px;">
         <div class="col-md-12 login">
-         <h4 class="modal-title">
+         <h3 class="modal-title">
           Log in to your KnowMiles account
-         </h4>
+         </h3>
         </div>
         <form action="profile.php" method="post" name="formlogin">
          <div class="col-md-12 login">
@@ -64,14 +51,14 @@ if(!$islogin){
            <input type="checkbox" name="remember" value="1" id="remember" style="margin-top :10px;" />
           </label>
           <label for="remember">
-           &nbsp;Remember me
+           Remember me
           </label>
-          <a class="pull-right selected-blue" href="" ng-click="close_modal('#sign-in')">
+          <a class="pull-right selected-blue" href="" ng-click="close_modal('#sign-in')" style="margin-top :10px;" >
            Forgot password?
           </a>
          </div>
          <div class="col-md-12 login">
-          <button class="btn btn-primary btn-lg login-text" type="submit" name="loginform">
+          <button class="btn btn-info btn-lg login-text" type="submit" name="loginform">
            <span class="text">
             Log in
            </span>
@@ -80,9 +67,9 @@ if(!$islogin){
           </button>
          </div>
          <div class="col-md-12">
-          <div class="text-center">
+          <div class="text-center" style="margin-top :10px;" >
            <label>
-            Donâ&euro;&trade;t have a KnowMiles account?
+            Don't have a KnowMiles account?
             <a class="selected-blue" data-toggle="modal" data-target="#sign-up" ng-click="close_modal('#sign-in')">
              Sign up
             </a>
@@ -98,21 +85,26 @@ if(!$islogin){
        Sign Up
       </a>
       <div id="sigup" style="display: none;">
-       <div style="color:#069; width:435px; height: 550px;margin:0;padding:0px;">
+       <div style="color:#069; width:450px; height:610px; margin:0; padding:20px;">
         <div class="col-md-12 login">
-         <h4 class="modal-title">
+         <h3 class="modal-title">
           Create your KnowMiles account
-         </h4>
+         </h3>
          <br />
          KnowMiles respects your privacy and will never give your details to any third party without your permission.
         </div>
         <form action="profile.php" method="post" name="formsignup">
-         <div class="login1 col-md-6 col-xs-6">
-          <input type="text" name="fName" placeholder="First Name" class="login-text2" max="100" required="required" />
-         </div>
-         <div class="login1 col-md-6 col-xs-6" style="padding-left:0px !important;">
-          <input type="text" name="lName" placeholder="Last Name" class="login-text2" max="100" />
-         </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="login1 col-md-6 col-xs-6">
+              <input type="text" name="fName" placeholder="First Name" class="login-text2" max="100" required="required" />
+             </div>
+             <div class="login1 col-md-6 col-xs-6">
+              <input type="text" name="lName" placeholder="Last Name" class="login-text2" max="100" />
+             </div>
+          </div>
+        </div>
+         
          <div class="col-md-12 login">
           <input type="email" name="emailId" placeholder="Email Id" class="login-text" max="100" required="required" />
          </div>
@@ -125,7 +117,7 @@ if(!$islogin){
          <div class="col-md-12 login">
           <input type="password" name="passTwo" placeholder="Confirm Password" class="login-text" max="100" required="required" />
          </div>
-         <div class="row-in login">
+         <div class="col-md-12 row-in login">
           <input name="accept_conditions_1" type="checkbox" checked="checked" value="True" />
           <span>
            I accept the
@@ -135,7 +127,7 @@ if(!$islogin){
           </span>
          </div>
          <div class="col-md-12 login">
-          <button class="btn btn-primary btn-lg login-text" type="submit">
+          <button class="btn btn-info btn-lg login-text" type="submit">
            <span class="text">
             Create Account
            </span>
@@ -144,7 +136,7 @@ if(!$islogin){
           </button>
          </div>
         </form>
-        <div class="text-center login">
+        <div class="col-md-12 text-center login">
          Already got an account?
          <a class="selected-blue" data-toggle="modal" data-target="#sign-in" ng-click="close_modal('#sign-up')">
           Sign in
@@ -162,6 +154,19 @@ if(!$islogin){
       <a href="#">
        Help
       </a>
+     </li>
+      <li>
+      <div class="" style="padding:0px;">
+       <form method="post">
+        <select class="form-control input-sm" id="sel1" style="padding-top:5px;" onchange="$(this).parent().submit();" name="city" >
+        <?php
+          disp_olist($cityolist,array("selected"=>$_SESSION["city"]));
+        ?>
+        </select>
+        <button type="submit" style="display:none;">
+        </button>
+       </form>
+      </div>
      </li>
     </ul>
    </div>
@@ -196,7 +201,7 @@ else{
 <li>
 <div class="" style='padding:0px;' >
        <form method="post">
-        <select class="form-control" id="sel1" style="padding:0px;" onchange="$(this).parent().submit();" name="city" >
+        <select class="form-control input-sm" id="sel1" style="padding:0px;" onchange="$(this).parent().submit();" name="city" >
         <?php
           disp_olist($cityolist,array("selected"=>$_SESSION["city"]));
         ?>
@@ -206,8 +211,8 @@ else{
        </form>
 </div>
 </li>
-<li style="padding-right: 5px">
-  <a href="navbar-static-top.html#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $myf["name"]; ?><span class="caret"></span></a>
+<li style="padding-left: 10px;">
+  <a href="navbar-static-top.html#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $myf["name"]; echo " "; ?><span class="caret"></span></a>
   <?php
     load_view("template/login_dropdown_menu.php");
   ?>
