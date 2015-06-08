@@ -42,7 +42,7 @@
     <h5 class="user-name"><?php echo $myf["name"]; ?></h5>
     </div>
    
-    <ul class="nav nav-tabs span2 col-md-12 ">
+    <ul class="nav nav-tabs span2 col-md-12 " style="padding-bottom:60px">
 <?php
 foreach($tabs as $id=>$value){
 ?>

@@ -163,8 +163,6 @@ else{
 </section>
 </main>
 
-
-
 <?php
 load_view("template/footer.php");
 load_view("template/bottom.php");
