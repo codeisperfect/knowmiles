@@ -6,18 +6,17 @@ abstract class Funs{
 		}
 	}
 	public static function carpic($provider,$cabType){
-		$cabType=strtolower($cabType);
-      if(($cabType == 'mini') || ($cabType == 'nano') || ($cabType == 'uber go'))
+      if(($cabType == 'Mini') || ($cabType == 'Nano') || ($cabType == 'Uber Go'))
       {
 		  $cabTypeImg = 'images/car.png';
 		  $cabFilter = 'hatchback';
 	  }
-      elseif (($cabType == 'radio taxi')  || ($cabType == 'Uber X') || ($cabType == 'sedan') || ($cabType == 'Uber Dynamic')  )
+      elseif (($cabType == 'Radio Taxi')  || ($cabType == 'Uber X') || ($cabType == 'Sedan') || ($cabType == 'Uber Dynamic'))
       {
 		  $cabTypeImg = 'images/car2.png';
 		  $cabFilter = 'sedan';		  
 	  }
-      elseif (($cabType == 'prime') || ($cabType == 'uber black'))
+      elseif (($cabType == 'Prime') || ($cabType == 'Uber Black'))
       {
 		  $cabTypeImg = 'images/suv2.png';
 		  $cabFilter = 'executive';		  
