@@ -35,6 +35,7 @@ if(!$islogin){
       <div id="hidden_content" style="display: none;">
        <div style="color:#069; width:450px; height:370px; margin:0; padding:20px;">
         <div class="col-md-12 login">
+         <div style='color:red;' ><?php echo $ec!=null?$_ginfo["error"][$ec]:""; ?></div>
          <h3 class="modal-title">
           Log in to your KnowMiles account
          </h3>

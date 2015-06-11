@@ -86,7 +86,11 @@ $(document).ready(function(){
 <?php
   addmyjs();
 //  addall_js(array("js/mohit.js","js/mohitlib.js","js/lib.js","", "js/main.js"));
+if($dispbody){
 ?>
-
 </body>
 </html>
+
+<?php
+}
+?>

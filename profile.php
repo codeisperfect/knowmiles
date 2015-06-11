@@ -10,12 +10,15 @@ $cururl=HOST."profile.php?tab=".$qargs["tab"];
 
 $uid=User::loginId();
 
+$ec=1;
 
 if(Fun::isSetP("loginform","email","password")){
   $temp=User::signIn($_POST["email"],$_POST["password"]);
   if($temp>0){
     Fun::redirect(HOST);
   }
+  else
+    $ec=$temp;
 }
 
 if(Fun::isSetP("fName","lName","emailId","telephone","passOne","passTwo","accept_conditions_1")){
@@ -23,10 +26,12 @@ if(Fun::isSetP("fName","lName","emailId","telephone","passOne","passTwo","accept
   if($temp>0){
     Fun::redirect(HOST);
   }
+  else
+    $ec=$temp;
 }
 
 if(!User::islogin()){
-  Fun::redirect(HOST);
+  Fun::redirect(HOST."?ec=".$ec);
 }
 
 

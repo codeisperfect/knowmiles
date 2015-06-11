@@ -1,6 +1,6 @@
 #1.	In Login pop-up, if new user then redirect to sign up
 
-2.	If password is wrong then display "incorrect credentials"
+#2.	If password is wrong then display "incorrect credentials"
 
 #3.	In sign up popup, if already have account, redirect signin to login popup
 
@@ -9,7 +9,6 @@
 #5.	In second page, see "Modify ur journey wala bar, as gagan said ki backend mein changes krna hoga kyoki homepagee se sidha uthaya hai, do something, not looking even average :/"
 
 #reply: Sidha to uthaya hai, but in home page backgroud image is black, so it is looking good. there background image is also white, as border is also white, so it is not looking good. tell him to change php/views/locsearch.php file [ Look at line 9, which is dependend on variable $page, which is "index" for home page & book for booking page. So make changes according to it. ]
-
 
 6.	In 2nd page, when hover over price then in the popup show the fare break 
 

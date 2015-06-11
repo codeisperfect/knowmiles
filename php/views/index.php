@@ -141,3 +141,19 @@
  </div>
 </section>
 </main>
+
+<?php
+load_view("template/footer.php");
+load_view("template/bottom.php",array("dispbody"=>false));
+?>
+<script>
+  var ecodes=<?php echo json_encode(array("ec"=>$ec)); ?>;
+  $(document).ready(function(){
+    if(ecodes["ec"]<0){
+      $("#loginbutton").click();
+    }
+  });
+</script>
+
+</body>
+</html>
