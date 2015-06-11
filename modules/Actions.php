@@ -15,6 +15,17 @@ class Actions{
 		}
 		return array('ec'=>$ec,'data'=>$odata);
 	}
+	function changecity($data){
+		$need=array('city');
+		$ec=1;
+		$odata=0;
+		if(!Fun::isAllSet($need,$data))
+			$ec=-9;
+		else{
+			sets("city",$data["city"]);
+		}
+		return array('ec'=>$ec,'data'=>$odata);
+	}
 
 
 }

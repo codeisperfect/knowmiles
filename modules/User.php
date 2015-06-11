@@ -84,7 +84,11 @@ class User extends Sql{
 			return false;
 	}
 	public static function userProfile($uid){
-		return Sqle::selectVal("users","*",array('id'=>(0+$uid) ),1);
+		$myf=Sqle::selectVal("users","*",array('id'=>(0+$uid) ),1);
+		if($myf!=null){
+			$myf["fname"]=firstelm(explode(" ",$myf["name"]));
+		}
+		return $myf;
 	}
 	public static function myprofile(){
 		if(User::islogin())

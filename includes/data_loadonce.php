@@ -7,5 +7,6 @@ if($config["calallcity"]){
 }
 $_ginfo["page"]=curfilename();
 $view_default["template/header.php"]["islogin"]=User::loginType();
+$view_default["template/cablisting.php"]["islogin"]=User::loginType();
 
 ?>

@@ -28,8 +28,8 @@ if(!$islogin){
    </div>
    <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right pull-right right-nav">
-     <li style="padding-right: 5px">
-      <a class=" boxer" style="color:#fff;" href="#hidden_content">
+     <li style="padding-right: 5px" id="loginbox" >
+      <a class=" boxer" style="color:#fff;" href="#hidden_content" id="loginbutton" >
        Log In
       </a>
       <div id="hidden_content" style="display: none;">
@@ -70,7 +70,7 @@ if(!$islogin){
           <div class="text-center" style="margin-top :10px;" >
            <label>
             Don't have a KnowMiles account?
-            <a class="selected-blue" data-toggle="modal" data-target="#sign-up" ng-click="close_modal('#sign-in')">
+            <a class="selected-blue" data-toggle="modal" data-target="#sign-up" onclick="lspopup('signup');" >
              Sign up
             </a>
            </label>
@@ -81,7 +81,7 @@ if(!$islogin){
       </div>
      </li>
      <li>
-      <a href="#sigup" class="boxer" style="color:#fff;">
+      <a href="#sigup" class="boxer" style="color:#fff;" id="signupbutton" >
        Sign Up
       </a>
       <div id="sigup" style="display: none;">
@@ -138,7 +138,7 @@ if(!$islogin){
         </form>
         <div class="col-md-12 text-center login">
          Already got an account?
-         <a class="selected-blue" data-toggle="modal" data-target="#sign-in" ng-click="close_modal('#sign-up')">
+         <a class="selected-blue" data-toggle="modal" data-target="#sign-in" onclick='lspopup("login");'  >
           Sign in
          </a>
         </div>
@@ -158,13 +158,11 @@ if(!$islogin){
       <li>
       <div class="" style="padding:0px;">
        <form method="post">
-        <select class="form-control input-sm" id="sel1" style="padding-top:5px;" onchange="$(this).parent().submit();" name="city" >
+        <select class="form-control input-sm" id="sel1" style="padding-top:5px;" onchange="button.sendreq_v3(this);" data-eparams="{'city':obj.value}" data-action="changecity" data-waittext='' >
         <?php
           disp_olist($cityolist,array("selected"=>$_SESSION["city"]));
         ?>
         </select>
-        <button type="submit" style="display:none;">
-        </button>
        </form>
       </div>
      </li>
@@ -201,18 +199,16 @@ else{
 <li>
 <div class="" style='padding:0px;' >
        <form method="post">
-        <select class="form-control input-sm" id="sel1" style="padding:0px;" onchange="$(this).parent().submit();" name="city" >
+        <select class="form-control input-sm" id="sel1" style="padding-top:5px;" onchange="button.sendreq_v3(this);" data-eparams="{'city':obj.value}" data-action="changecity" data-waittext='' >
         <?php
           disp_olist($cityolist,array("selected"=>$_SESSION["city"]));
         ?>
         </select>
-        <button type="submit" style="display:none;">
-        </button>
        </form>
 </div>
 </li>
 <li style="padding-left: 10px;">
-  <a href="navbar-static-top.html#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $myf["name"]; echo " "; ?><span class="caret"></span></a>
+  <a href="navbar-static-top.html#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $myf["fname"]; echo " "; ?><span class="caret"></span></a>
   <?php
     load_view("template/login_dropdown_menu.php");
   ?>

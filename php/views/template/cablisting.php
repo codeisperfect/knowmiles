@@ -50,14 +50,14 @@
               </span>
              </a>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 div-centering " style="margin-top:0; padding:10px;" align="center"> <!-- Book Now -->
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 div-centering tooltip-options " style="margin-top:0; padding:10px;" align="center"> <!-- Book Now -->
               <form method="post" action="<?php echo HOST."profile.php?tab=tabs2-pane2"; ?>" >
                 <?php
                 foreach($hidinps as $key=>$val){
                   hidinp($key,$val);
                 }
                 ?>
-               <a onclick="$(this).parent().submit();" class="button book-nw">
+               <a  onclick="<?php if($islogin!=null){ ?>$(this).parent().submit();<?php } else { ?>$('#loginbutton').click();<?php } ?>" class="button book-nw" data-toggle="tooltip" title="<?php echo $islogin==null?"Login/Signup":"You cab is just 1 button ahead"; ?>"  data-placement="top"  >
                 <i class="fa fa-right-arrow">
                 </i>
                 Book Now

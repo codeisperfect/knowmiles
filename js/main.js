@@ -55,3 +55,11 @@ function carresultsort(basedon){
 	}
 	appendall(0);
 }
+
+
+function lspopup(inp){
+	$(".boxer-close").click();
+	setTimeout(function(){
+		$("#"+inp+"button").click();
+	},500);
+}

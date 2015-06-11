@@ -84,7 +84,8 @@ $(document).ready(function(){
 </script>
 
 <?php
-  addall_js(array("js/mohit.js","js/mohitlib.js","js/lib.js","js/main.js"));
+  addmyjs();
+//  addall_js(array("js/mohit.js","js/mohitlib.js","js/lib.js","", "js/main.js"));
 ?>
 
 </body>
