@@ -29,6 +29,17 @@ abstract class Funs{
 	  }
 	  return array($cabTypeImg,$cabFilter);
 	}
+	public static function farebreak($row){
+		$lines=array();
+		$lines[]=rquery("Rs. {base_charge} for {base_km}KM. ",$row);
+		if($row["extra_km_charge"]>0){
+			$lines[]=rquery("Rs. {extra_km_charge} for {extra_km}KM ({extra_km} x {perkm_charge})",$row);
+		}
+		if($row["extra_time_charge"]>0){
+			$lines[]=rquery("Rs. {extra_time_charge} Extra Time charge ({extra_min}min x {extramin_charge}) ",$row);
+		}
+		return implode("<br>",$lines);
+	}
 }
 
 ?>

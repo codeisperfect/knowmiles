@@ -86,5 +86,14 @@
 	function curfilename(){
 		return firstelm(explode(".",lastelm(explode("/",$_SERVER['SCRIPT_FILENAME']))));
 	}
+	function rquery($str,$data){
+		preg_match_all("|{[^}]+}|U",$str,$matches);
+		$matches=$matches[0];
+		for($i=0;$i<count($matches);$i++){
+			$key=substr($matches[$i],1,strlen($matches[$i])-2);
+			$str=str_replace($matches[$i],$data[$key],$str);
+		}
+		return $str;
+	}
 
 ?>

@@ -42,7 +42,7 @@
              </a>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 tooltip-options div-centering" style="margin-top:0; padding:10px;" align="center"> <!-- Cost -->
-             <a class="off-it" data-toggle="tooltip" title="<?php echo $day_waiting_charge>0?"Waiting Charge Rs.  ".$day_waiting_charge." /min":"No waiting charge"; ?>"  data-placement="top">
+             <a class="off-it" data-toggle="tooltip" title="<?php echo $farebreak; ?>"  data-placement="top">
               <span class="rupee">
                <i class="fa fa-rupee">
                </i>
