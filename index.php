@@ -29,7 +29,7 @@ else{
  <div class="bg-video">
  </div>
  <h2>
-  Travel safely for a fixed price. Mighty Minicabs 24/7.
+  Compare & book best suited cab, with just a tap
  </h2>
  <div class="row tran">
   <div class="row">
@@ -126,10 +126,12 @@ else{
      <div class="blog-one wow fadeInDown" data-wow-delay="0.4s">
       <img src="images/quote.png" width="30" height="27" />
       <p>
-       Fixed price, doesn't increase with traffic couldn't ask for better taxi booking service. Watch as the taxi comes to you feature! Great app no longer have to wonder how far away your cab is.
+       It's just perfect, odds of getting the cab at any instant is simply much higher now, no worries for me now for getting best cab.
+
       </p>
       <p class="author">
-       — Tech Steve!, 15&nbsp;July 2014
+       - Sam Stevens, 10 June 2015
+
       </p>
      </div>
     </div>
@@ -137,10 +139,11 @@ else{
      <div class="blog-one wow fadeInDown" data-wow-delay="0.1s">
       <img src="images/quote.png" width="30" height="27" />
       <p>
-       Brilliant App gets better with every update &amp; the staff are also very helpful when you call or email with your queries.
+       Now I dont need to switch to multiple cab apps to compare timing and rates, infact it wont redirect instead simply books the cab, literally just "1-touch booking"  :)   .
+
       </p>
       <p class="author">
-       — Boss Lady 74, 18&nbsp;June 2014
+       - Crostini, 9 June 2015
       </p>
      </div>
     </div>
@@ -148,10 +151,11 @@ else{
      <div class="blog-one wow fadeInDown" data-wow-delay="0.6s">
       <img src="images/quote.png" width="30" height="27" />
       <p>
-       Quick, simple and cheap mini cab bookings. Stores most used addresses and allows you to compare fares by time, price and reviews which is handy. Would recommend.
+       Can now save my lots of money and time to get the best cab, Oh I must say it, "I'm lovin it" this time for KnowMiles, sorry McD :')  
+
       </p>
       <p class="author">
-       — DoodleDandy80,&nbsp;18&nbsp;June 2014
+       — Humpty Dumpty,  11 June 2015 
       </p>
      </div>
     </div>
