@@ -15,7 +15,6 @@ $night_charge="case when night_base_km>$distance then night_base_fare else night
 
 $booktime=strtotime(get("time"));
 $hournow=date('H',$booktime==0?time():$booktime);
-echo $hournow;
 
 $is_day= "not(((".$hournow."-nighttime_start+24)%24 between 0 AND (nighttime_end-nighttime_start+24)%24 ))";
 
