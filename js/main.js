@@ -61,5 +61,5 @@ function lspopup(inp){
 	$(".boxer-close").click();
 	setTimeout(function(){
 		$("#"+inp+"button").click();
-	},500);
+	},1000);
 }
