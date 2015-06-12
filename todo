@@ -1,17 +1,17 @@
-#1.	In Login pop-up, if new user then redirect to sign up
+#DONE#1.	In Login pop-up, if new user then redirect to sign up
 
-#2.	If password is wrong then display "incorrect credentials"
+#DONE#2.	If password is wrong then display "incorrect credentials"
 
-#3.	In sign up popup, if already have account, redirect signin to login popup
+#DONE#3.	In sign up popup, if already have account, redirect signin to login popup
 
-#4.	If not logged in and compares cab, then at time of clicking on book cab, display, "Log in or sign up" and after logging in/signing in take user directly to the page of booking (comparision listings of cab options, i.e. page 2)
+#DONE#4.	If not logged in and compares cab, then at time of clicking on book cab, display, "Log in or sign up" and after logging in/signing in take user directly to the page of booking (comparision listings of cab options, i.e. page 2)
 
-#5.	In second page, see "Modify ur journey wala bar, as gagan said ki backend mein changes krna hoga kyoki homepagee se sidha uthaya hai, do something, not looking even average :/"
+5.	In second page, see "Modify ur journey wala bar, as gagan said ki backend mein changes krna hoga kyoki homepagee se sidha uthaya hai, do something, not looking even average :/"
 
-#reply: Sidha to uthaya hai, but in home page backgroud image is black, so it is looking good. there background image is also white, as border is also white, so it is not looking good. tell him to change php/views/locsearch.php file [ Look at line 9, which is dependend on variable $page, which is "index" for home page & book for booking page. So make changes according to it. ]
+#DONE#reply: Sidha to uthaya hai, but in home page backgroud image is black, so it is looking good. there background image is also white, as border is also white, so it is not looking good. tell him to change php/views/locsearch.php file [ Look at line 9, which is dependend on variable $page, which is "index" for home page & book for booking page. So make changes according to it. ]
 
-6.	In 2nd page, when hover over price then in the popup show the fare break 
+#DONE#6.	In 2nd page, when hover over price then in the popup show the fare break 
 
-#7.	In home page or in anypage, if city changes stop reloading whole page, ajax use kar lo or something like that :P
+#DONE#7.	In home page or in anypage, if city changes stop reloading whole page, ajax use kar lo or something like that :P
 
-#8.	Display only user's first name in the header, dont show Full Name, not required
+#DONE#8.	Display only user's first name in the header, dont show Full Name, not required
