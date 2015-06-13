@@ -5,7 +5,11 @@ $qargs=Fun::mergeifunset($_GET,array("CarID"=>1,"CarTypeID"=>1));
 
 $cabname=Sqle::getRow("select * from car where CarID=?",'i',array(&$qargs["CarID"]));
 Fun::redirectinv($cabname==null);
-$cabname=$cabname["Name"];
+
+$namelist=array(1=>"Ola Cabs",2=>"TexiForSure");
+
+$cabname=$namelist[$qargs["CarID"]];
+
 $offers=array(1=>"offer.jpg",2=>"tfsoffer1.png");
 $bgpics=array();
 
@@ -63,7 +67,7 @@ else{
  		<div class="row" style="top:250px; text-align:left;">
  			<div class="col-sm-11">
 	 			<h1>
-	 				<?php echo $cabname." Cabs"; ?>
+	 				<?php echo $cabname; ?>
 	 			</h1>
 	 		</div>
 	 		<div class="col-sm-1" >
@@ -97,7 +101,7 @@ else{
 <div style="width:95%; margin: 0 auto;" >
 	<div class="container-fluid col-centered" style="margin-top:30px;">
 		<div class="col-md-3">
-			<h3>Offers for <?php echo $cabname; ?> Cabs</h3>
+			<h3>Offers for <?php echo $cabname; ?></h3>
 			<hr>
 			<img src="images/company/<?php echo $offers[$qargs["CarID"]]; ?>" alt="Ola Offer" style="padding-bottom:20px;">
 
