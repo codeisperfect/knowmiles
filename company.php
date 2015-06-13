@@ -1,10 +1,20 @@
 <?php
 $config=array('calallcity'=>true);
 include "includes/app.php";
+$qargs=Fun::mergeifunset($_GET,array("CarID"=>1,"CarTypeID"=>1));
+
+$cabname=Sqle::getRow("select * from car where CarID=?",'i',array(&$qargs["CarID"]));
+Fun::redirectinv($cabname==null);
+$cabname=$cabname["Name"];
+$offers=array(1=>"offer.jpg",2=>"tfsoffer1.png");
+$bgpics=array();
+
+
 Funs::setcity();
 $myf=User::myprofile();
 
 load_view("template/index_top.php");
+
 ?>
 
 <style>
@@ -28,7 +38,7 @@ load_view("template/index_top.php");
 }
 
 </style>
-<body id="top" class="home page page-template page-template-homepage-php no-js">
+<body id="top" class="home page page-template page-template-homepage-php no-js"  >
 
 <?php
 if(true){
@@ -53,7 +63,7 @@ else{
  		<div class="row" style="top:250px; text-align:left;">
  			<div class="col-sm-11">
 	 			<h1>
-	 				Ola Cabs		
+	 				<?php echo $cabname." Cabs"; ?>
 	 			</h1>
 	 		</div>
 	 		<div class="col-sm-1" >
@@ -87,9 +97,9 @@ else{
 <div style="width:95%; margin: 0 auto;" >
 	<div class="container-fluid col-centered" style="margin-top:30px;">
 		<div class="col-md-3">
-			<h3>Offers for Ola Cabs</h3>
+			<h3>Offers for <?php echo $cabname; ?> Cabs</h3>
 			<hr>
-			<img src="images/company/offer.jpg" alt="Ola Offer" style="padding-bottom:20px;">
+			<img src="images/company/<?php echo $offers[$qargs["CarID"]]; ?>" alt="Ola Offer" style="padding-bottom:20px;">
 
 		</div>
 		<div class="col-md-6">

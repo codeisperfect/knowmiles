@@ -2855,8 +2855,20 @@ form{padding: 6% 0}
 	margin-right: auto;
 	text-align: center;
 	background-size: 140%;
-	background-image: url("../images/journal-bg-1.jpg")
+
+	background-image: url("../images/journal-bg-1.jpg");
+
 }
+
+.home1 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-size: 140%;
+	background-image: url("../images/tfsbg.png");
+}
+
 @media (min-width: 58em) {
 .home .sect-journal {
 	background-size: cover

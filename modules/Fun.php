@@ -73,8 +73,10 @@ abstract class Fun{
 		header("Location: ".$url);
 		exit(0);
 	}
-	public static function redirectinv(){
-		Fun::redirect(HOST."invalid.php");
+	public static function redirectinv($cond=true){
+		if($cond==true){
+			Fun::redirect(HOST."invalid.php");
+		}
 	}
 	public static function getcururl($protocol='http://'){
 		return $protocol. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
