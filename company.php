@@ -7,6 +7,27 @@ $myf=User::myprofile();
 load_view("template/index_top.php");
 ?>
 
+<style>
+.btn-trans{
+
+	background: transparent;
+	color: #FFFFFF;
+
+	/* CSS Transition */
+	-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-o-transition: background .2s ease-in-out, border .2s ease-in-out;
+	transition: background .2s ease-in-out, border .2s ease-in-out;
+
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+</style>
 <body id="top" class="home page page-template page-template-homepage-php no-js">
 
 <?php
@@ -23,40 +44,33 @@ else{
 
 <main>
 
-<section class="sect-banner sect-journal js-parallax js-fadie" style="padding-top:200px; padding-bottom:170px;">
+<section class="sect-banner sect-journal js-parallax js-fadie" style="padding-top:200px; padding-bottom:200px;">
  <!-- <div class="row g-full title">
  <h2>So, Book Your Cab NOW!!!</h2>
  </div> -->
  <div class="overlay">
  	<div class="container">
  		<div class="row" style="top:250px; text-align:left;">
- 			<div class="col-sm-12">
+ 			<div class="col-sm-11">
 	 			<h1>
 	 				Ola Cabs		
 	 			</h1>
 	 		</div>
-	 		<div class="col-sm-12">
-	 			<h3>
-	 				Users Rating : <span class="label label-success">4.4</span>
-	 				<h5 style="font-size:10px;">(Ola Cabs, Delhi(All Cab Options))</h5>
-	 			</h3>
-				<div class="row" style="padding-bottom:20px; padding-top:10px;">
-					<div class="col-sm-2" style="padding-right:2px;">
-						<select class="form-control input-sm">
-							<option>Ola Cabs</option>
-							<option>TaxiForSure</option>
-							<option>Uber</option>
-						</select> 
-					</div>
-					<div class="col-sm-2" style="padding-right:2px; padding-left:2px;">
-						<select class="form-control input-sm">
-							<option>Delhi</option>
-							<option>Jodhpur</option>
-							<option>Vadodara</option>
-						</select> 
-					</div>
-				</div>
+	 		<div class="col-sm-1" >
+	 			<h1><span class="label label-success">4.4</span></h1>
 	 		</div>
+ 		</div>
+ 	</div>
+ 	<div class="container">
+ 		<div class="row" style="top:250px; width:105%;">
+ 			<div class="col-sm-12">
+ 				<hr>
+ 			</div>	
+ 		</div>
+ 		<div class="row" style="top:240px;">
+ 			<div class="col-xs-1">
+ 				<input type="submit" class="btn btn-info btn-trans btn-lg" value="Book Now">
+ 			</div>
  		</div>
  	</div>
  </div>
@@ -70,11 +84,12 @@ else{
 <script src="js/star-rating.js" type="text/javascript"></script>
 
 
-<div style="width:85%; margin: 0 auto;" >
-	<div class="container-fluid" style="margin-top:30px;">
+<div style="width:95%; margin: 0 auto;" >
+	<div class="container-fluid col-centered" style="margin-top:30px;">
 		<div class="col-md-3">
 			<h3>Offers for Ola Cabs</h3>
 			<hr>
+			<img src="images/company/offer.jpg" alt="Ola Offer" style="padding-bottom:20px;">
 
 		</div>
 		<div class="col-md-6">
@@ -133,8 +148,22 @@ else{
 
 		<div class="col-md-3">
 			<p class="text-muted">Sponsored Ads</p>
-			<div class="row">
-				<div class="col-xs-12"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores consectetur beatae ea ad ab illum unde ratione, id accusamus, recusandae eos rerum, in sed explicabo voluptatibus ullam itaque. Quisquam, ad.</p></div>
+			<div class="row" style="padding-top:5px; padding-bottom:5px;">
+				<div class="col-xs-12">
+					<img src="images/company/ad_0.png" alt="Ad1">
+				</div>
+			</div>
+			<div class="row" style="padding-top:5px; padding-bottom:5px;">
+				<div class="col-xs-12">
+					<img src="images/company/ad_1.png" alt="Ad2">
+				</div>
+			</div>
+			<div class="row" style="padding-top:5px; padding-bottom:5px;">
+				<div class="col-xs-12">
+					<img src="images/company/ad_2.png" alt="Ad3">
+				</div>
+			</div>
+				
 			</div>
 		
 		</div>
