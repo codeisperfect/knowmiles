@@ -353,7 +353,6 @@ abstract class Fun{
 	}
 	public static function remoteelc($cmd){
 		$rcmd="python check_plogin.py '".$cmd."'";
-		echo $rcmd;
 		return shell_exec($rcmd);
 	}
 	public static function copy_arr($n,$val=""){
