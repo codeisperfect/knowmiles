@@ -66,6 +66,11 @@ foreach($tabs as $id=>$value){
 
 
 								<div class="panel-group" id="accordion">
+            <div style="padding:15px;margin:5px;background-color:#eeeeee;border-radius:10px;" >
+              <?php
+              echo Fun::smilymsg($bookingmsg);
+              ?>
+            </div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="fa fa-sort-desc"></i>

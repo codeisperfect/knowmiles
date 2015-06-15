@@ -95,5 +95,10 @@
 		}
 		return $str;
 	}
+	function cleanstr($inp){
+		$inp=str_replace('"', "", $inp);
+		$inp=str_replace("'", "", $inp);
+		return $inp;
+	}
 
 ?>
