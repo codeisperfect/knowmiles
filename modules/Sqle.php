@@ -78,5 +78,34 @@ class Sqle extends Sql{
 		$query="update $table set ".join(',',$setstr).( $conds ===""? " ":" WHERE ").$conds." ".($limit!=-1 ? " LIMIT $limit ":" ");
 		return self::query($query,$str,$params);
 	}
+	public static function getRow($query,$param_string="",$param_array=array(),$directnull=false){
+		if($directnull)
+			return null;
+		$qoutp=Sql::getArray($query,$param_string,$param_array);
+		if(count($qoutp)>0)
+			return $qoutp[0];
+		else
+			return null;
+	}
+	public static function loadtables($query,$key,$limit=-1,$min=0,$max=0,$isnewer=true,$sorttext=''){
+		$min=0+$min;
+		$max=0+$max;
+		$limit=0+$limit;
+		$max_constrain=(($max>0 && $isnewer)  ? $key.">".$max:"true");
+		$min_constrain=(($min>0 && !$isnewer)  ? $key."<".$min:"true");
+		$limit_constrain=($limit==-1 ? "":"limit ".$limit);
+		$uquery="select * from (select * from (".$query[0].") overflowtable where $max_constrain AND $min_constrain $limit_constrain ) overflowtable_extend $sorttext ";
+		$qoutp=Sql::getArray($uquery,$query[1],$query[2]);
+
+		if(count($qoutp)==0){
+		}
+		else{
+			$e1=$qoutp[0][$key];
+			$e2=$qoutp[count($qoutp)-1][$key];
+			$mino=min($e1,$e2);
+			$maxo=max($e1,$e2);
+		}
+		return array("qoutp"=>$qoutp,"min"=>$min,"max"=>$max);
+	}
 }
 ?>
