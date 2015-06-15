@@ -13,7 +13,7 @@ def readcsv(fn):
 
 
 
-cdata=readcsv("../../crawler/cars/data.csv");
+cdata=readcsv("../../crawler/cars/datanew.csv");
 
 data={};
 def setifunset(data,key,val):

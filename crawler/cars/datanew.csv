@@ -1,0 +1,283 @@
+provider,city,car type,Night_start_time,night base fare,night base km,fare per km,Night waiting Charge,day base fare,day base km,fare per km,Day waiting charge,Night_end_time,Minimum bill,Cancellation Charge,ride charge,ride charge after,night ride charge,nide ride charge after
+ola,Pondicherry,Economy Sedan,0,49,2,15,2,49,2,15,2,0,0,0,0,0,0,0
+ola,Pondicherry,Mini,0,49,2,13,2,49,2,13,2,0,0,0,0,0,0,0
+ola,Mysore,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Mysore,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Hosur,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Jalandhar,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Bhopal,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Bhopal,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Rourkela,Economy Sedan,0,49,3,13,0,49,3,13,0,0,0,0,1,0,1,0
+ola,Rourkela,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Chennai,Economy Sedan,0,120,5,16,2,120,5,16,2,0,0,0,0,0,0,0
+ola,Chennai,Mini,0,100,5,12,2,100,5,12,2,0,0,0,0,0,0,0
+ola,Chennai,Prime,0,150,5,18,0,150,5,18,0,0,0,0,2,0,2,0
+ola,Bokaro,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Bokaro,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Delhi,Economy Sedan,0,150,6,14,0,150,6,14,0,0,0,0,1,5,1,5
+ola,Delhi,Mini,0,100,4,8,0,100,4,8,0,0,0,0,1,5,1,5
+ola,Delhi,Prime,0,200,5,20,0,200,5,20,0,0,0,0,2,0,2,0
+ola,Mathura,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,5,1,5
+ola,Mathura,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,5,1,5
+ola,Kochi,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Kochi,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Ahmedabad,Economy Sedan,0,60,2,12,0,60,2,12,0,0,0,0,1,0,1,0
+ola,Ahmedabad,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Ajmer,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,5,1,5
+ola,Ajmer,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,5,1,5
+ola,Pollachi,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Nagpur,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Nagpur,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Gwalior,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Saharanpur,Economy Sedan,0,60,3,13,0,60,3,13,0,0,0,0,1,0,1,0
+ola,Saharanpur,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Ahmednagar,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Ahmednagar,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Surat,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Surat,Mini,0,49,3,12,0,49,3,12,0,0,0,0,1,0,1,0
+ola,Dindigul,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Kanpur,Economy Sedan,0,99,5,14,2,99,5,14,2,0,0,0,0,0,0,0
+ola,Kanpur,Mini,0,99,5,12,2,99,5,12,2,0,0,0,0,0,0,0
+ola,Ujjain,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Ujjain,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Visakhapatnam,Economy Sedan,0,49,2,15,2,49,2,15,2,0,0,0,0,0,0,0
+ola,Visakhapatnam,Mini,0,49,2,13,2,49,2,13,2,0,0,0,0,0,0,0
+ola,Tiruchirappally,Economy Sedan,0,49,2,15,2,49,2,15,2,0,0,0,0,0,0,0
+ola,Tiruchirappally,Mini,0,49,3,13,2,49,3,13,2,0,0,0,0,0,0,0
+ola,Agra,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Agra,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Durgapur,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Kalaburagi,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Durg Bhilai,Economy Sedan,0,49,2,15,0,49,2,15,0,0,0,0,1,5,1,5
+ola,Durg Bhilai,Mini,0,49,2,13,0,49,2,13,0,0,0,0,1,5,1,5
+ola,Ranchi,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Ranchi,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Jamnagar,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Jamnagar,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Kolkata,Economy Sedan,0,99,4,12,0,99,4,12,0,0,0,0,1,10,1,10
+ola,Kolkata,Mini,0,99,4,9,0,99,4,9,0,0,0,0,1,10,1,10
+ola,Coimbatore,Economy Sedan,0,49,3,16,2,49,3,16,2,0,0,0,0,0,0,0
+ola,Coimbatore,Mini,0,49,3,14,2,49,3,14,2,0,0,0,0,0,0,0
+ola,Ludhiana,Economy Sedan,0,49,3,14,0,49,3,14,0,0,0,0,1,0,1,0
+ola,Ludhiana,Mini,0,49,3,12,0,49,3,12,0,0,0,0,1,0,1,0
+ola,Jodhpur,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Jodhpur,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Amravati,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Kurukshetra,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,5,1,5
+ola,Kurukshetra,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,5,1,5
+ola,Meerut,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,5,1,5
+ola,Meerut,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,5,1,5
+ola,Bangalore,Economy Sedan,0,100,4,13,0,100,4,13,0,0,0,0,1,5,1,5
+ola,Bangalore,Mini,0,80,4,10,0,80,4,10,0,0,0,0,1,5,1,5
+ola,Bangalore,Prime,0,200,5,18,0,200,5,18,0,0,0,0,2,0,2,0
+ola,Kota,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Kota,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Lucknow,Economy Sedan,0,49,2,13,2,49,2,13,2,0,0,0,0,0,0,0
+ola,Siliguri,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Siliguri,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Kolhapur,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Hyderabad,Prime,0,150,5,18,0,150,5,18,0,0,0,0,2,0,2,0
+ola,Hyderabad,Mini,0,100,4,10,2,100,4,10,2,0,0,0,0,0,0,0
+ola,Hyderabad,Economy Sedan,0,150,6,14,2,150,6,14,2,0,0,0,0,0,0,0
+ola,Tirunelveli,Economy Sedan,0,49,2,15,2,49,2,15,2,0,0,0,0,0,0,0
+ola,Tirunelveli,Mini,0,49,3,13,2,49,3,13,2,0,0,0,0,0,0,0
+ola,Haridwar,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Haridwar,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Nashik,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Nashik,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Jhansi,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Jhansi,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Tiruppur,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Tiruppur,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Varanasi,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Varanasi,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Vadodara,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Vadodara,Mini,0,49,3,12,0,49,3,12,0,0,0,0,1,0,1,0
+ola,Ambala,Economy Sedan,0,60,3,13,0,60,3,13,0,0,0,0,1,0,1,0
+ola,Ambala,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Patna,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Patna,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Jaipur,Prime,0,200,5,18,0,200,5,18,0,0,0,0,2,0,2,0
+ola,Jaipur,Mini,0,49,3,10,2,49,3,10,2,0,0,0,0,0,0,0
+ola,Jaipur,Economy Sedan,0,99,5,14,2,99,5,14,2,0,0,0,0,0,0,0
+ola,Allahabad,Economy Sedan,0,99,5,14,2,99,5,14,2,0,0,0,0,0,0,0
+ola,Allahabad,Mini,0,99,5,12,2,99,5,12,2,0,0,0,0,0,0,0
+ola,Aurangabad,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Aurangabad,Mini,0,49,3,12,0,49,3,12,0,0,0,0,1,0,1,0
+ola,Vijayawada,Economy Sedan,0,60,3,13,0,60,3,13,0,0,0,0,1,0,1,0
+ola,Vijayawada,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Solapur,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Hubli Dharwad,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Hubli Dharwad,Mini,0,49,2,11,0,49,2,11,0,0,0,0,1,0,1,0
+ola,Ballari,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Ballari,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Thanjavur,Mini,0,49,3,12,0,49,3,12,0,0,0,0,1,0,1,0
+ola,Salem,Economy Sedan,0,49,2,15,0,49,2,15,0,0,0,0,1,0,1,0
+ola,Salem,Mini,0,49,3,13,0,49,3,13,0,0,0,0,1,0,1,0
+ola,Mangalore,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Mangalore,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Patiala,Economy Sedan,0,60,3,13,0,60,3,13,0,0,0,0,1,0,1,0
+ola,Patiala,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Madurai,Economy Sedan,0,49,2,15,2,49,2,15,2,0,0,0,0,0,0,0
+ola,Madurai,Mini,0,49,3,13,2,49,3,13,2,0,0,0,0,0,0,0
+ola,Rajahmundry,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Dehradun,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Dehradun,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Amritsar,Economy Sedan,0,49,2,15,2,49,2,15,2,0,0,0,0,0,0,0
+ola,Guwahati,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Guwahati,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Mumbai,Economy Sedan,0,150,6,16,0,150,6,16,0,0,0,0,1,5,1,5
+ola,Mumbai,Mini,0,100,4,13,0,100,4,13,0,0,0,0,1,5,1,5
+ola,Mumbai,Prime,0,200,5,17,0,200,5,17,0,0,0,0,2,0,2,0
+ola,Warangal,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Goa,Economy Sedan,0,250,6,15,0,250,6,15,0,0,0,0,2,10,2,10
+ola,Pune,Economy Sedan,0,49,2,15,0,49,2,15,0,0,0,0,1,5,1,5
+ola,Pune,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,5,1,5
+ola,Pune,Prime,0,200,5,18,0,200,5,18,0,0,0,0,2,0,2,0
+ola,Raipur,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Udaipur,Economy Sedan,0,49,2,14,2,49,2,14,2,0,0,0,0,0,0,0
+ola,Udaipur,Mini,0,49,2,12,2,49,2,12,2,0,0,0,0,0,0,0
+ola,Chandigarh,Economy Sedan,0,49,3,14,0,49,3,14,0,0,0,0,1,5,1,5
+ola,Chandigarh,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,5,1,5
+ola,Tirupati,Economy Sedan,0,99,5,14,0,99,5,14,0,0,0,0,1,10,1,10
+ola,Tirupati,Mini,0,99,5,12,0,99,5,12,0,0,0,0,1,10,1,10
+ola,Jabalpur,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Jabalpur,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Guntur,Mini,0,60,3,10,0,60,3,10,0,0,0,0,1,0,1,0
+ola,Bhubaneswar,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Bhubaneswar,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Gaya,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Bhavnagar,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Indore,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Indore,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Rajkot,Economy Sedan,0,49,2,14,0,49,2,14,0,0,0,0,1,0,1,0
+ola,Rajkot,Mini,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Belagavi,Mini,0,49,2,10,0,49,2,10,0,0,0,0,1,0,1,0
+ola,Thiruvananthapuram,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Thiruvananthapuram,Mini,0,49,2,11,0,49,2,11,0,0,0,0,1,0,1,0
+ola,Dhanbad,Economy Sedan,0,49,2,12,0,49,2,12,0,0,0,0,1,0,1,0
+ola,Dhanbad,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Jamshedpur,Economy Sedan,0,49,2,13,0,49,2,13,0,0,0,0,1,0,1,0
+ola,Jamshedpur,Mini,0,49,3,10,0,49,3,10,0,0,0,0,1,0,1,0
+ola,Aligarh,Economy Sedan,0,60,2,13,0,60,2,13,0,0,0,0,1,0,1,0
+ola,Aligarh,Mini,0,60,2,10,0,60,2,10,0,0,0,0,1,0,1,0
+TaxiForSure,Agra,hatchback,0,49,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Agra,sedan,0,49,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Ahmedabad,hatchback,0,74,4,15,0,49,4,12,0,5,0,0,1,0,1,0
+TaxiForSure,Ahmedabad,sedan,0,74,4,17,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Ajmer,hatchback,0,74,4,12,0,49,4,10,0,6,0,0,1,0,1,0
+TaxiForSure,Ajmer,sedan,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Allahabad,hatchback,0,49,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Allahabad,sedan,0,49,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Amritsar,hatchback,0,99,3,16,0,49,3,14,0,5,0,0,1,0,1,0
+TaxiForSure,Amritsar,sedan,0,99,3,18,0,49,3,16,0,5,0,0,1,0,1,0
+TaxiForSure,Aurangabad,hatchback,0,79,4,14,0,49,4,10,0,6,0,0,1,0,1,0
+TaxiForSure,Aurangabad,sedan,0,79,4,18,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Bangalore,nano,0,25,0,10,0,25,0,10,0,6,0,0,1,0,1,0
+TaxiForSure,Bangalore,hatchback,0,99,4,15,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Bangalore,sedan,0,99,4,17,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Baroda,hatchback,0,49,4,12,0,49,4,12,0,5,0,0,1,0,1,0
+TaxiForSure,Baroda,sedan,0,49,4,14,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Bhavnagar,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Bhavnagar,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Bhopal,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Bhopal,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Chandigarh,hatchback,0,99,4,9,0,49,4,7,0,5,0,0,1,0,1,0
+TaxiForSure,Chandigarh,sedan,0,99,4,11,0,49,4,9,0,5,0,0,1,0,1,0
+TaxiForSure,Chennai,hatchback,0,69,4,19,0,49,4,15,0,5,0,0,1,0,1,0
+TaxiForSure,Chennai,sedan,0,69,4,20,0,49,4,16,0,5,0,0,1,0,1,0
+TaxiForSure,Chennai,SUV,0,190,5,22.5,0,150,5,18,0,5,0,0,1,0,1,0
+TaxiForSure,Coimbatore,hatchback,0,69,4,19,0,49,4,15,0,6,0,0,1,0,1,0
+TaxiForSure,Coimbatore,sedan,0,69,4,20,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Coimbatore,suv,0,190,5,22.5,0,150,5,18,0,6,0,0,1,0,1,0
+TaxiForSure,Dehradun,hatchback,0,99,3,16,0,49,3,14,0,5,0,0,1,0,1,0
+TaxiForSure,Dehradun,sedan,0,99,3,18,0,49,3,16,0,5,0,0,1,0,1,0
+TaxiForSure,Delhi,hatchback,0,74,4,16,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Delhi,sedan,0,74,4,18,0,49,4,16,0,5,0,0,1,0,1,0
+TaxiForSure,Gwalior,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Gwalior,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Hyderabad,nano,0,25,0,10,0,25,0,10,0,5,0,0,1,0,1,0
+TaxiForSure,Hyderabad,hatchback,0,99,4,15,0,49,4,12,0,5,0,0,1,0,1,0
+TaxiForSure,Hyderabad,sedan,0,99,4,18,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Indore,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Indore,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Jabalpur,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Jabalpur,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Jaipur,hatchback,0,49,4,10,0,49,4,10,0,6,0,0,1,0,1,0
+TaxiForSure,Jaipur,sedan,0,49,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Jaipur,suv,0,49,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Jalandhar,hatchback,0,99,3,16,0,49,3,14,0,5,0,0,1,0,1,0
+TaxiForSure,Jalandhar,sedan,0,99,3,18,0,49,3,16,0,5,0,0,1,0,1,0
+TaxiForSure,Jamnagar,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Jamnagar,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Jamshedpur,hatchback,0,99,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Jamshedpur,sedan,0,99,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Jodhpur,hatchback,0,49,4,12,0,49,4,10,0,6,0,0,1,0,1,0
+TaxiForSure,Jodhpur,sedan,0,49,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Kanpur,hatchback,0,75,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Kanpur,sedan,0,75,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Kochi,hatchback,0,49,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Kochi,sedan,0,49,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Kolkata,hatchback,0,49,3,12,0,49,3,12,0,6,0,0,1,0,1,0
+TaxiForSure,Kolkata,sedan,0,49,3,14,0,49,3,14,0,6,0,0,1,0,1,0
+TaxiForSure,Kota,hatchback,0,75,4,14,0,49,4,10,0,6,0,0,1,0,1,0
+TaxiForSure,Kota,sedan,0,75,4,16,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Kota,suv,0,75,4,18,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Lucknow,hatchback,0,74,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Lucknow,sedan,0,74,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Ludhiana,hatchback,0,99,3,16,0,49,3,14,0,5,0,0,1,0,1,0
+TaxiForSure,Ludhiana,sedan,0,99,3,18,0,49,3,16,0,5,0,0,1,0,1,0
+TaxiForSure,Madurai,hatchback,0,69,4,18,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Madurai,sedan,0,69,4,20,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Madurai,suv,0,190,5,22.5,0,150,5,18,0,6,0,0,1,0,1,0
+TaxiForSure,Mangalore,hatchback,0,49,4,15,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Mangalore,sedan,0,49,4,17,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Mathura,hatchback,0,74,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Mathura,sedan,0,74,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Mumbai,hatchback,0,60,3,18,0,49,3,15,0,5,0,0,1,0,1,0
+TaxiForSure,Mumbai,sedan,0,60,3,22,0,49,3,18,0,5,0,0,1,0,1,0
+TaxiForSure,Mumbai,suv,0,125,3,26,0,99,3,21,0,5,0,0,1,0,1,0
+TaxiForSure,Mysore,hatchback,0,99,4,15,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Mysore,sedan,0,99,4,17,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Mysore,suv,0,90,4,18,0,90,4,18,0,6,0,0,1,0,1,0
+TaxiForSure,Nagpur,hatchback,0,74,4,18,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Nagpur,sedan,0,74,4,20,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Nashik,hatchback,0,74,4,16,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Nashik,sedan,0,74,4,18,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Patna,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Patna,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Pune,eeco,0,74,4,16,0,49,4,13,0,5,0,0,1,0,1,0
+TaxiForSure,Pune,hatchback,0,74,4,18,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Pune,sedan,0,74,4,20,0,49,4,16,0,5,0,0,1,0,1,0
+TaxiForSure,Raipur,hatchback,0,99,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Raipur,sedan,0,99,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Rajkot,hatchback,0,69,4,15,0,49,4,12,0,5,0,0,1,0,1,0
+TaxiForSure,Rajkot,sedan,0,69,4,18,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Ranchi,hatchback,0,99,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Ranchi,sedan,0,99,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Shimla,hatchback,0,99,2,18,0,49,2,18,0,5,0,0,1,0,1,0
+TaxiForSure,Shimla,sedan,0,99,2,20,0,49,2,20,0,5,0,0,1,0,1,0
+TaxiForSure,Solapur,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Solapur,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Surat,hatchback,0,74,4,15,0,49,4,12,0,5,0,0,1,0,1,0
+TaxiForSure,Surat,sedan,0,74,4,17,0,49,4,14,0,5,0,0,1,0,1,0
+TaxiForSure,Tiruchirappalli,hatchback,0,69,4,18,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Tiruchirappalli,sedan,0,69,4,20,0,49,4,16,0,6,0,0,1,0,1,0
+TaxiForSure,Tiruchirappalli,suv,0,190,5,22.5,0,150,5,18,0,6,0,0,1,0,1,0
+TaxiForSure,Trivandrum,hatchback,0,49,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Trivandrum,sedan,0,49,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Udaipur,hatchback,0,49,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Udaipur,sedan,0,49,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Ujjain,hatchback,0,74,4,14,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Ujjain,sedan,0,74,4,16,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Varanasi,hatchback,0,74,4,12,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Varanasi,sedan,0,74,4,14,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Vijayawada,hatchback,0,99,4,15,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Vijayawada,sedan,0,99,4,17,0,49,4,14,0,6,0,0,1,0,1,0
+TaxiForSure,Visakhapatnam,hatchback,0,99,4,15,0,49,4,12,0,6,0,0,1,0,1,0
+TaxiForSure,Visakhapatnam,sedan,0,99,4,17,0,49,4,14,0,6,0,0,1,0,1,0
+QuickCabs,Delhi,Non AC sedan,23,50,0,15.625,,50,0,12.5,,5,,,100,0,0,0
+QuickCabs,Delhi,AC sedan,23,75,0,15.625,,75,0,12.5,,5,,,100,0,0,0
+Chanson Cabs,Delhi,Non AC sedan,23,125,0,28.75,,125,0,23,,5,,,100,0,0,0
+Chanson Cabs,Delhi,AC sedan,23,150,0,28.75,,150,,23,,5,,,100,0,0,0
+BlueSky Cabs,Delhi,AC sedan,0,500,25,16,2,500,25,16,0,0,0,0,0,0,0,0
