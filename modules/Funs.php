@@ -45,13 +45,26 @@ abstract class Funs{
 		$end_add=cleanstr($end_add);
 
 		$cinfo=Sqle::getRow("select * from car where CarID=? limit 1",'i',array(&$CarID));
-		$outp=array("ec"=>-1,"msg"=>"Some error occured");
+		$outp=array("ec"=>-1,"msg"=>"Direct Booking code not created yet for this cab");
+		$myf["phone"]="0".$myf["phone"];
 		if($cinfo!=null){
-			if($cinfo["Name"]=="fastrackcabs"){
+			if($cinfo["Name"]=="Fastrackcabs"){
 				$bdate=date("M d Y",$btime);
 				$bdtime=date("h:i a",$btime);
 				$cmd='cd crawler/booking/fastrackcabs;python main.py "'.$myf["name"].'" "'.$myf["phone"].'" "'.$myf["email"].'" "'.$bdate.'" "'.$bdtime.'" "'.$start_add.'" "'.$end_add.'" ';
 				$outp["msg"]="Remote output:\n".Fun::remoteelc($cmd);
+				$outp["ec"]=1;
+			}
+			else if($cinfo["Name"]=="Aircab"){
+				$bdate=date("d/m/Y",$btime);
+				$btime=$btime-($btime%(1800))+($btime%1800==0?0:1800);
+				$bdtime=date("H:i",$btime+($btime%(1800)) ) ;
+				$inputs=array($myf["name"], $myf["phone"], $myf["email"], $bdate, $bdtime, $start_add, $end_add);
+				$cmd='cd crawler/booking/aircab;python main.py ';//"'.$myf["name"].'" "'.$myf["phone"].'" "'.$myf["email"].'" "'.$bdate.'" "'.$bdtime.'" "'.$start_add.'" "'.$end_add.'" ';
+				foreach($inputs as $i=>$val){
+					$cmd.=' "'.$val.'" ';
+				}
+				$outp["msg"]=" Remote output:\n".Fun::remoteelc($cmd);
 				$outp["ec"]=1;
 			}
 		}

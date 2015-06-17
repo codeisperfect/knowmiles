@@ -1,4 +1,6 @@
 import json,csv
+from collections import OrderedDict
+
 
 def writefd(fd,data):
 	fd.write(data);
@@ -15,27 +17,29 @@ def readcsv(fn):
 
 cdata=readcsv("../../crawler/cars/datanew.csv");
 
-data={};
+
+
+data=OrderedDict();
 def setifunset(data,key,val):
 	if(not(data.has_key(key))):
 		data[key]=val;
 
-allcity={};
-allcars={};
-allcars_ids={};
-allcartypes={};
+allcity=OrderedDict();
+allcars=OrderedDict();
+allcars_ids=OrderedDict();
+allcartypes=OrderedDict();
 
 for i in range(1,len(cdata)):
 	row=[];
 	for j in range(min(len(cdata[1]),19)):
 		row.append(str(cdata[i][j]));
 
-	setifunset(allcars,row[0],{});
+	setifunset(allcars,row[0],OrderedDict());
 	setifunset(allcity,row[1],1);
 	setifunset(allcars[row[0]],row[2],1);
 
-	setifunset(data,row[0],{});
-	setifunset(data[row[0]],row[1],{});
+	setifunset(data,row[0],OrderedDict());
+	setifunset(data[row[0]],row[1],OrderedDict());
 	setifunset(data[row[0]][row[1]],row[2],row[3:] );
 
 ii=1;
@@ -76,6 +80,6 @@ for i in data:
 
 
 
-outp={"db_car":db_car,"db_city":db_city,"db_cartypes":db_cartypes,"db_cardata":db_cardata};
+outp=OrderedDict({"db_car":db_car,"db_city":db_city,"db_cartypes":db_cartypes,"db_cardata":db_cardata});
 writefd( open("json_car_data.json",'w'), json.dumps(outp) );
 

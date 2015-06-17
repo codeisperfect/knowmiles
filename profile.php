@@ -38,13 +38,11 @@ $bookingmsg="";
 
 if(Fun::isSetP("bookcab","lat1","lat2","lon1","lon2","fare","start_add","end_add","time","CarID","CarTypeID","CityID")){
   $ins_data=Fun::getflds(array("lat1","lat2","lon1","lon2","fare","start_add","end_add","time","CarID","CarTypeID","CityID"),$_POST);
-  if($ins_data["time"]==0)
-    $ins_data["time"]=time();
-  $ins_data["time"]=strtotime($ins_data["time"]);
   $ins_data=Fun::mergeifunset($ins_data,array("UID"=>User::loginId(),"bookingtime"=>time()));
   $myf=User::myprofile();
-  $remote_booking=Funs::remotebooking($myf,$ins_data["bookingtime"], $ins_data["CarID"], $ins_data["start_add"], $ins_data["end_add"]);
+  $remote_booking=Funs::remotebooking($myf,$ins_data["time"], $ins_data["CarID"], $ins_data["start_add"], $ins_data["end_add"]);
   $bookingmsg=$remote_booking["msg"];
+
   Sqle::insertVal("booking",$ins_data);
 //  Fun::redirect($cururl);
 }

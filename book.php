@@ -14,7 +14,8 @@ $night_charge="case when night_base_km>$distance then night_base_fare else night
 
 
 $booktime=strtotime(get("time"));
-$hournow=date('H',$booktime==0?time():$booktime);
+$booktime=($booktime==0?time():$booktime);
+$hournow=date('H',$booktime);
 
 $is_day= "not(((".$hournow."-nighttime_start+24)%24 between 0 AND (nighttime_end-nighttime_start+24)%24 ))";
 
@@ -49,10 +50,11 @@ foreach($carresult as $i=>$row){
 
 
   $hidinps=array();
-  $hinps=array("lat1"=>"loc1lat","lat2"=>"loc2lat","lon1"=>"loc1lon","lon2"=>"loc2lon","start_add"=>"fulloc1","end_add"=>"fulloc2","time"=>"time");
+  $hinps=array("lat1"=>"loc1lat","lat2"=>"loc2lat","lon1"=>"loc1lon","lon2"=>"loc2lon","start_add"=>"fulloc1","end_add"=>"fulloc2");
   foreach($hinps as $key=>$val){
     $hidinps[$key]=get($val);
   }
+  $hidinps["time"]=$booktime;
   $hidinps["fare"]=$row["charge"];
   $hidinps["bookcab"]="";
   foreach(array("CarID","CarTypeID","CityID") as $key=>$val){
