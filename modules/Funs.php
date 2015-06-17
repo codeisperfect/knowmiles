@@ -52,7 +52,7 @@ abstract class Funs{
 				$bdate=date("M d Y",$btime);
 				$bdtime=date("h:i a",$btime);
 				$cmd='cd crawler/booking/fastrackcabs;python main.py "'.$myf["name"].'" "'.$myf["phone"].'" "'.$myf["email"].'" "'.$bdate.'" "'.$bdtime.'" "'.$start_add.'" "'.$end_add.'" ';
-				$outp["msg"]=$cmd."Remote output:\n".Fun::remoteelc($cmd);
+				$outp["msg"]="Remote output:\n".Fun::remoteelc($cmd);
 				$outp["ec"]=1;
 			}
 			else if($cinfo["Name"]=="Aircab"){
@@ -64,7 +64,7 @@ abstract class Funs{
 				foreach($inputs as $i=>$val){
 					$cmd.=' "'.$val.'" ';
 				}
-				$outp["msg"]=$cmd." Remote output:\n".Fun::remoteelc($cmd);
+				$outp["msg"]=" Remote output:\n".Fun::remoteelc($cmd);
 				$outp["ec"]=1;
 			}
 		}
