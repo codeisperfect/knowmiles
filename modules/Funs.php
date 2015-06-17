@@ -78,6 +78,18 @@ abstract class Funs{
 				$outp["msg"]=" Remote output:\n".Fun::remoteelc($cmd);
 				$outp["ec"]=1;
 			}
+			else if($cinfo["Name"]=="Hellocabs"){
+				$bdate=date("d/m/Y",$btime);
+				$btime=$btime-$btime%(15*60);
+				$bdtime=date("H:i",$btime ) ;
+				$inputs=array($myf["name"], $myf["phone"], $myf["email"], $bdate, $bdtime, $start_add, $end_add);
+				$cmd='cd crawler/booking/hellocabs;python main.py ';//"'.$myf["name"].'" "'.$myf["phone"].'" "'.$myf["email"].'" "'.$bdate.'" "'.$bdtime.'" "'.$start_add.'" "'.$end_add.'" ';
+				foreach($inputs as $i=>$val){
+					$cmd.=' "'.$val.'" ';
+				}
+				$outp["msg"]=" Remote output:\n".Fun::remoteelc($cmd);
+				$outp["ec"]=1;
+			}
 		}
 		return $outp;
 	}
