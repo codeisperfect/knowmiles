@@ -276,10 +276,10 @@ TaxiForSure,Vijayawada,hatchback,0,99,4,15,0,49,4,12,0,6,0,0,1,0,1,0
 TaxiForSure,Vijayawada,sedan,0,99,4,17,0,49,4,14,0,6,0,0,1,0,1,0
 TaxiForSure,Visakhapatnam,hatchback,0,99,4,15,0,49,4,12,0,6,0,0,1,0,1,0
 TaxiForSure,Visakhapatnam,sedan,0,99,4,17,0,49,4,14,0,6,0,0,1,0,1,0
-QuickCabs,Delhi,Non AC sedan,23,50,0,15.625,,50,0,12.5,,5,,,100,0,0,0
-QuickCabs,Delhi,AC sedan,23,75,0,15.625,,75,0,12.5,,5,,,100,0,0,0
-Chanson Cabs,Delhi,Non AC sedan,23,125,0,28.75,,125,0,23,,5,,,100,0,0,0
-Chanson Cabs,Delhi,AC sedan,23,150,0,28.75,,150,,23,,5,,,100,0,0,0
+QuickCabs,Delhi,Non AC sedan,23,50,0,15.625,,50,0,12.5,,5,,100,0,0,0,0
+QuickCabs,Delhi,AC sedan,23,75,0,15.625,,75,0,12.5,,5,,100,0,0,0,0
+Chanson Cabs,Delhi,Non AC sedan,23,125,0,28.75,,125,0,23,,5,,100,0,0,0,0
+Chanson Cabs,Delhi,AC sedan,23,150,0,28.75,,150,,23,,5,,100,0,0,0,0
 BlueSky Cabs,Delhi,AC sedan,0,500,25,16,2,500,25,16,0,0,0,0,0,0,0,0
 Fastrackcabs,Delhi,Economy Sedan,0,225,10,16,1.6,225,10,16,1.6,0,0,0,0,0,0,0
 Aircab,Delhi,Radio Texi,0,225,10,16,1.6,225,10,16,1.6,0,0,0,0,0,0,0
