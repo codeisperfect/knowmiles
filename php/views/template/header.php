@@ -88,6 +88,7 @@ if(!$islogin){
       <div id="sigup" style="display: none;">
        <div style="color:#069; width:450px; height:710px; margin:0; padding:20px;">
         <div class="col-md-12 login">
+          <div style='color:red;' ><?php echo errormsg($login["signupec"]); ?></div>
          <h3 class="modal-title">
           Create your KnowMiles account
          </h3>
@@ -133,7 +134,7 @@ if(!$islogin){
           </span>
          </div>
          <div class="col-md-12 login">
-          <button class="btn btn-info btn-lg login-text" type="submit">
+          <button class="btn btn-info btn-lg login-text" type="submit" name="signup" >
            <span class="text">
             Create Account
            </span>

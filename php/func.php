@@ -187,6 +187,20 @@
 		}
 		return $outp;
 	}
+	function getr($inp) {//get one row of sql.
+		return (count($inp)>0) ? $inp[0]:null;
+	}
+
+	function getrefarr(&$inp) {
+	/*Returns the referenced array
+	 Arguments: $inp: Input data array(passed by reference)
+	*/    
+		$outp=array();
+		foreach($inp as $i=>$val){
+			$outp[] = &$inp[$i];
+		}
+		return $outp;
+	}
 
 
 ?>

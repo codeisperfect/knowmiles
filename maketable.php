@@ -12,7 +12,7 @@ function dt($tn){
 function drop_table(){
 //	$tl=array();
 //	$tl=array("car","cartype","cardata","city");
-	$tl=array("car","cartype","cardata","city", "users", "booking", "review" );
+	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
 	foreach($tl as $i=>$val){
 		dt($val);
 	}
@@ -52,6 +52,9 @@ function make_table(){
 	echo Sql::query("ALTER TABLE cardata add extra_charge_after int NULL ");
 	echo Sql::query("ALTER TABLE cardata add night_extra_charge int NULL ");
 	echo Sql::query("ALTER TABLE cardata add night_extra_charge_after int NULL ");
+
+	echo Sql::query("create table company ( cid int not null, carid int, bgpic varchar(500), offerpic varchar(300)  )");
+	echo Sql::query("ALTER TABLE company add dispname varchar(300) NULL ");
 }
 
 

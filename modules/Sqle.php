@@ -107,5 +107,66 @@ class Sqle extends Sql{
 		}
 		return array("qoutp"=>$qoutp,"min"=>$min,"max"=>$max);
 	}
+
+	public static function convQuery($query,$param_array=array()){
+		preg_match_all("|{[^}]+}|U",$query,$matches);
+		$matches=$matches[0];
+		$params="";
+		$parama=array();
+		for($i=0;$i<count($matches);$i++){
+			$key=substr($matches[$i],1,strlen($matches[$i])-2);
+			if(isset($param_array[$key])){
+				$params.=(gettype($param_array[$key])=='string'?'s':'i');
+				$parama[]=$param_array[$key];
+				$query=str_replace($matches[$i], '?' , $query );
+			}
+		}
+		return array($query,$params,$parama);
+	}
+
+	public static function getA($query,$param_array=array()){
+		$conq=Sqle::convQuery($query,$param_array);
+		return Sql::getArray($conq[0],$conq[1], getrefarr($conq[2]));
+	}
+
+	public static function q($query,$param_array=array()){
+		$conq=Sqle::convQuery($query,$param_array);
+		return Sql::query($conq[0],$conq[1],getrefarr($conq[2]));
+	}
+
+	public static function autoscroll($query, $param, $key, $sort='', $isloadold=true ,$minl=null, $maxl=null){
+		setifnn($minl, $param["minl"]);
+		setifnn($maxl, $param["maxl"]);
+		if($key!=null){
+			if($isloadold)
+				$querylimit = "select * from (".gtable($query).") outpquery where ($key<{min} OR {min}=-1) ".($param["minl"]==-1?'':"limit {minl} ");
+			else
+				$querylimit = "select * from (".gtable($query).") outpquery where $key>{max} ".($param["maxl"]==-1?'':"limit {maxl} ");
+		} else{//max,maxl must be +ve int
+			$querylimit="select * from (".$query.") outpquery limit {maxl} offset {max} ";
+		}
+		if($key!=null)
+			$querysort="select * from (".$querylimit.") sortquery ".$sort;
+		else
+			$querysort=$querylimit;
+		$qresult=Sqle::getA($querysort,$param);
+		$outp["qresult"]=$qresult;
+		$outp["maxl"]=$maxl;
+		$outp["minl"]=$minl;
+		if($key==null){
+			$outp["max"]=$param["max"]+$param["maxl"];
+		} else{
+			if(count($qresult)==0){
+				$outp["min"] = $param["min"];
+				$outp["max"] = $param["max"];
+			} else{
+				$e1=$qresult[0][$key];
+				$e2=$qresult[count($qresult)-1][$key];
+				$outp["min"] = min($e1, $e2);
+				$outp["max"] = max($e1, $e2);
+			}
+		}
+		return $outp;
+	}
 }
 ?>

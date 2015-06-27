@@ -91,10 +91,11 @@ $(document).ready(function(){
 <script>
   var ecodes=<?php echo json_encode($login); ?>;
   $(document).ready(function(){
-    $("#signupbutton").click();
-    if(ecodes["loginec"]<0){
-      $("#loginbutton").click();
-    }
+    doforall(["login", "signup"], function(d){
+      if(ecodes[d+"ec"]<0){
+        $("#"+d+"button").click();
+      }
+    });
   });
 
 

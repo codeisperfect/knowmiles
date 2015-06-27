@@ -496,6 +496,21 @@ var rating={
 };
 
 
+
+function extend(jobj,cfunc){
+	var clist=jobj.children();
+	if(clist.length>0){
+		jobj.append(clist[0].outerHTML);
+		clist=jobj.children();
+		for(var i=0;i<clist.length;i++){
+			if(cfunc!=null){
+				cfunc(clist[i],i);
+			}
+		}
+	}
+}
+
+
 setifunset=function(data,key,val){
 	if(typeof(data[key])=='undefined')
 		data[key]=val;
@@ -505,4 +520,27 @@ mergeifunset=function(dict1,dict2){
 	for(i in dict2){
 		setifunset(dict1,i,dict2[i]);
 	}
+	return dict1;
+}
+
+
+function remove(list1,e,fsatis){
+	var outp=[];
+	for(var i=0;i<list1.length;i++){
+		if( (fsatis==null && list1[i]!=e) || (fsatis!=null && fsatis(list1[i],e))  ){
+			outp.push(list1[i]);
+		}
+	}
+	return outp;
+}
+
+
+function doforall(list1,f){
+	for(var i=0;i<list1.length;i++){
+		f(list1[i]);
+	}
+}
+
+function haskey(arr, key){
+	return (typeof(arr[key])!='undefined');
 }

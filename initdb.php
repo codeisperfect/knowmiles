@@ -34,7 +34,16 @@ function makesomeaccounts(){
 	print_r(User::signUp(array("email"=>"admin@admin.com","password"=>"p","type"=>"a")));
 	print_r(User::signUp(array("email"=>"mohit@t.com","password"=>"p","type"=>"u")));
 	print_r(User::signUp(array("email"=>"mohit@s.com","password"=>"p","type"=>"u","name"=>"Mohit Saini")));
+
+	print_r(handle_request(array("emailId"=>"ola@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"Ola Cabs", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
+
+	print_r(handle_request(array("emailId"=>"tfs@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
+
+
 }
+
+//print_r(handle_request(array("emailId"=>"tfs1@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
+
 
 makecitycar();
 makesomeaccounts();

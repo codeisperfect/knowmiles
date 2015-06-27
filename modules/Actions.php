@@ -31,8 +31,13 @@ class Actions{
 		global $_ginfo;
 		$outp=array("ec"=>1,"data"=>0);
 		$temp=User::signUp(array("name"=>$data["fName"]." ".$data["lName"],"email"=>$data["emailId"],"password"=>$data["passOne"],"type"=>$data["type"], "phone"=>$data["telephone"]));
-		if($temp>0)
+		if($temp>0) {
 			$outp["data"]=$temp;
+			if($data["type"] == 'c'){
+				Sqle::insertVal( "company", array("cid" => $temp["id"], "dispname" => "", "bgpic" => "wp-content/themes/woodshed/assets/images/journal-bg-1.jpg") );
+				$outp["data"]["ref"] = "company.php";
+			}
+		}
 		else
 			$outp["ec"]=$temp;
 		return $outp;

@@ -75,8 +75,9 @@ abstract class Fun{
 			exit(0);
 		}
 	}
-	public static function redirectinv($cnd=true){
-		Fun::redirect(HOST."invalid.php", $cnd);
+//	public static function redirectinv($cnd=true, $invpage="invalid.php"){
+	public static function redirectinv($cnd=true, $invpage=""){
+		Fun::redirect(HOST.$invpage, $cnd);
 	}
 	public static function getcururl($protocol='http://', $method=1){
 		if($method==1)

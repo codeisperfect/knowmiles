@@ -98,12 +98,23 @@ abstract class Funs{
 		if(ispost("loginform") || ispost("signup") ){
 			$reqtype=ispost("loginform") ? "login" : "signup" ;
 			$loginreq=handle_request( Fun::setifunset( $_POST, "action", $reqtype) );
-			if($loginreq["ec"] > 0){
-				//Fun::redirect("store.php");
+			if( $loginreq["ec"] > 0 && User::isloginas("c") ) {
+				Fun::redirect(HOST."company.php");
 			}
 			$login[$reqtype."ec"]=$loginreq["ec"];
 		}
 		return $login;
+	}
+	public static function getCarInfo($carid, $cid) {
+		$query = "select users.name, company.* from company left join users on users.id = company.cid where company.carid = {carid} or company.cid = {cid} limit 1";
+		$temp = getr(Sqle::getA($query, array("carid" => $carid, "cid" => $cid)));
+		return $temp;
+	}
+	public static function headerinfo($myf){
+		$temp=explode(" ",$myf["name"]." ");
+		$myf["fname"]=$temp[0];
+		$myf["lname"]=$temp[1];
+		return $myf;
 	}
 }
 
