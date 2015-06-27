@@ -1,12 +1,12 @@
 <?php
 class User extends Sql{
 	public static function accountTypes(){
-		return array('a', 't','u');
+		return array('a', 'c', 'u');
 		//a:Admin
 		//u:user
 	}
 	public static function accountNames($t){
-		$dataANames=array('a'=>'Admin','u'=>'User');
+		$dataANames=array('a'=>'Admin','u'=>'User', 'c' => "Company");
 		return $dataANames[$t];
 	}
 	public static function isValidType($t){

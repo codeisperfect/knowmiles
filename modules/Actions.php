@@ -27,6 +27,27 @@ class Actions{
 		return array('ec'=>$ec,'data'=>$odata);
 	}
 
+	function signup($data){
+		global $_ginfo;
+		$outp=array("ec"=>1,"data"=>0);
+		$temp=User::signUp(array("name"=>$data["fName"]." ".$data["lName"],"email"=>$data["emailId"],"password"=>$data["passOne"],"type"=>$data["type"], "phone"=>$data["telephone"]));
+		if($temp>0)
+			$outp["data"]=$temp;
+		else
+			$outp["ec"]=$temp;
+		return $outp;
+	}
+	function login($data){
+		global $_ginfo;
+		$outp=array("ec"=>1,"data"=>0);
+		$temp=User::signIn($data["email"],$data["password"]);
+		if($temp>0)
+			$outp["data"]=$temp;
+		else
+			$outp["ec"]=$temp;
+		return $outp;
+	}
+
 
 }
 ?>

@@ -35,12 +35,12 @@ if(!$islogin){
       <div id="hidden_content" style="display: none;">
        <div style="color:#069; width:450px; height:370px; margin:0; padding:20px;">
         <div class="col-md-12 login">
-         <div style='color:red;' ><?php echo $ec!=null?$_ginfo["error"][$ec]:""; ?></div>
+         <div style='color:red;' ><?php echo errormsg($login["loginec"]); ?></div>
          <h3 class="modal-title">
           Log in to your KnowMiles account
          </h3>
         </div>
-        <form action="profile.php" method="post" name="formlogin">
+        <form action="" method="post" name="formlogin">
          <div class="col-md-12 login">
           <input type="text" name="email" placeholder="Email Id" class="login-text" max="100" />
          </div>
@@ -86,7 +86,7 @@ if(!$islogin){
        Sign Up
       </a>
       <div id="sigup" style="display: none;">
-       <div style="color:#069; width:450px; height:610px; margin:0; padding:20px;">
+       <div style="color:#069; width:450px; height:710px; margin:0; padding:20px;">
         <div class="col-md-12 login">
          <h3 class="modal-title">
           Create your KnowMiles account
@@ -94,7 +94,7 @@ if(!$islogin){
          <br />
          KnowMiles respects your privacy and will never give your details to any third party without your permission.
         </div>
-        <form action="profile.php" method="post" name="formsignup">
+        <form action="" method="post" name="formsignup">
         <div class="row">
           <div class="col-sm-12">
             <div class="login1 col-md-6 col-xs-6">
@@ -117,6 +117,11 @@ if(!$islogin){
          </div>
          <div class="col-md-12 login">
           <input type="password" name="passTwo" placeholder="Confirm Password" class="login-text" max="100" required="required" />
+         </div>
+         <div class="col-md-12 login">
+          <select name="type" class="login-text" >
+            <?php disp_olist( arr2option(array("User", "Cab Company"), 'firstchar') , array("addtext" => "Accont type") ); ?>
+          </select>
          </div>
          <div class="col-md-12 row-in login">
           <input name="accept_conditions_1" type="checkbox" checked="checked" value="True" />

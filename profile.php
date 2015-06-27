@@ -10,29 +10,9 @@ $cururl=HOST."profile.php?tab=".$qargs["tab"];
 
 $uid=User::loginId();
 
-$ec=1;
+$myf=User::myprofile();
 
-if(Fun::isSetP("loginform","email","password")){
-  $temp=User::signIn($_POST["email"],$_POST["password"]);
-  if($temp>0){
-    Fun::redirect(HOST);
-  }
-  else
-    $ec=$temp;
-}
-
-if(Fun::isSetP("fName","lName","emailId","telephone","passOne","passTwo","accept_conditions_1")){
-  $temp=User::signUp(array("name"=>$_POST["fName"]." ".$_POST["lName"],"email"=>$_POST["emailId"],"password"=>$_POST["passOne"],"type"=>"u","phone"=>$_POST["telephone"]));
-  if($temp>0){
-    Fun::redirect(HOST);
-  }
-  else
-    $ec=$temp;
-}
-
-if(!User::islogin()){
-  Fun::redirect(HOST."?ec=".$ec);
-}
+Fun::redirect(HOST, $myf==null);
 
 $bookingmsg="";
 
@@ -44,7 +24,7 @@ if(Fun::isSetP("bookcab","lat1","lat2","lon1","lon2","fare","start_add","end_add
   $bookingmsg=$remote_booking["msg"];
 
   Sqle::insertVal("booking",$ins_data);
-//  Fun::redirect($cururl);
+  Fun::redirect($cururl);
 }
 
 
@@ -60,7 +40,7 @@ if(Fun::isSetP("rating","carId","cityId","content")){
 
 
 $myf=User::myprofile();
-$temp=explode(" ",$myf["name"]);
+$temp=explode(" ",$myf["name"]." ");
 $myf["fname"]=$temp[0];
 $myf["lname"]=$temp[1];
 

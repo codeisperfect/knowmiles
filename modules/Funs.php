@@ -93,6 +93,18 @@ abstract class Funs{
 		}
 		return $outp;
 	}
+	public static function loginaction(){
+		$login=array("loginec"=>1, "signupec"=>1);
+		if(ispost("loginform") || ispost("signup") ){
+			$reqtype=ispost("loginform") ? "login" : "signup" ;
+			$loginreq=handle_request( Fun::setifunset( $_POST, "action", $reqtype) );
+			if($loginreq["ec"] > 0){
+				//Fun::redirect("store.php");
+			}
+			$login[$reqtype."ec"]=$loginreq["ec"];
+		}
+		return $login;
+	}
 }
 
 ?>

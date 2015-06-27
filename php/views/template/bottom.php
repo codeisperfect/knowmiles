@@ -86,6 +86,22 @@ $(document).ready(function(){
 <?php
   addmyjs();
 //  addall_js(array("js/mohit.js","js/mohitlib.js","js/lib.js","", "js/main.js"));
+?>
+
+<script>
+  var ecodes=<?php echo json_encode($login); ?>;
+  $(document).ready(function(){
+    $("#signupbutton").click();
+    if(ecodes["loginec"]<0){
+      $("#loginbutton").click();
+    }
+  });
+
+
+</script>
+
+
+<?php
 if($dispbody){
 ?>
 </body>

@@ -325,9 +325,12 @@
 		foreach($arr as $i=>$src)
 			addcss($src);
 	}
+
+
 	function disp_olist($inp,$option=array()){
-//		$olist=Fun::create_olist($inp,$option);
-		$option=Fun::mergeifunset($option,array('selected'=>''));
+		$option=Fun::mergeifunset($option,array('selected'=>'', "addtext"=>null ));
+		if($option["addtext"]!=null)
+			array_unshift($inp, array("val"=>"", "disptext"=>$option["addtext"]));
 		$olist=$inp;
 		foreach($olist as $key=>$val){
 			$param=array("value"=>$val["val"]);
@@ -336,6 +339,8 @@
 			ocloset("option",$val["disptext"],$param);
 		}
 	}
+
+
 	function addmycss(){
 		addcss("css/main.css");
 	}

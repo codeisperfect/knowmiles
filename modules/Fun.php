@@ -68,18 +68,23 @@ abstract class Fun{
 			self::redirect(HOST);
 		}
 	}
-	public static function redirect($url){
-		closedb();
-		header("Location: ".$url);
-		exit(0);
-	}
-	public static function redirectinv($cond=true){
-		if($cond==true){
-			Fun::redirect(HOST."invalid.php");
+	public static function redirect($url, $cnd=true){
+		if($cnd){
+			closedb();
+			header("Location: ".$url);
+			exit(0);
 		}
 	}
-	public static function getcururl($protocol='http://'){
-		return $protocol. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	public static function redirectinv($cnd=true){
+		Fun::redirect(HOST."invalid.php", $cnd);
+	}
+	public static function getcururl($protocol='http://', $method=1){
+		if($method==1)
+			return $protocol. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		else if($method==2)
+			return HOST.curfilename().".php";
+		else
+			return HOST;
 	}
 	public static function gotohome($typec='',$force=false){
 		self::gotologin($typec,$force,"");

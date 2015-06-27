@@ -3,10 +3,7 @@ $config=array('calallcity'=>true);
 include "includes/app.php";
 Funs::setcity();
 $myf=User::myprofile();
-$pageinfo=array();
 
-
-$pageinfo["ec"]=get("ec");
 
 load_view("template/index_top.php");
 ?>

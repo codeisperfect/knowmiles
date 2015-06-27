@@ -37,7 +37,7 @@ function makesomeaccounts(){
 }
 
 makecitycar();
-//makesomeaccounts();
+makesomeaccounts();
 
 
 

@@ -31,7 +31,6 @@ $view_default=array(
 		"options"=>array("Yes","No")
 		),
 	"template/header.php"=>array(
-		"islogin"=>null,//redefined latter in includes/data_loadonce.php
 		"ec"=>null
 		)
 	);
@@ -41,6 +40,12 @@ $view_default=array(
 $_ginfo=array();
 $_ginfo["attributes"]=array("name","value","style","class","id","type","ph","onclick","dc",'rows',"disabled","align","valign","action","autofocus","style","rel","type","href","value","src","selected");
 $_ginfo["attrs_shortcut"]=array("ph"=>"placeholder","dc"=>"data-condition");
+
+$_ginfo["action_constrain"]=array(
+	"signup"=>array("need"=>array("fName", "lName", "emailId", "telephone", "passOne", "accept_conditions_1")),
+	"login"=>array("need"=>array("email","password")),
+);
+
 
 $_ginfo['sql']=array(
 	"cartypenamemap"=>"select car.*,cartype.* from cartype left join (select CarID,CarTypeID from cardata group by CarID,CarTypeID)cartypemap on cartypemap.CarTypeID=cartype.CarTypeID left join car on car.CarID=cartypemap.CarID"

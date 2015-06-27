@@ -67,7 +67,6 @@ foreach($carresult as $i=>$row){
 }
 
 
-$pageinfo=array();
 $pageinfo["cityolist"]=$_ginfo["allcity"];
 $pageinfo["carresult"]=$carresult;
 $pageinfo["carfilters"]=array("image"=>"images/auto.png","images/car.png", "images/car2.png", "images/suv.png","images/suv2.png");
@@ -75,79 +74,23 @@ $pageinfo["myf"]=$myf;
 $pageinfo["distance"]=$distance;
 $pageinfo["timetaken"]=$timetaken;
 
-load_view("template/book_top.php",$pageinfo);
 load_view("book.php",$pageinfo);
+
 load_view("template/footer.php");
-
-
-
-
-
-if(false){
-?>
-
-
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-<script type="text/javascript">
-  if(false){
-    $('a[href^="#"]').click(function(){  
-        var the_id = $(this).attr("href");  
-        $('html, body').animate({  
-            scrollTop:$(the_id).offset().top  
-        }, 'slow');  
-        return false;  
-    });
-  }
-
-    var dateToday=new Date();
-    $(".form_datetime1").datetimepicker({
-      format: 'yyyy-mm-dd hh:ii', 
-      forceParse: true,
-      minDate:dateToday,
-     onSelect: function(selectedDate) {
-        var option = this.id == "from" ? "minDate" : "maxDate",
-          instance = $(this).data("datepicker"),
-           date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
-       dates.not(this).datepicker("option", option, date);
-    }
-  });
-    
-  </script>
-  <script>
-      $(function () { $('.tooltip-show').tooltip('show');});
-      $(function () { $('.tooltip-hide').tooltip('hide');});
-      $(function () { $('.tooltip-destroy').tooltip('destroy');});
-      $(function () { $('.tooltip-toggle').tooltip('toggle');});
-      $(function () { $(".tooltip-options a").tooltip({html : true });
-      });
-   </script>
-
-
-<?php
-  addall_js(array("js/mohit.js","js/mohitlib.js","js/lib.js","js/main.js"));
-}
-else{
-  load_view("template/bottom.php");
-?>
-  <script>
-      $(function () { $('.tooltip-show').tooltip('show');});
-      $(function () { $('.tooltip-hide').tooltip('hide');});
-      $(function () { $('.tooltip-destroy').tooltip('destroy');});
-      $(function () { $('.tooltip-toggle').tooltip('toggle');});
-      $(function () { $(".tooltip-options a").tooltip({html : true });
-      });
-   </script>
-
-<?php  
-}
-?>
-
-
-</body>
-</html>
-<?php
+load_view("template/bottom.php", Fun::mergeifunset($pageinfo, array("dispbody" => false)));
 
 closedb();
 ?>
+
+
+  <script>
+      $(function () { $('.tooltip-show').tooltip('show');});
+      $(function () { $('.tooltip-hide').tooltip('hide');});
+      $(function () { $('.tooltip-destroy').tooltip('destroy');});
+      $(function () { $('.tooltip-toggle').tooltip('toggle');});
+      $(function () { $(".tooltip-options a").tooltip({html : true });
+      });
+   </script>
+
+</body>
+</html>
