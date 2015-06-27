@@ -17,26 +17,32 @@ Fun::redirect(HOST, $myf==null);
 $bookingmsg="";
 
 if(Fun::isSetP("bookcab","lat1","lat2","lon1","lon2","fare","start_add","end_add","time","CarID","CarTypeID","CityID")){
-  $ins_data=Fun::getflds(array("lat1","lat2","lon1","lon2","fare","start_add","end_add","time","CarID","CarTypeID","CityID"),$_POST);
-  $ins_data=Fun::mergeifunset($ins_data,array("UID"=>User::loginId(),"bookingtime"=>time()));
-  $myf=User::myprofile();
-  $remote_booking=Funs::remotebooking($myf,$ins_data["time"], $ins_data["CarID"], $ins_data["start_add"], $ins_data["end_add"]);
-  $bookingmsg=$remote_booking["msg"];
+	$ins_data=Fun::getflds(array("lat1","lat2","lon1","lon2","fare","start_add","end_add","time","CarID","CarTypeID","CityID"),$_POST);
+	$ins_data=Fun::mergeifunset($ins_data,array("UID"=>User::loginId(),"bookingtime"=>time()));
+	$myf=User::myprofile();
+	$remote_booking=Funs::remotebooking($myf,$ins_data["time"], $ins_data["CarID"], $ins_data["start_add"], $ins_data["end_add"]);
+	$bookingmsg=$remote_booking["msg"];
 
-  Sqle::insertVal("booking",$ins_data);
-  Fun::redirect($cururl);
+	Sqle::insertVal("booking",$ins_data);
+	Fun::redirect($cururl);
 }
 
 
 if(Fun::isSetP("rating","carId","cityId","content")){
-  $ins_data=Fun::getflds(array("rating","carId","cityId","content"),$_POST);
-  $ins_data["time"]=time();
-  $ins_data["uid"]=User::loginId();
-  $ins_data['carId']=0+lastelm(explode("-",$ins_data["carId"]));
-  Sqle::insertVal("review",$ins_data);
-  Fun::redirect($cururl);
+	$ins_data=Fun::getflds(array("rating","carId","cityId","content"),$_POST);
+	$ins_data["time"]=time();
+	$ins_data["uid"]=User::loginId();
+	$ins_data['carId']=0+lastelm(explode("-",$ins_data["carId"]));
+	Sqle::insertVal("review",$ins_data);
+	Fun::redirect($cururl);
 }
 
+if(User::isloginas("c") ){
+	if(isset($_FILES["bgpic"]) && $_FILES["bgpic"]["size"]>0 )
+		Fun::uploadpic($_FILES["bgpic"], "bgpic", null, 100, array(), "company", "cid");
+	if(isset($_FILES["offerpic"]) && $_FILES["offerpic"]["size"]>0 )
+		Fun::uploadpic($_FILES["offerpic"], "offerpic", null, 280, array(), "company", "cid");
+}
 
 
 $myf=User::myprofile();
@@ -48,10 +54,10 @@ $allcar=Sql::getArray("select concat(car.CarID,'-',cartype.CarTypeID) as car_id,
 
 $myreview=Help::myreviewlist(User::loginId());
 foreach( $myreview as $i=>$row){
-  $myreview[$i]=Fun::mergeifunset($row,array(
-    'timepassed'=>Fun::timepassed_t2(time()-$row["time"]),
-    'smilymsg'=>Fun::smilymsg($row["content"])
-    ));
+	$myreview[$i]=Fun::mergeifunset($row,array(
+		'timepassed'=>Fun::timepassed_t2(time()-$row["time"]),
+		'smilymsg'=>Fun::smilymsg($row["content"])
+		));
 }
 
 $mybooking=Sql::getArray("select * from booking where UID=? order by time desc ",'i',array(&$uid));
@@ -60,21 +66,23 @@ $pageinfo=array('myreview'=>$myreview,'mybooking'=>$mybooking,'myf'=>$myf,"cityo
 
 
 $pageinfo["tabs"]=array(
-  "tabs2-pane1"=>"My Miles",
-  "tabs2-pane2"=>"Booking",
-  "tabs2-pane3"=>"Profile",
-  "tabs2-pane4"=>"My Reviews",
-  "tabs2-pane5"=>"My Cab Details"
-  );
+	"tabs2-pane1"=>"My Miles",
+	"tabs2-pane2"=>"Booking",
+	"tabs2-pane3"=>"Profile",
+	"tabs2-pane4"=>"My Reviews",
+	"tabs2-pane5"=>"My Cab Details",
+	"tabs2-pane6"=>"Manage company",
+	);
 
 $save_details=Sql::getArray("select car.*,mycabdetails.email,mycabdetails.password,mycabdetails.time,(mycabdetails.CarId is not NULL) issaved  from car left join (select * from cabdetails where uid=?)mycabdetails on mycabdetails.CarID=car.CarID order by car.CarID",'i',array(&$uid));
 
 
 for($i=0;$i<count($save_details);$i++){
-  $save_details[$i]["lastupdated"]=($save_details[$i]["time"]>0?"last updated ".Fun::timepassed(time()-$save_details[$i]["time"]):"");
+	$save_details[$i]["lastupdated"]=($save_details[$i]["time"]>0?"last updated ".Fun::timepassed(time()-$save_details[$i]["time"]):"");
 }
 
 
+$pageinfo["profiletabs"]=Funs::profiletabs();
 $pageinfo["save_details"]=$save_details;
 $pageinfo["bookingmsg"]=$bookingmsg;
 

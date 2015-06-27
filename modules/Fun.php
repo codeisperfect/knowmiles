@@ -454,6 +454,25 @@ abstract class Fun{
 		}
 		return $outp;
 	}
+
+	public static function uploadpic($file, $smallkey, $bigkey=null, $size=100, $const=array(), $table='users', $matchkey='id'){
+			$fd=Fun::uploadfile_post($file,$const);
+			if($fd["ec"]>0){
+				$smallpic="data/files/".Fun::getuploadfilename(pathinfo($fd['fn'], PATHINFO_EXTENSION), 'small');
+				Fun::resizeimage($fd["fn"], $smallpic, $size, $size);
+				$update_info = array($smallkey=>$smallpic);
+				if($bigkey != null) {
+					$update_info[$bigkey] = $fd["fn"];
+				}
+				Sqle::updateVal($table, $update_info, array($matchkey=>User::loginId()) );
+			}
+			return $fd["ec"];
+	}
+
+	public static function getloadviewname($inp){
+		return firstelm(explode(".php",lastelm(explode("/",$inp))));
+	}
+
 }
 
 ?>

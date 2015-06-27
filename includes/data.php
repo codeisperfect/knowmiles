@@ -72,4 +72,9 @@ $_ginfo["error"]=array(
 );
 
 
+$_ginfo["profiletabs"]=array(
+	'c' => array("tabs2-pane3", "tabs2-pane6"),
+	'u' => array("tabs2-pane1", "tabs2-pane2", "tabs2-pane3", "tabs2-pane4", "tabs2-pane5"),
+);
+
 ?>

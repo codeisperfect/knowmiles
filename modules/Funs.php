@@ -116,6 +116,10 @@ abstract class Funs{
 		$myf["lname"]=$temp[1];
 		return $myf;
 	}
+
+	public static function profiletabs() {
+		return getval( User::loginType(), g("profiletabs") );
+	}
 }
 
 ?>

@@ -202,5 +202,17 @@
 		return $outp;
 	}
 
+	function g($inp) {
+		global $_ginfo;
+		return $_ginfo[$inp];
+	}
+	function convchars($inp){
+		$conv=array("&" => "&amp;", '"' => "&quot;", "'" => "&#039;", "<" => "&lt;", ">" => "&gt;");
+		foreach($conv as $i => $val) {
+			$inp=str_replace($i, $val, $inp);
+		}
+		return $inp;
+	}
+
 
 ?>
