@@ -318,6 +318,10 @@ var form={
 			}
 			
 		}});
+	},
+	req:function(obj){
+		form.sendreq1(obj, $(obj).find("button[type=submit]")[0]);
+		return false;
 	}
 };
 
@@ -543,4 +547,157 @@ function doforall(list1,f){
 
 function haskey(arr, key){
 	return (typeof(arr[key])!='undefined');
+}
+
+
+
+function mylib(){
+	function textareainc(obj){
+		var allattrs=button.attrs(obj);
+		mergeifunset(allattrs,{'data-maxrows':5});
+		if($(obj).outerHeight() < obj.scrollHeight + parseFloat($(obj).css("borderTopWidth")) + parseFloat($(obj).css("borderBottomWidth"))) {
+			if($(obj).attr("rows")<allattrs["data-maxrows"])
+				$(obj).attr("rows",1+parseInt($(obj).attr("rows")));
+		};
+	}
+	$("textarea.autoinc").on("keyup keydown",function(){
+		textareainc(this);
+	});
+	var valid={
+		setautotick:function(selector, correct, incorrect){
+			var keyaction=function(obj, e){
+				var inpobj=$(obj);
+				if(e.keyCode!=9 ){
+					var signobj=inpobj.parent().find(".glyphicon");
+					var isvalid=-1;
+					if(inpobj.attr("data-condition")!=null && haskey(checkValidInput, inpobj.attr("data-condition")) ){
+						isvalid=checkValidInput[inpobj.attr("data-condition")](inpobj[0]);
+					}
+					if(signobj.length>0){
+						doforall([correct, incorrect], function(cname){
+							signobj.removeClass(cname);
+						});
+						if(isvalid>=0)
+							signobj.addClass(isvalid ? correct:incorrect );
+					}
+					signobj.parent().removeClass("has-error");
+				}
+			};
+			var inpobj=$(selector);
+			doforall(["keyup", "change", "keypress", "keydown"], function(i){
+				inpobj.on(i, function(e){keyaction(this,e);}  ) ;
+			});
+		},
+		resetinp:function (){
+			$("input").on("kepup keydown", function(e){
+				if(e.keyCode!=9 && e.keyCode!=13 ){
+					this.setCustomValidity("");
+				}
+			});
+		}
+	};
+	var awesome={
+		awesomelabel:function(){
+			var icons=["glyphicon-untick", "glyphicon-correct"];
+			var tickone=function(obj){
+				var groupid=$(obj).attr("data-gid");
+				if(groupid!=null){
+					var otherelms=$('.tickone[data-gid="'+groupid+'"]');
+					for(var i=0; i<otherelms.length; i++){
+						if(otherelms[i] != obj){
+							otherelms[i].checked=false;
+						}
+						labelchangehandle(otherelms[i]);
+					}
+				}
+			};
+			var createhiddeninp=function(obj){
+				var groupid=$(obj).attr("data-gid");
+				if(groupid!=null && $("input[name="+groupid+"]").length == 0){
+					$(obj).parent().append('<input type="hidden" value="" name="'+groupid+'" />');
+				}
+			};
+			var findlabel=function(obj){
+				if( $(obj).attr("id")!=null){
+					var label=$('label[for="'+$(obj).attr("id")+'"]');
+					if(label.length>0){
+						return label;//Jquery selector for it.
+					}
+				}
+				return null;
+			};
+			var labelchangehandle=function(obj, e){
+				var label=findlabel(obj);
+				var gid=$(obj).attr("data-gid");
+				if(gid!=null){
+					var otherelms=$('input.mycheckbox[data-gid="'+gid+'"]');
+					var values=[];
+					doforall(otherelms, function(elm){
+						if(elm.checked)
+							values.push(elm.value);
+					});
+					$("input[name="+gid+"]").val(values.join("-"));
+				}
+				if(label!=null){
+					var iconobj=label.find("span.myicon");
+					doforall(icons, function(d){
+						iconobj.removeClass(d);
+					});
+					iconobj.addClass(icons[0+obj.checked]);
+				}
+			};
+			$(".mycheckbox").on("change", function(e){
+				labelchangehandle(this,e);
+			});
+			$(".tickone").on("change", function(e){
+				tickone(this);
+			});
+			doforall($(".mycheckbox"), function(elm){
+				var label=findlabel(elm);
+				if(label!=null && label.find("span.myicon").length==0){
+					label.prepend("<span class='myicon' ></span> &nbsp;");
+				}
+				labelchangehandle(elm);
+				createhiddeninp(elm);
+			});
+		},
+		imagehoverbig:function(){
+			var hw = ["height", "width"];
+			var mlist = ["padding-left", "padding-right", "padding-top", "padding-bottom"];
+			var calledonce=function(obj){
+				var backup = listjoin(hw, mlist);
+				doforall(backup, function(x){
+					$(obj).attr("data-"+x, parseInt($(obj).css(x)));
+				});
+			};
+			var animate=function(obj, shift){
+				doforall(hw, function(x){
+					//$(obj).css(x, ($(obj).attr("data-"+x)-shift)+"px");
+				});
+				doforall(mlist, function(x){
+					$(obj).css(x, ($(obj).attr("data-"+x)+1*shift)+"px");
+				});
+			}
+			var shift=2;
+			$(".imganimate").on("mouseenter", function(){
+				animate(this, shift);
+			});
+			$(".imganimate").on("mouseout", function(){
+				animate(this, 0);
+			});
+			doforall($(".imganimate"), function(x){
+				calledonce(x);
+			});
+		},
+		submitform:function(){
+			var submitaction = function(obj){
+				form.sendreq1(obj, $(obj).find("button[type=submit]")[0]);
+				return false;
+			}
+		}
+	};
+	valid.resetinp();
+	valid.setautotick("input.myinput", "glyphicon-correct", "glyphicon-incorrect");
+	awesome.awesomelabel();
+	awesome.imagehoverbig();
 }

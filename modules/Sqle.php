@@ -1,4 +1,9 @@
 <?php
+/*
+Copyleft : this library is written by mohit{ mohitsaini1196@gmail.com }.  & you are allowed to do anything with it.
+anything means anything. including remove this comment, selling it :p
+*/
+
 class Sqle extends Sql{
 	public static function selectVal($table,$flds,$cnds=array(),$resultNo=-1){
 		$selects=array();

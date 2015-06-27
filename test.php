@@ -2,6 +2,8 @@
 include "includes/app.php";
 
 
+Disp::disp_table(Sql::getArray(gtable("carmaps", false)));
+
 
 if(0){
 	function f($b, $a){

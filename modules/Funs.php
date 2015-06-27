@@ -120,6 +120,10 @@ abstract class Funs{
 	public static function profiletabs() {
 		return getval( User::loginType(), g("profiletabs") );
 	}
+
+	public static function mycartypes($carid) {
+		return Fun::dbarrtooption( Sqle::getA("select * from ".gtable("carmaps")." where CarId={carid} ", array("carid" => $carid)), "CarTypeID", "TypeName");
+	}
 }
 
 ?>

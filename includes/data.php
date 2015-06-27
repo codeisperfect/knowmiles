@@ -44,7 +44,14 @@ $_ginfo["attrs_shortcut"]=array("ph"=>"placeholder","dc"=>"data-condition");
 $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("fName", "lName", "emailId", "telephone", "passOne", "accept_conditions_1")),
 	"login"=>array("need"=>array("email","password")),
+	"review" => array("need" => array("rating","carId","cityId","content"))
 );
+
+
+$_ginfo["autoinsert"]=array(
+	"review"=>array("fixed"=>array("time","uid"),"table"=>"review")
+);
+
 
 
 $_ginfo['sql']=array(

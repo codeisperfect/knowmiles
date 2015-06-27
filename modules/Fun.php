@@ -459,7 +459,7 @@ abstract class Fun{
 			$fd=Fun::uploadfile_post($file,$const);
 			if($fd["ec"]>0){
 				$smallpic="data/files/".Fun::getuploadfilename(pathinfo($fd['fn'], PATHINFO_EXTENSION), 'small');
-				Fun::resizeimage($fd["fn"], $smallpic, $size, $size);
+				resizeimg($fd["fn"], $smallpic, $size, $size);
 				$update_info = array($smallkey=>$smallpic);
 				if($bigkey != null) {
 					$update_info[$bigkey] = $fd["fn"];

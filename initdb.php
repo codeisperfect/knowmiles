@@ -39,6 +39,9 @@ function makesomeaccounts(){
 
 	print_r(handle_request(array("emailId"=>"tfs@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
 
+	for($i=1; $i<=2; $i++){
+		Sqle::updateVal("company", array("carid" => $i), array("cid" => $i+3));
+	}
 
 }
 

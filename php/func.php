@@ -149,6 +149,12 @@
 		}
 		return true;
 	}
+
+	function getmyneed($fname){
+		global $_ginfo;
+		return $_ginfo["action_constrain"][$fname]["need"];
+	}
+
 	function handle_request($post_data) {
 		global $_ginfo;
 		$b=new Actions();
@@ -206,6 +212,12 @@
 		global $_ginfo;
 		return $_ginfo[$inp];
 	}
+
+	function gtable($name, $alias=true) {
+		global $_ginfo;
+		return ($alias ? ("(".$_ginfo["query"][$name].") ".$name) : $_ginfo["query"][$name]);
+	}
+
 	function convchars($inp){
 		$conv=array("&" => "&amp;", '"' => "&quot;", "'" => "&#039;", "<" => "&lt;", ">" => "&gt;");
 		foreach($conv as $i => $val) {
@@ -213,6 +225,49 @@
 		}
 		return $inp;
 	}
+	function resizeimg($filename,$tosave, $max_width, $max_height){
+		$imginfo=getimagesize($filename);
+		list($orig_width, $orig_height) = $imginfo;
+		$type=$imginfo[2];
 
+
+		$crop_width=$orig_width;
+		$crop_height=$orig_height;
+		if($orig_width*$max_height <= $orig_height*$max_width){
+			$crop_height=$orig_width*$max_height/$max_width;
+		}
+		else{
+			$crop_width=$orig_height*$max_width/$max_height;
+		}
+
+		$image_p = imagecreatetruecolor($max_width, $max_height);
+		switch($type){
+			case "1": 
+				$image = imagecreatefromgif($filename); 
+				$transparent = imagecolorallocatealpha($image_p, 0, 0, 0, 127);
+				imagefill($image_p, 0, 0, $transparent);
+				imagealphablending($image_p, true);         
+				break;
+			case "2": $image = imagecreatefromjpeg($filename);break;
+			case "3": 
+				$image = imagecreatefrompng($filename);
+				imagealphablending($image_p, false);
+				imagesavealpha($image_p, true);
+				break;
+			default:  $image = imagecreatefromjpeg($filename);
+		}
+		imagecopyresampled($image_p, $image, 0, 0, ($orig_width-$crop_width)/2, ($orig_height-$crop_height)/2, $max_width, $max_height, $crop_width, $crop_height);
+
+		$ext=pathinfo($tosave, PATHINFO_EXTENSION);
+
+		switch($ext){
+			case "gif": imagegif($image_p,$tosave); break;
+			case "jpg": imagejpeg($image_p,$tosave,100); break;
+			case "jpeg": imagejpeg($image_p,$tosave,100); break;
+			case "png": imagepng($image_p,$tosave,0);break;
+			default: imagejpeg($image_p,$tosave,100);
+		}
+		chmod($tosave,0777);
+	}
 
 ?>

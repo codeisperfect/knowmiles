@@ -88,12 +88,37 @@ load_view("template/header.php", $inp);
 		</div>
 		<div class="col-md-6">
 			<h4>Write a Review</h4>
-			<form role="form" style="padding-top:5px; padding-bottom:5px;">
+			<form role="form" style="padding-top:5px; padding-bottom:5px;" method="post"  data-res='obj.reset();' onsubmit="return form.req(this);" data-action="review" >
 				<div class="form-group">
-					<input class="rating" min="0" max="5" step="1" data-size="xs" data-default-caption="{rating}" data-star-captions="{}">
-					<textarea class="form-control" rows="3" id="comment" placeholder="Write down your experience for the world to see."></textarea>
+					 <div class="row">
+						<div class="col-md-4 col-sm-4">
+						 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="carId"  >
+							<option value="" selected="selected">
+							 Cab Service
+							</option>
+							<?php
+								disp_olist($cabtypes);
+							?>
+						 </select>
+						</div>
+						<div class="col-md-4 col-sm-4">
+						 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="cityId" data-condition='simple' >
+							<option value="" selected="selected">
+							 Select City
+							</option>
+							<?php
+								disp_olist($cityolist,array("selected"=>gets("city")));
+							?>
+						 </select>
+						</div>
+						<div class="col-md-4 col-sm-4 stat-rate" style="" >
+							<input class="rating" min="0" max="5" step="1" data-size="xs" data-default-caption="{rating}" data-star-captions="{}" name="rating" >
+						</div>
+					 </div>
+
+					<textarea class="form-control" rows="3" id="comment" placeholder="Write down your experience for the world to see." name="content" ></textarea>
 					<div style="padding-top:5px;">
-						<button type="submit" class="btn btn-info pull-right">Submit</button>	
+						<button type="submit" class="btn btn-info pull-right" name="reviewform" >Submit</button>	
 					</div>
 				</div>
 			</form>             
@@ -168,5 +193,12 @@ load_view("template/header.php", $inp);
 
 <?php
 load_view("template/footer.php");
-load_view("template/bottom.php");
+load_view("template/bottom.php", Fun::mergeifunset($inp, array("dispbody" => false)));
 ?>
+
+<script>
+	var mybgimg = "<?php echo $myf["bgpic"]; ?>";
+	$(".sect-journal").css("background-image", 'url("'+mybgimg+'")');
+</script>
+
+</body></html>
