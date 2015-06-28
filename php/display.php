@@ -376,4 +376,8 @@
 		hidinp($name,$n);
 		closet("div");
 	}
+	function pit($toprint, $cond=true, $toprint_false=''){
+		echo rit($toprint, $cond, $toprint_false);
+	}
+
 ?>

@@ -760,9 +760,10 @@ function mylib(){
 }
 
 
-var likedislike = {
-	likedislike:function(obj){
-		button.sendreq(obj);
+var ldlike = {
+	onres:function(obj){
+		var newdataaction= ["like", "dislike"][0+($(obj).attr("data-action") == "like")];
+		$(obj).attr( "data-action", newdataaction);
 	}
 };
 

@@ -52,5 +52,8 @@ class Actions{
 			$outp["ec"]=$temp;
 		return $outp;
 	}
+	function like($data){
+		
+	}
 }
 ?>

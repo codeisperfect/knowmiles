@@ -28,7 +28,7 @@ foreach( $qresult as $i => $row ){
 				 <div class="col-md-11 col-sm-11 like-bok">
 					<div class="row">
 					 <div class="col-md-3 col-sm-3 like pad-imp">
-						<div class="col-md-7 col-sm-7 like-her likebutton likebuttonliked " style="cursor:pointer;" data-action="like" data-bid="<?php echo $row["id"]; ?>" data-type="r" >
+						<div class="col-md-7 col-sm-7 like-her likebutton <?php pit("likebuttonliked", $row["amiliked"]); ?>" style="cursor:pointer;" data-action="<?php pit("like", !$row["amiliked"]);pit("dislike", $row["amiliked"]); ?>" data-bid="<?php echo $row["id"]; ?>" data-type="r" data-res='ldlike.onres(obj);funcs.likedislike(obj);' onclick="button.sendreq_v2(this);" >
 						 <i class="fa fa-heart">
 						 </i>
 						 <span>
@@ -36,9 +36,7 @@ foreach( $qresult as $i => $row ){
 						 </span>
 						</div>
 						<div class="col-md-4 col-sm-4 count-like">
-						 <span>
-							0
-						 </span>
+						 <span class="likecount" ><?php echo 0+$row["numlikes"]; ?></span>
 						</div>
 					 </div>
 					</div>

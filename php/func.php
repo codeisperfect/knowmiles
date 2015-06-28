@@ -137,12 +137,11 @@
 	/*Checks whether all the fields in post data are set or not according to g_info["action_constraint"] requirements
 	 Arguments: $post_data: Input data array
 	*/
- 
 		global $_ginfo;
 		if(isset($_ginfo["action_constrain"][$post_data["action"]])){
 			$sarr=$_ginfo["action_constrain"][$post_data["action"]];
 			$sarr=Fun::mergeifunset($sarr,array("users"=>"","need"=>array()));
-			if(!(($sarr["users"]=="all" && User::islogin()) || $sarr["users"]=="" || in_array(User::loginType(), $sarr["users"]) ))
+			if(!(($sarr["users"]=="all" && User::islogin()) || $sarr["users"]=="" || ($sarr["users"] != "all" && in_array(User::loginType(), $sarr["users"])) ))
 				return -2;
 			if(!Fun::isAllSet($sarr["need"], $post_data))
 				return -9;
@@ -152,7 +151,7 @@
 
 	function getmyneed($fname){
 		global $_ginfo;
-		return $_ginfo["action_constrain"][$fname]["need"];
+		return (islset($_ginfo, array("action_constrain", $fname, "need")) ? $_ginfo["action_constrain"][$fname]["need"]:array());
 	}
 
 	function autoscroll($post_data){
@@ -367,6 +366,12 @@
 
 	function tf($inp=true) {
 		return ($inp?"true":"false");
+	}
+	function rit($toprint, $cond=true, $toprint_false=''){
+		if($cond)
+			return $toprint;
+		else
+			return $toprint_false;
 	}
 
 

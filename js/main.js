@@ -13,6 +13,18 @@ var funcs={
 	seepassword:function(obj){
 		var jobj=$(obj).parent().parent().parent().parent().find("input[name=password]");
 		jobj.attr("type",jobj.attr("type")=="text"?"password":"text" );
+	},
+	likedislike:function(obj){
+		var counterobj = $(obj).parent().find(".likecount");
+		var curlikes = parseInt(counterobj.html());
+		if($(obj).attr("data-action")=="dislike") {
+			counterobj.html(curlikes+1);
+			$(obj).addClass("likebuttonliked");
+		} else {
+			$(obj).removeClass("likebuttonliked");
+			counterobj.html(curlikes-1);
+		}
+
 	}
 };
 
@@ -76,3 +88,5 @@ function loadreview(obj, loadtype){
 		}
 	});
 }
+
+
