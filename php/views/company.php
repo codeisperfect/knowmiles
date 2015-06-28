@@ -41,7 +41,7 @@ load_view("template/header.php", $inp);
  		<div class="row" style="top:250px; text-align:left;">
  			<div class="col-sm-11">
 	 			<h1>
-	 				<?php echo $myf["name"]; ?>
+	 				<?php echo $carinfo["name"]; ?>
 	 			</h1>
 	 		</div>
 	 		<div class="col-sm-1" >
@@ -76,26 +76,26 @@ load_view("template/header.php", $inp);
 	<div class="container-fluid col-centered" style="margin-top:30px;">
 		<div class="col-md-3">
 			<?php
-				if($myf["offerpic"]!=""){
+				if($carinfo["offerpic"]!=""){
 			?>
-			<h3>Offers for <?php echo $myf["name"]; ?></h3>
+			<h3>Offers for <?php echo $carinfo["name"]; ?></h3>
 			<hr>
-			<img src="<?php echo $myf["offerpic"]; ?>" alt="Ola Offer" style="padding-bottom:20px;">
+			<img src="<?php echo $carinfo["offerpic"]; ?>" alt="Ola Offer" style="padding-bottom:20px;">
 			<?php
 				}
 			?>
 
 		</div>
 		<div class="col-md-6">
+			<?php
+				if(User::isloginas("u")) {
+			?>
 			<h4>Write a Review</h4>
-			<form role="form" style="padding-top:5px; padding-bottom:5px;" method="post"  data-res='obj.reset();' onsubmit="return form.req(this);" data-action="review" >
+			<form role="form" style="padding-top:5px; padding-bottom:5px;" method="post"  data-res='obj.reset();div.load($("#loadreviews")[0], 0, 1);' onsubmit="return form.req(this);" data-action="review" >
 				<div class="form-group">
 					 <div class="row">
 						<div class="col-md-4 col-sm-4">
-						 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="carId"  >
-							<option value="" selected="selected">
-							 Cab Service
-							</option>
+						 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="carTypeId" >
 							<?php
 								disp_olist($cabtypes);
 							?>
@@ -121,15 +121,21 @@ load_view("template/header.php", $inp);
 						<button type="submit" class="btn btn-info pull-right" name="reviewform" >Submit</button>	
 					</div>
 				</div>
-			</form>             
+			</form>
+			<?php
+				}
+			?>
 
 
 			<hr>
 			
 			<h3 style="padding-bottom:10px;">Reviews by other users</h3>
 
-			<div class="row">
-				<div class="col-xs-12">
+			<div class="row" id="loadreviews" data-action="carreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-carid="<?php echo $carinfo["carid"]; ?>" >
+				<img src="photo/loading.gif" >
+
+
+<!--  				<div class="col-xs-12">
 					<div class="col-xs-1" style="font-size:30px;">
 						<span class="glyphicon glyphicon-user"></span>
 					</div>
@@ -155,9 +161,10 @@ load_view("template/header.php", $inp);
 				<div class="col-xs-12">
 					<p>Quod, quaerat iusto aut doloremque perferendis fugiat odio excepturi facilis aliquid perspiciatis explicabo soluta inventore delectus voluptatibus temporibus, eius debitis laboriosam voluptates.</p>	
 				</div>
-				
+ --> 				
 
 			</div>
+			<button onclick="loadreview(this);" id="loadmorereviews" >Load more</button>
 			
 
 
@@ -197,8 +204,11 @@ load_view("template/bottom.php", Fun::mergeifunset($inp, array("dispbody" => fal
 ?>
 
 <script>
-	var mybgimg = "<?php echo $myf["bgpic"]; ?>";
-	$(".sect-journal").css("background-image", 'url("'+mybgimg+'")');
+	var mybgimg = "<?php echo $carinfo["bgpic"]; ?>";
+	$(document).ready(function(){
+		loadreview($("#loadmorereviews")[0], -1);
+		$(".sect-journal").css("background-image", 'url("'+mybgimg+'")');
+	});
 </script>
 
 </body></html>

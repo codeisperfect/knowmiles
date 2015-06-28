@@ -1,4 +1,3 @@
-
 var button={
 	attrs:function(obj){
 		var alla=obj.attributes;
@@ -104,52 +103,6 @@ var button={
 			
 		}});
 	},
-	sendreq_v3:function(obj){
-		var allattrs=this.attrs(obj);
-		if(!button.hasattr(allattrs,"data-params"))
-			var params=this.tosendattrs(obj,allattrs);
-		else{
-			eval("var params="+allattrs["data-params"]);
-		}
-		if(button.hasattr(allattrs,"data-eparams")){
-			eval("var eparams="+allattrs["data-eparams"]);
-			params=others.mergeifunset(params,eparams);
-		}
-		params['action']=allattrs["data-action"];
-		obj.disabled=true;
-		var prvvalue=obj.innerHTML;
-		mergeifunset(allattrs,{"data-waittext":" ... "});
-		if(allattrs["data-waittext"]!=""){
-			obj.innerHTML=allattrs["data-waittext"];
-		}
-		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){
-			obj.disabled=false;
-			var respo=button.parse(d);
-			if(allattrs["data-waittext"]!=""){
-				obj.innerHTML=prvvalue;
-			}
-			if(respo){
-				if(respo.ec<0){
-					if(button.hasattr(allattrs,"data-error")){
-						var ec=respo.ec;
-						eval(allattrs["data-error"]);
-					}
-					else
-						mohit.alert(ecn[respo.ec]);
-				}
-				else{
-					if(allattrs["data-waittext"]!=""){
-						obj.innerHTML=(typeof(allattrs["data-restext"])=='undefined')?prvvalue:allattrs["data-restext"];
-					}
-					if(button.hasattr(allattrs,"data-res")){
-						var data=respo.data;
-						eval(allattrs["data-res"]);
-					}
-				}
-			}
-			
-		}});
-	},
 	sendreq_v2_t2:function(obj){
 		var allattrs=this.attrs(obj);
 		if(!button.hasattr(allattrs,"data-params"))
@@ -220,6 +173,20 @@ var button={
 			}
 		}});
 	},
+	sendreq_v2_t4:function(obj,call_back_data,call_back_html,adata){
+		var allattrs=this.attrs(obj);
+		if(!button.hasattr(allattrs,"data-params"))
+			var params=this.tosendattrs(obj,allattrs);
+		else{
+			eval("var params="+allattrs["data-params"]);
+		}
+		if(button.hasattr(allattrs,"data-eparams")){
+			eval("var eparams="+allattrs["data-eparams"]);
+			params=others.mergeifunset(params,eparams);
+		}
+		params['action']=allattrs["data-action"];
+		button.sendreq_v2_t3(params,call_back_data,call_back_html);
+	},
 	sendreq1:function (params,call_back,adata){
 		$.post("actionv2.php",params,function(d,s){if(s=='success'){
 			var respo=button.parse(d);
@@ -238,8 +205,12 @@ var button={
 			else
 				mohit.alert("Unexpected Error");
 		}});
-	}
-
+	},
+	selectme:function (obj){
+		$(obj).repClass("btn-default","btn-primary");
+		$(obj).siblings().repClass("btn-primary","btn-default");
+		$(obj).parent().children("input[type=hidden]").val($(obj).attr("data-val"));
+	},
 };
 
 
@@ -322,6 +293,41 @@ var form={
 	req:function(obj){
 		form.sendreq1(obj, $(obj).find("button[type=submit]")[0]);
 		return false;
+	},
+	valid:{
+		is:function (obj){
+			var errorlist=[];
+			var inputs=['INPUT','TEXTAREA','SELECT'];
+			var problem=false;
+			for(i=0;i<inputs.length;i++){
+				var ilist=$(obj).find(inputs[i]);
+				for(j=0;j<ilist.length;j++){
+					if(checkValidInput.isChecked( ilist[j]  ) ){
+						$(ilist[j]).parent().removeClass("has-error");
+					}
+					else{
+						$(ilist[j]).parent().addClass("has-error");
+						var errormsg=$(ilist[j]).attr("data-unfilled") || $(ilist[j]).attr("name") || null;
+						errorlist.push(errormsg);
+						if(!problem)
+							$(ilist[j]).focus();
+						problem=true;
+					}
+				}
+			}
+			return errorlist;
+		},
+		action:function(obj){
+			var errors=form.valid.is(obj);
+			if(errors.length>0){
+				for(var i=0;i<errors.length;i++){
+					errors[i]=(i+1)+". "+errors[i];
+				}
+				var dispmsg="You have to fill:<br>"+errors.join("<br>");
+				success.push(dispmsg,true);
+			}
+			return !(errors.length>0);
+		}
 	}
 };
 
@@ -444,6 +450,57 @@ var a={
 	readmore:function (obj){
 		$(obj).next().show();
 		$(obj).hide();
+	}
+};
+
+
+var div={
+	setblock:function(obj){
+		$(obj).attr("data-blocked","true");
+	},
+	isblock:function(obj){
+		return ($(obj).attr("data-blocked")=="true");
+	},
+	setunblock:function(obj){
+		$(obj).attr("data-blocked","false");
+	},
+	reload:function(obj,call_back_data,adata){
+		button.sendreq_v2_t4(obj,call_back_data,function(d){
+			$(obj).html(d);
+		},adata);
+	},
+	load:function(obj, isloadold, isappendold, call_back_data, call_back_html) {
+		if(div.isblock(obj))
+			return -1;
+		if( (isloadold==1 && $(obj).attr("data-minl")==0) || (isloadold==0 && $(obj).attr("data-maxl")==0) )
+			return -2;
+		div.setblock(obj);
+		if(isappendold==null)
+			isappendold=isloadold;
+		$(obj).attr("data-isloadold",isloadold);
+		button.sendreq_v2_t4(obj,function(d){
+			var replacearr=["min", "max", "minl", "maxl"];
+			for(var i=0; i<replacearr.length; i++){
+				$(obj).attr("data-"+replacearr[i], d[replacearr[i]]);
+			}
+			if(call_back_data!=null)
+				call_back_data(d);
+		},function(d){
+			if(isappendold==1)
+				$(obj).prepend(d);
+			else if(isappendold==0)
+				$(obj).append(d);
+			else if(isappendold==-1)
+				$(obj).html(d);
+			div.setunblock(obj);
+			if(call_back_html!=null){
+				call_back_html(d);
+			}
+		});
+	},
+	reload_autoscroll:function(obj, min_maxa, call_back_data, call_back_html){
+		$(obj).attr(min_maxa);
+		div.load(obj, 1, -1, call_back_data, call_back_html);
 	}
 };
 
@@ -701,3 +758,12 @@ function mylib(){
 	awesome.awesomelabel();
 	awesome.imagehoverbig();
 }
+
+
+var likedislike = {
+	likedislike:function(obj){
+		button.sendreq(obj);
+	}
+};
+
+

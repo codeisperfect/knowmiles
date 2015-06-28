@@ -10,9 +10,9 @@ function dt($tn){
 
 
 function drop_table(){
-//	$tl=array();
+	$tl=array("review");
 //	$tl=array("car","cartype","cardata","city");
-	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
+//	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
 	foreach($tl as $i=>$val){
 		dt($val);
 	}
@@ -29,7 +29,7 @@ function make_table(){
 	echo Sql::query("CREATE TABLE users (id int NOT NULL AUTO_INCREMENT,username varchar(100), password varchar(100) , email varchar(100) ,  name varchar(100) , address varchar(500) , phone varchar(13) , type varchar(3) , create_time int,update_time int , last_login int,last_ip varchar(20),conf varchar(1),econf varchar(1), PRIMARY KEY ( id) ) ");
 	echo Sql::query("ALTER TABLE users add profilepic varchar(100) NULL ");
 
-	echo Sql::query("CREATE TABLE review (id int NOT NULL AUTO_INCREMENT,rating int,content varchar(500),carId int,uid int,cityId int,time int, PRIMARY KEY ( id) ) ");
+	echo Sql::query("CREATE TABLE review (id int NOT NULL AUTO_INCREMENT,rating int,content varchar(500), carTypeId int, uid int,cityId int,time int, PRIMARY KEY ( id) ) ");
 
 
 	echo Sql::query("CREATE TABLE booking (id int NOT NULL AUTO_INCREMENT,start_add varchar(300), end_add varchar(300), lat1 float, lon1 float, lat2 float, lon2 float, time int, CarID int, CityID int, CarTypeID int, iscancelled varchar(1), PRIMARY KEY ( id) ) ");
@@ -55,10 +55,14 @@ function make_table(){
 
 	echo Sql::query("create table company ( cid int not null, carid int, bgpic varchar(500), offerpic varchar(300)  )");
 	echo Sql::query("ALTER TABLE company add dispname varchar(300) NULL ");
+
+
+	echo Sql::query("create table likes ( uid int not null, bid int, type varchar(1), time int, constraint uniq_likes unique (uid, bid, type) )");//type => r:review, c:comment, 
+
 }
 
 
-drop_table();
+//drop_table();
 make_table();
 
 

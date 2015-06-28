@@ -50,18 +50,12 @@ $temp=explode(" ",$myf["name"]." ");
 $myf["fname"]=$temp[0];
 $myf["lname"]=$temp[1];
 
-$allcar=Sql::getArray("select concat(car.CarID,'-',cartype.CarTypeID) as car_id, concat(car.Name,' : ',cartype.TypeName) as car_name from cartype left join (select CarID,CarTypeID from cardata group by CarID,CarTypeID)cartypemap on cartypemap.CarTypeID=cartype.CarTypeID left join car on car.CarID=cartypemap.CarID");
+$allcar = Fun::dbarrtooption( Sqle::getA( "select CarTypeID, concat(Name, ' : ', TypeName) as car_name from ".gtable("carmaps") ), "CarTypeID", "car_name" );
 
-$myreview=Help::myreviewlist(User::loginId());
-foreach( $myreview as $i=>$row){
-	$myreview[$i]=Fun::mergeifunset($row,array(
-		'timepassed'=>Fun::timepassed_t2(time()-$row["time"]),
-		'smilymsg'=>Fun::smilymsg($row["content"])
-		));
-}
+$myreview=array();//reviewprintable(Help::myreviewlist(User::loginId()));
 
 $mybooking=Sql::getArray("select * from booking where UID=? order by time desc ",'i',array(&$uid));
-$pageinfo=array('myreview'=>$myreview,'mybooking'=>$mybooking,'myf'=>$myf,"cityolist"=>$_ginfo["allcity"],"qargs"=>$qargs,'allcar'=>Fun::dbarrtooption($allcar,"car_id","car_name") );
+$pageinfo=array('myreview'=>$myreview,'mybooking'=>$mybooking,'myf'=>$myf,"cityolist"=>$_ginfo["allcity"],"qargs"=>$qargs,'allcar'=>$allcar );
 
 
 
@@ -86,7 +80,7 @@ $pageinfo["profiletabs"]=Funs::profiletabs();
 $pageinfo["save_details"]=$save_details;
 $pageinfo["bookingmsg"]=$bookingmsg;
 
-
+$pageinfo["userinfo"] = $myf;
 
 load_view("profile.php",$pageinfo);
 

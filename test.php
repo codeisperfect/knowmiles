@@ -2,7 +2,7 @@
 include "includes/app.php";
 
 
-Disp::disp_table(Sql::getArray(gtable("carmaps", false)));
+Disp::disp_table(Sqle::getA(gtable("allreviews", false), array("carid" => 8)));
 
 
 if(0){

@@ -156,14 +156,14 @@ foreach($tabs as $id=>$value){
 
 
  <div class="row">
-	<form action="<?php echo HOST."profile.php?tab=tabs2-pane4"; ?>" method="post" onsubmit="return submitForm(this);" >
+	<form action="<?php echo HOST."profile.php?tab=tabs2-pane4"; ?>" method="post" onsubmit="if(submitForm(this)){ form.req(this); };return false;" data-res="obj.reset();div.load($('#loadreviews')[0], 0, 1);" data-action="review" >
 	<div class="col-md-1 col-sm-1">
 	 <img src="images/nib.png" class="img-circle" />
 	</div>
 	<div class="col-md-7 col-sm-7 cab-service">
 	 <div class="row">
 		<div class="col-md-4 col-sm-4">
-		 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="carId" data-condition='simple' >
+		 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="carTypeId" data-condition='simple' >
 			<option value="" selected="selected">
 			 Cab Service
 			</option>
@@ -200,69 +200,17 @@ foreach($tabs as $id=>$value){
 	 <div class="col-md-7 col-sm-7">
 	 </div>
 	 <div class="col-md-2 col-sm-2" style="padding-bottom:10px">
-		<input type="submit" name="ratingform" value="Done" class="button share-ex-2" />
+	 	<button type='submit' class="button share-ex-2" name="review" >Done</button>
 	 </div>
 	</div>
 	</form>
  </div>
 
 
-<?php
-foreach($myreview as $i=>$row){
-?>
- <div class="row">
-	<div class="col-md-1 col-sm-1">
-	 <img src="images/nib.png" class="img-circle" />
-	 <p class="hour">
-		<?php echo $row["timepassed"]; ?>
-	 </p>
+	<div id="loadreviews" data-action="userreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-userid="<?php echo $userinfo["id"]; ?>" >
+		<img src="photo/loading.gif" >
 	</div>
-	<div class="col-md-7 col-sm-7">
-	 <h4>
-		<?php echo $row["TypeName"]." (".$row["carname"].") ,".$row["Name"]; ?>
-	 </h4>
-	 <p>
-	 <?php
-		for($j=0;$j<$row["rating"];$j++){
-	 ?>
-		<i class="fa fa-star">
-		</i>
-		<?php
-		}
-		?>
-	 </p>
-	 <p class="copm">
-		<?php readmorecontent($row["content"],200);?>
-	 </p>
-	 <div class="col-md-11 col-sm-11 like-bok">
-		<div class="row">
-		 <div class="col-md-3 col-sm-3 like pad-imp">
-			<div class="col-md-7 col-sm-7 like-her">
-			 <i class="fa fa-heart">
-			 </i>
-			 <span>
-				Like
-			 </span>
-			</div>
-			<div class="col-md-4 col-sm-4 count-like">
-			 <span>
-				0
-			 </span>
-			</div>
-		 </div>
-		</div>
-	 </div>
-	 <div class="col-md-1 col-sm-1 like pad-imp">
-		<a href="#">
-		 rw
-		</a>
-	 </div>
-	</div>
- </div>
-<?php
-}
-?>
-
+	<button id="loadmorereview"  onclick='loadreview($("#loadmorereview")[0]);' >Load more</button>
 
 </div>
 
@@ -370,8 +318,6 @@ load_view("template/footer.php");
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/errorcodes.js" charset="UTF-8"></script>
-<script type="text/javascript" src="bootstrap-3.1.1-dist/js/lib.js" charset="UTF-8"></script>
 
 <?php
 addmyjs();
@@ -398,7 +344,13 @@ addmyjs();
 				.toggleClass('glyphicon-triangle-bottom glyphicon-chevron-up');
 }
 $('#accordion').on('hidden.bs.collapse', toggleChevron);
-$('#accordion').on('shown.bs.collapse', toggleChevron);</script>
+$('#accordion').on('shown.bs.collapse', toggleChevron);
+
+loadreview($("#loadmorereview")[0], -1);
+
+
+
+</script>
 
 </body>
 </html>

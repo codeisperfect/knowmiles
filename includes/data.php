@@ -44,12 +44,21 @@ $_ginfo["attrs_shortcut"]=array("ph"=>"placeholder","dc"=>"data-condition");
 $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("fName", "lName", "emailId", "telephone", "passOne", "accept_conditions_1")),
 	"login"=>array("need"=>array("email","password")),
-	"review" => array("need" => array("rating","carId","cityId","content"))
+	"review" => array("need" => array("rating","carTypeId","cityId","content")),
+	"carreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "carid")), //display reviews of a given car.
+	"userreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "userid")), //display reviews of a user
+	"likes"=>array("need"=>array("bid","type")),
+	"unlike" => array("need" => array("bid", "type"))
 );
 
 
 $_ginfo["autoinsert"]=array(
-	"review"=>array("fixed"=>array("time","uid"),"table"=>"review")
+	"review" => array("fixed"=>array("time","uid"),"table"=>"review"),
+	"like" => array("fixed"=>array("time","uid"),"table"=>"likes")
+);
+
+$_ginfo["autodelete"]=array(
+	"unlike" => array("match"=>array("uid"),"table"=>"likes")
 );
 
 
@@ -83,5 +92,25 @@ $_ginfo["profiletabs"]=array(
 	'c' => array("tabs2-pane3", "tabs2-pane6"),
 	'u' => array("tabs2-pane1", "tabs2-pane2", "tabs2-pane3", "tabs2-pane4", "tabs2-pane5"),
 );
+
+$_ginfo["autoscroll"]=array(
+	"userreview"=>array(
+		"query"=>"myreviewsuser",
+		"sort"=>"",
+		"minl"=>2,
+		"key"=>"id",
+		"load_view"=>"template/dispuserreview.php",
+		"filterfunc"=>"reviewprintable"
+		),
+	"carreview"=>array(
+		"query"=>"myreviewscar",
+		"sort"=>"",
+		"minl"=>2,
+		"key"=>"id",
+		"load_view"=>"template/dispreview.php",
+		"filterfunc"=>"reviewprintable"
+		)
+	);
+
 
 ?>

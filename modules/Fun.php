@@ -103,8 +103,6 @@ abstract class Fun{
 			$k=$arr[$i];
 			if(isset($data[$k]))
 				$temp[$k]=$data[$k];
-			else
-				return null;
 		}
 		return $temp;
 	}
@@ -137,14 +135,14 @@ abstract class Fun{
 		else if($s<60*60*24*5)
 			return floor($s/(60*60*24))." days ago";
 		else
-			return self::timetostr($s);
+			return self::timetostr(time()-$s);
 	}
 	public static function timepassed_t2($s){
 		if($s<5)
 			return "Just";
 		else if($s<60)
 			return $s."s";
-		else if($s<60*45)
+		else if($s<60*60)
 			return floor($s/60)."m";
 		else if($s<60*60*24)
 			return floor($s/3600)."h";
@@ -473,6 +471,50 @@ abstract class Fun{
 		return firstelm(explode(".php",lastelm(explode("/",$inp))));
 	}
 
+	public static function mergeforce($a,$b){
+		$keys=array_keys($b);
+		for($i=0;$i<count($keys);$i++){
+			$a[$keys[$i]]=$b[$keys[$i]];
+		}
+		return $a;
+	}
 }
+
+
+class Special{
+	function lt($a, $b){
+		return ($b==-1 || $a<$b);
+	}
+	function gt($a, $b){
+		return ($a==-1 || $a>$b);
+	}
+	function max2($a, $b){
+		return ($this->gt($a, $b) ? $a:$b);
+	}
+	function min2($a, $b){
+		return ($this->lt($a, $b) ? $a:$b);
+	}
+	function max(){
+		$inp=func_get_args();
+		if(count($inp)==0)
+			return null;
+		$maxtillnow=$inp[0];
+		for($i=1; $i<count($inp); $i++){
+			$maxtillnow=$this->max2($maxtillnow, $inp[$i]);
+		}
+		return $maxtillnow;
+	}
+	function min(){
+		$inp=func_get_args();
+		if(count($inp)==0)
+			return null;
+		$mintillnow=$inp[0];
+		for($i=1; $i<count($inp); $i++){
+			$mintillnow=$this->min2($mintillnow, $inp[$i]);
+		}
+		return $mintillnow;
+	}
+}
+
 
 ?>

@@ -144,9 +144,9 @@ class Sqle extends Sql{
 		setifnn($maxl, $param["maxl"]);
 		if($key!=null){
 			if($isloadold)
-				$querylimit = "select * from (".gtable($query).") outpquery where ($key<{min} OR {min}=-1) ".($param["minl"]==-1?'':"limit {minl} ");
+				$querylimit = "select * from (".gtable($query, false).") outpquery where ($key<{min} OR {min}=-1) ".($param["minl"]==-1?'':"limit {minl} ");
 			else
-				$querylimit = "select * from (".gtable($query).") outpquery where $key>{max} ".($param["maxl"]==-1?'':"limit {maxl} ");
+				$querylimit = "select * from (".gtable($query, false).") outpquery where $key>{max} ".($param["maxl"]==-1?'':"limit {maxl} ");
 		} else{//max,maxl must be +ve int
 			$querylimit="select * from (".$query.") outpquery limit {maxl} offset {max} ";
 		}
@@ -158,6 +158,7 @@ class Sqle extends Sql{
 		$outp["qresult"]=$qresult;
 		$outp["maxl"]=$maxl;
 		$outp["minl"]=$minl;
+		$outp["qresultlen"]=count($qresult);
 		if($key==null){
 			$outp["max"]=$param["max"]+$param["maxl"];
 		} else{
@@ -167,11 +168,36 @@ class Sqle extends Sql{
 			} else{
 				$e1=$qresult[0][$key];
 				$e2=$qresult[count($qresult)-1][$key];
-				$outp["min"] = min($e1, $e2);
-				$outp["max"] = max($e1, $e2);
+				$s=new Special();
+				$outp["min"] = $s->min($e1, $e2, $param["min"]);
+				$outp["max"] = $s->max($e1, $e2, $param["max"]);
 			}
 		}
 		return $outp;
 	}
+
+	public static function deleteVal($table, $cnds, $limit=-1) {
+		$selects=array();
+		$params=array();
+		$str="";
+		$keys=array_keys($cnds);
+		for($i=0;$i<count($keys);$i++){
+			if(gettype($cnds[$keys[$i]])!='array'){
+				$params[]=&$cnds[$keys[$i]];
+				$val=$cnds[$keys[$i]];
+				$sign='=';
+			} else{
+				$val=$cnds[$keys[$i]][0];
+				$params[]=&$cnds[$keys[$i]][0];
+				$sign=(count($cnds[$keys[$i]])>1 ? $cnds[$keys[$i]][1]:"=" );
+			}
+			$selects[]=$keys[$i].$sign." ? ";
+			$str.=gettype($val)=='integer'?'i':'s';
+		}
+		$conds=join(" AND ",$selects);
+		$query="delete from $table ".( $conds ===""? " ":" WHERE ").$conds." ".($limit!=-1 ? " LIMIT $limit ":" ");
+		return self::query($query,$str,$params);
+	}
+
 }
 ?>

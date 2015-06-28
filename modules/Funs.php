@@ -122,7 +122,7 @@ abstract class Funs{
 	}
 
 	public static function mycartypes($carid) {
-		return Fun::dbarrtooption( Sqle::getA("select * from ".gtable("carmaps")." where CarId={carid} ", array("carid" => $carid)), "CarTypeID", "TypeName");
+		return Fun::dbarrtooption( Sqle::getA("select * from ".gtable("carmaps")." where CarId={carid} or ".tf($carid == -1)." ", array("carid" => $carid)), "CarTypeID", "TypeName");
 	}
 }
 

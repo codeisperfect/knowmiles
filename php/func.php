@@ -155,6 +155,99 @@
 		return $_ginfo["action_constrain"][$fname]["need"];
 	}
 
+	function autoscroll($post_data){
+		global $_ginfo;
+		$action_spec=$_ginfo["autoscroll"][$post_data["action"]];
+		mergeifunset($action_spec, array('sort'=>'', 'maxl'=>null, 'minl'=>null, "filterfunc"=>null, "load_view"=>"template/".$post_data["action"].".php" ));
+		$fixed=array("uid"=>User::loginId(), "time"=>time());
+		$post_data=Fun::mergeforce($post_data, $fixed);
+		$qoutput=Sqle::autoscroll($action_spec["query"], $post_data, $action_spec["key"], $action_spec["sort"], $post_data["isloadold"], $action_spec["minl"], $action_spec["maxl"]);
+		if($action_spec["filterfunc"]!=null){
+			$autos=new Autoscroll();
+			$funcname=$action_spec["filterfunc"];
+			if(method_exists($autos, $funcname))
+				$qoutput=$autos->$funcname($qoutput);
+		}
+		$qoutput["load_view"]=$action_spec["load_view"];
+		return $qoutput;
+	}
+	function handle_disp($post_data,$actionarg=null){
+		global $_ginfo;
+		if($actionarg!=null)
+			$post_data["action"]=$actionarg;
+		$a=new Actiondisp();
+		$outp=array("ec"=>-7);
+		if(isset($post_data["action"])  ){
+			$isvalid=isvalid_action($post_data);
+			if(!($isvalid>0))
+				$outp["ec"]=$isvalid;
+			else{
+				$func=$post_data["action"];
+				if( method_exists($a,$post_data["action"])){
+					$a->$func($post_data,$actionarg==null);
+					return;
+				}
+				else if(islset($_ginfo,array("autoscroll",$post_data["action"]))) {
+					$as_handle = autoscroll($post_data);
+					$outp["data"]=Fun::getflds(array("min", "max", "minl", "maxl", "qresultlen"), $as_handle);
+					$outp["ec"]=1;
+					if($actionarg==null)
+						echo json_encode($outp)."\n";
+					load_view($as_handle["load_view"], $as_handle);
+					return;
+				}
+			}
+		}
+		if($actionarg==null)
+			echo json_encode($outp)."\n";
+	}
+
+	function setifunset(&$data,$key,$val){
+		if(!isset($data[$key]))
+			$data[$key]=$val;
+		return $data;
+	}
+
+	function mergeifunset(&$a,$b){
+		$keys=array_keys($b);
+		for($i=0;$i<count($keys);$i++){
+			if(!isset($a[$keys[$i]]))
+				$a[$keys[$i]]=$b[$keys[$i]];
+		}
+		return $a;
+	}
+	function myexplode($n,$st){
+		$temp=explode($n,$st);
+		return (count($temp)==1 && $temp[0]=="") ? array() : $temp;
+	}
+	function intexplode($ex,$inp){
+		$temp=myexplode($ex,$inp);
+		foreach($temp as $i=>$val){
+			$temp[$i]=0+$val;
+		}
+		return $temp;
+	}
+
+	function handle_autodbrequest($post_data){
+		global $_ginfo;
+		$outp = array("ec" => -7);
+		$fixvalues=array("time"=>time(),"uid"=>User::loginId());
+		$id_data = Fun::getflds( getmyneed($post_data["action"]), $post_data );
+		if(islset($_ginfo, array("autoinsert", $post_data["action"]))){
+			$action_spec = Fun::mergeifunset( $_ginfo["autoinsert"][$post_data['action']], array("fixed" => array(), "add" => array()));
+			$id_data = Fun::mergeifunset($id_data, $action_spec["add"]);
+			$id_data = Fun::mergeforce($id_data, Fun::getflds( $action_spec["fixed"], $fixvalues ));
+			$outp["data"] = Sqle::insertVal($action_spec['table'], $id_data);
+			$outp["ec"] = 1;
+		} else if(islset( $_ginfo, array("autodelete", $post_data["action"]) )) {
+			$action_spec = Fun::mergeifunset( $_ginfo["autodelete"][$post_data['action']], array("match" => array()));
+			$id_data = Fun::mergeforce( $id_data, Fun::getflds( $action_spec["match"], $fixvalues) );
+			$outp["data"] = Sqle::deleteVal( $action_spec["table"], $id_data );
+			$outp["ec"]=1;
+		}
+		return $outp;
+	}
+
 	function handle_request($post_data) {
 		global $_ginfo;
 		$b=new Actions();
@@ -176,18 +269,9 @@
 				if( method_exists($a,$post_data["action"]))
 					$outp=$a->$func($post_data);
 				else if( method_exists($b,$post_data["action"]))
-					$outp=$b->$func($post_data);
-				else if(islset($_ginfo,array("autoinsert",$post_data["action"]))) {
-					$action_spec=$_ginfo["autoinsert"][$post_data["action"]];
-					$action_spec=Fun::mergeifunset($action_spec,array("fixed"=>array(),"add"=>array()));
-					$ins_data=Fun::getflds(getmyneed($post_data["action"]) , $post_data );
-					$ins_data=Fun::mergeifunset($ins_data,$action_spec["add"]);
-					$fixvalues=array("time"=>time(),"uid"=>User::loginId());
-					foreach($action_spec["fixed"] as $i=>$val){
-						$ins_data[$val]=$fixvalues[$val];
-					}
-					$outp["data"]=Sqle::insertVal($action_spec["table"],$ins_data);
-					$outp["ec"]=1;
+					$outp = $b->$func($post_data);
+				else {
+					$outp = handle_autodbrequest($post_data);
 				}
 			}
 		}
@@ -269,5 +353,21 @@
 		}
 		chmod($tosave,0777);
 	}
+
+
+	function setift(&$var, $val, $istrue=true){
+		if($istrue){
+			$var = $val;
+		}
+	}
+
+	function setifnn(&$var, $val) {
+		setift($var, $val, $var==null);
+	}
+
+	function tf($inp=true) {
+		return ($inp?"true":"false");
+	}
+
 
 ?>

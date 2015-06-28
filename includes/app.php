@@ -8,7 +8,7 @@
 	date_default_timezone_set('Asia/Calcutta');
 
 	function loadModule($className){
-		$inside=array('Td'=>'Table','Row'=>'Table','Text'=>'Table' );
+		$inside=array('Td'=>'Table','Row'=>'Table','Text'=>'Table', "Special"=>"Fun" );
 		if(isset($inside[$className]))
 			$className=$inside[$className];
 		if(file_exists(ROOT.'modules/'.$className.'.php'))

@@ -5,3 +5,12 @@ div.inline{
 a{
 	cursor: pointer;
 }
+
+.likebutton:hover{
+	background-color: #dd00dd;
+}
+
+
+.likebuttonliked{
+	background-color: #000000;
+}

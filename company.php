@@ -16,9 +16,11 @@ $carinfo = Funs::headerinfo($carinfo);
 $namelist=array(1=>"Ola Cabs",2=>"TexiForSure");
 $offers=array(1=>"offer.jpg",2=>"tfsoffer1.png");
 
+$myf=User::myprofile();
+$pageinfo["myf"] = $myf;
 $pageinfo["cabtypes"] = Funs::mycartypes($carinfo['carid']);
 
-load_view( "company.php", Fun::mergeifunset($pageinfo, array("cityolist"=>$_ginfo["allcity"],"myf"=>$carinfo)) );
+load_view( "company.php", Fun::mergeifunset($pageinfo, array("cityolist"=>$_ginfo["allcity"],"carinfo"=>$carinfo)) );
 
 
 

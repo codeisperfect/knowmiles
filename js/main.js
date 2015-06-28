@@ -63,3 +63,16 @@ function lspopup(inp){
 		$("#"+inp+"button").click();
 	},1000);
 }
+
+
+
+function loadreview(obj, loadtype){
+	loadtype = (loadtype == null ? 0:-1);
+	var reviewdiv=$("#loadreviews");
+	var minl=reviewdiv.attr("data-minl");
+	div.load(reviewdiv[0], 1, loadtype, function(d){
+		if(d.qresultlen<minl){
+			$(obj).hide();
+		}
+	});
+}
