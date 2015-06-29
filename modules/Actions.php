@@ -52,8 +52,15 @@ class Actions{
 			$outp["ec"]=$temp;
 		return $outp;
 	}
-	function like($data){
-		
+	function reviewcomment($data) {
+		$outp = array("ec" => 1, "data" => 0);
+		$rrow = Sqle::getbyid("review", "id", $data["bid"]);
+		if($rrow != null && ($rrow["uid"] == User::loginId() || $rrow["cid"] == User::loginId() ) ){
+			$outp["data"] = Sqle::insertVal("comments", Fun::mergeifunset( Fun::getflds(array("bid", "content"), $data), array("type" => "c", "uid" => User::loginId(), "time" => time()) ) );
+		}
+		else
+			$outp["ec"] = -2;
+		return $outp;
 	}
 }
 ?>

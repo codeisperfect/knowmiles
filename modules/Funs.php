@@ -105,13 +105,14 @@ abstract class Funs{
 		}
 		return $login;
 	}
-	public static function getCarInfo($carid, $cid) {
-		$query = "select users.name, company.* from company left join users on users.id = company.cid where company.carid = {carid} or company.cid = {cid} limit 1";
-		$temp = getr(Sqle::getA($query, array("carid" => $carid, "cid" => $cid)));
-		return $temp;
+
+	public static function getCarInfo($cid) {
+		$query = "select users.name, carratings.avgrating, carratings.numpeople, company.* from company left join users on users.id = company.cid left join ".gtable("carratings")." on carratings.cid=company.cid  where company.cid = {cid} limit 1";
+		return getr(Sqle::getA($query, array( "cid" => $cid, "uid" => User::loginId() )));
 	}
+
 	public static function headerinfo($myf){
-		$temp=explode(" ",$myf["name"]." ");
+		$temp=explode(" ",$myf["name"]." ", 2);
 		$myf["fname"]=$temp[0];
 		$myf["lname"]=$temp[1];
 		return $myf;

@@ -13,6 +13,30 @@ var funcs={
 	seepassword:function(obj){
 		var jobj=$(obj).parent().parent().parent().parent().find("input[name=password]");
 		jobj.attr("type",jobj.attr("type")=="text"?"password":"text" );
+	},
+	likedislike:function(obj){
+		var counterobj = $(obj).parent().find(".likecount");
+		var curlikes = parseInt(counterobj.html());
+		if($(obj).attr("data-action")=="dislike") {
+			counterobj.html(curlikes+1);
+			$(obj).addClass("likebuttonliked");
+		} else {
+			$(obj).removeClass("likebuttonliked");
+			counterobj.html(curlikes-1);
+		}
+	},
+	openreply: function(obj){
+		temp=obj;
+		var review_block = $(obj).parent().parent().parent().parent().find(".reviewreplydiv");
+		if(review_block.find(".replies").attr("data-max")==0) {
+			div.load( review_block.find(".replies")[0], 0, -1);
+		}
+		review_block.slideToggle();
+	},
+	f3: function(obj) {
+		if(obj.value == "") {
+			obj.value = $(obj).attr("data-default")+", ";
+		}
 	}
 };
 
@@ -24,13 +48,17 @@ function filterpic(){
 			carselected.push($(cpossible[i]).attr("data-filterpic") );
 	}
 	var clisting=$("#carlisting").children();
+	var numresult=0;
 	for(var i=0;i<clisting.length;i++){
 		var fpic=$(clisting[i]).attr("data-filterpic");
-		if((carselected.indexOf(fpic)==-1))
+		if((carselected.indexOf(fpic)==-1)){
 			$(clisting[i]).slideDown();
+			numresult++;
+		}
 		else
 			$(clisting[i]).slideUp();
 	}
+	$("#booking_noresult")[0].style.display=(numresult==0?"":"none");
 }
 
 function carresultsort(basedon){
@@ -76,3 +104,5 @@ function loadreview(obj, loadtype){
 		}
 	});
 }
+
+

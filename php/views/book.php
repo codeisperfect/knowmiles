@@ -50,25 +50,35 @@ load_view("template/book_top.php",$inp);
 		 <div class="col-md-12 col-sm-12" style="padding-left:0; padding-right:0;">
 			<div class="tabbable">
 			 <ul class="nav nav-tabs">
+
+
+									<li class="active tab-li col-md-4  col-sm-4 col-xs-12 pad-imp"><a href="tabs-pills.html#tabs1-pane1" data-toggle="tab" class="lef-tab teb">Cheapest</a></li>
+									<li class="tab-li col-md-4  col-sm-4 col-xs-12 pad-imp"><a href="tabs-pills.html#tabs1-pane2" data-toggle="tab" class="lef-tab teb">Closest</a></li>
+									<li class="tab-li col-md-4  col-sm-4 col-xs-12 pad-imp"><a href="tabs-pills.html#tabs1-pane3" data-toggle="tab" class="lef-tab teb">Bast Rated</a></li>
+<!-- 
 				<li class="active tab-li col-md-4  col-sm-4 col-xs-12 pad-imp">
-				 <a onclick="carresultsort('price');" href="#" data-toggle="tab" class="lef-tab teb">
+				 <a onclick="return;carresultsort('price');" href="#" data-toggle="tab" class="lef-tab teb">
 					Cheapest
 				 </a>
 				</li>
 				<li class="tab-li col-md-4  col-sm-4 col-xs-12 pad-imp">
-				 <a onclick="carresultsort('price');" href="#" data-toggle="tab" class="lef-tab teb">
+				 <a onclick="return;carresultsort('price');" href="tabs-pills.html#tabs2-pane3" data-toggle="tab" class="lef-tab teb">
 					Closest
 				 </a>
 				</li>
 				<li class="tab-li col-md-4  col-sm-4 col-xs-12 pad-imp">
-				 <a onclick="carresultsort('rating');" href="#" data-toggle="tab" class="lef-tab teb">
+				 <a onclick="return;carresultsort('rating');" href="#" data-toggle="tab" class="lef-tab teb">
 					Best Rated
 				 </a>
 				</li>
-			 </ul>
+ -->
+ 			 </ul>
 
 			 <div class="tab-content" style="padding-left: 15px; padding-right: 15px;">
 				<div class="tab-pane active" id="tabs1-pane1">
+					<div id="booking_noresult" style='<?php pit("display:none;", count($carresult) != 0 ); ?>' >
+						<img src='photo/nothing_found.jpg' />
+					</div>
 					<div id="carlisting" >
 					<?php
 					foreach($carresult as $i=>$row){
@@ -78,9 +88,11 @@ load_view("template/book_top.php",$inp);
 					</div>
 				</div>
 				<div class="tab-pane" id="tabs1-pane2"> <!-- Dummy Tab 2-->
+					<img src='photo/Coming-Soon.png' />
 				</div> <!-- Dummy Tab 2-->
 
 				<div class="tab-pane" id="tabs1-pane3">
+					<img src='photo/Coming-Soon.png' />
 				</div><!-- Dummy Tab 3-->
 			 </div> <!-- Tabbed Content -->
 			</div>

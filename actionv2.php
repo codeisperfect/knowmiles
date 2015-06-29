@@ -1,5 +1,8 @@
 <?php
 
+$config = array("addccode"=>false);
+
+
 include "includes/app.php";
 
 if(server!='server'){

@@ -10,7 +10,7 @@ function dt($tn){
 
 
 function drop_table(){
-	$tl=array("review");
+	$tl=array("company", "review", "users");
 //	$tl=array("car","cartype","cardata","city");
 //	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
 	foreach($tl as $i=>$val){
@@ -29,7 +29,6 @@ function make_table(){
 	echo Sql::query("CREATE TABLE users (id int NOT NULL AUTO_INCREMENT,username varchar(100), password varchar(100) , email varchar(100) ,  name varchar(100) , address varchar(500) , phone varchar(13) , type varchar(3) , create_time int,update_time int , last_login int,last_ip varchar(20),conf varchar(1),econf varchar(1), PRIMARY KEY ( id) ) ");
 	echo Sql::query("ALTER TABLE users add profilepic varchar(100) NULL ");
 
-	echo Sql::query("CREATE TABLE review (id int NOT NULL AUTO_INCREMENT,rating int,content varchar(500), carTypeId int, uid int,cityId int,time int, PRIMARY KEY ( id) ) ");
 
 
 	echo Sql::query("CREATE TABLE booking (id int NOT NULL AUTO_INCREMENT,start_add varchar(300), end_add varchar(300), lat1 float, lon1 float, lat2 float, lon2 float, time int, CarID int, CityID int, CarTypeID int, iscancelled varchar(1), PRIMARY KEY ( id) ) ");
@@ -53,11 +52,16 @@ function make_table(){
 	echo Sql::query("ALTER TABLE cardata add night_extra_charge int NULL ");
 	echo Sql::query("ALTER TABLE cardata add night_extra_charge_after int NULL ");
 
-	echo Sql::query("create table company ( cid int not null, carid int, bgpic varchar(500), offerpic varchar(300)  )");
+	echo Sql::query("create table company ( cid int not null, carid int, bgpic varchar(500), offerpic varchar(300), city int )");
 	echo Sql::query("ALTER TABLE company add dispname varchar(300) NULL ");
+	echo Sql::query("ALTER TABLE company add constraint carid_city_uniq unique (carid, city) ");
 
+	echo Sql::query("CREATE TABLE review (id int NOT NULL AUTO_INCREMENT, rating int, content varchar(1000), cid int, carTypeId int, uid int, time int, PRIMARY KEY ( id) ) ");
 
 	echo Sql::query("create table likes ( uid int not null, bid int, type varchar(1), time int, constraint uniq_likes unique (uid, bid, type) )");//type => r:review, c:comment, 
+
+	echo Sql::query("CREATE TABLE comments (id int NOT NULL AUTO_INCREMENT, bid int, content varchar(1000), uid int, type varchar(1), time int, PRIMARY KEY ( id) ) ");//type => r:review
+
 
 }
 

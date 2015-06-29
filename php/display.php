@@ -272,13 +272,22 @@
 	function hinp($name,$val){
 		return "<input type=hidden name='$name' value='$val' />";
 	}
+
 	function hidinp($name,$val,$params=array()){
 		$params=Fun::mergeifunset($params,array("type"=>"hidden","name"=>$name,"value"=>$val));
 		opent("input",$params);
 	}
+
+	function hidinps($arr=array(),$params=array()){
+		foreach($arr as $key => $val){
+			hidinp($key, $val, $params);
+		}
+	}
+
 	function print_name_link($name,$link=HOST,$attrs=array()){
 		return "<a href='$link' ".paramdict_to_str($attrs)." >$name</a>";
 	}
+
 	function span($inp,$attrs=array()){
 		$attrs=Fun::setifunset($attrs,"lname","span");
 		opent($attrs["lname"],$attrs);
@@ -333,7 +342,8 @@
 			array_unshift($inp, array("val"=>"", "disptext"=>$option["addtext"]));
 		$olist=$inp;
 		foreach($olist as $key=>$val){
-			$param=array("value"=>$val["val"]);
+			setifunset($val, "add", array());
+			$param = array("value"=>$val["val"]);
 			if($option["selected"]==$val["val"])
 				$param["selected"]="";
 			ocloset("option",$val["disptext"],$param);
@@ -357,7 +367,7 @@
 		opent("span");
 		ocloset("span",$fhalf);
 		if(strlen($content)>$len){
-			ocloset("a"," Read more",array("onclick"=>"a.readmore(this);"));
+			ocloset("span"," Read more",array("onclick"=>"a.readmore(this);", "style" => "cursor:pointer;"));
 			$shalf=Fun::smilymsg(substr($content,$llen));
 			ocloset("span",$shalf,array("style"=>"display:none;"));
 		}
@@ -376,4 +386,8 @@
 		hidinp($name,$n);
 		closet("div");
 	}
+	function pit($toprint, $cond=true, $toprint_false=''){
+		echo rit($toprint, $cond, $toprint_false);
+	}
+
 ?>

@@ -9,10 +9,10 @@
            hidinp("city",getval($_SESSION["city"],$_ginfo["allcityiddict"]));
         ?>
         <div class="col-xs-12 col-sm-3 col-md-3 search-text pad-inpu" style="margin-top: 7px;">
-         <input type="text" name="from" placeholder="From" class="text-from from" max="100" value="" id="pac-input" style="padding-right:10px;" autofocus />
+         <input type="text" name="from" placeholder="<?php echo convchars( get("fulloc1", "From") ); ?>" class="text-from from" max="100" value="" id="pac-input" style="padding-right:10px;" onfocus="funcs.f3(this);" data-default="<?php echo convchars($_ginfo["selectedcity"]); ?>" />
         </div>
         <div class="col-xs-12 col-sm-3 col-md-3 search-text pad-inpu" style="margin-top: 7px;">
-         <input type="text" name="to" placeholder="To" class="text-from from" max="100" id="pac-input2" style="padding-right:10px;" />
+         <input type="text" name="to" placeholder="<?php echo get("fulloc2", "To"); ?>" class="text-from from" max="100" id="pac-input2" style="padding-right:10px;" onfocus="funcs.f3(this);" data-default="<?php echo convchars($_ginfo["selectedcity"]); ?>" />
         </div>
         <div class="col-xs-12 col-sm-3 col-md-3 search-text pad-inpu" style="margin-top: 7px;">
          <input type="text" name="time" placeholder="<?php echo (get("time")==""?"ASAP":get("time")); ?>" class="text-from picup form_datetime1" max="100"  />

@@ -1,6 +1,6 @@
 <?php
 foreach( $qresult as $i => $row ){
-	if(true){
+	if(false){
 ?>
  				<div class="col-xs-12">
 					<div class="col-xs-1" style="font-size:30px;">

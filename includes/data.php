@@ -44,11 +44,13 @@ $_ginfo["attrs_shortcut"]=array("ph"=>"placeholder","dc"=>"data-condition");
 $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("fName", "lName", "emailId", "telephone", "passOne", "accept_conditions_1")),
 	"login"=>array("need"=>array("email","password")),
-	"review" => array("need" => array("rating","carTypeId","cityId","content")),
-	"carreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "carid")), //display reviews of a given car.
+	"review" => array("need" => array("rating", "carTypeId", "cid", "content"), "users"=>"all"),
+	"carreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "cid")), //display reviews of a given car.
 	"userreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "userid")), //display reviews of a user
-	"likes"=>array("need"=>array("bid","type")),
-	"unlike" => array("need" => array("bid", "type"))
+	"like"=>array("need"=>array("bid","type"), "users"=>"all"),
+	"dislike" => array("need" => array("bid", "type"), "users"=>"all"),
+	"reviewcomment" => array("need" => array("bid", "content"), "users" => "all"),
+	"reviewreply" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "bid"))
 );
 
 
@@ -58,7 +60,7 @@ $_ginfo["autoinsert"]=array(
 );
 
 $_ginfo["autodelete"]=array(
-	"unlike" => array("match"=>array("uid"),"table"=>"likes")
+	"dislike" => array("match"=>array("uid"),"table"=>"likes")
 );
 
 
@@ -107,8 +109,15 @@ $_ginfo["autoscroll"]=array(
 		"sort"=>"",
 		"minl"=>2,
 		"key"=>"id",
-		"load_view"=>"template/dispreview.php",
+		"load_view"=>"template/dispuserreview.php",
 		"filterfunc"=>"reviewprintable"
+		),
+	"reviewreply" => array(
+		"query" => "myreviewreply",
+		"sort" => "order by id asc",
+		"key" => "id",
+		"load_view" => "template/dispcomment.php",
+		"filterfunc" => null
 		)
 	);
 

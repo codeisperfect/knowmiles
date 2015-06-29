@@ -155,6 +155,7 @@ class Sqle extends Sql{
 		else
 			$querysort=$querylimit;
 		$qresult=Sqle::getA($querysort,$param);
+//		print_r($querysort);
 		$outp["qresult"]=$qresult;
 		$outp["maxl"]=$maxl;
 		$outp["minl"]=$minl;
@@ -197,6 +198,10 @@ class Sqle extends Sql{
 		$conds=join(" AND ",$selects);
 		$query="delete from $table ".( $conds ===""? " ":" WHERE ").$conds." ".($limit!=-1 ? " LIMIT $limit ":" ");
 		return self::query($query,$str,$params);
+	}
+
+	public static function getbyid($table, $key, $val){
+		return Sqle::selectVal($table, '*', array($key => $val), 1);
 	}
 
 }
