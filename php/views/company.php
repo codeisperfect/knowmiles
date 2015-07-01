@@ -53,19 +53,19 @@ load_view("template/header.php", $inp);
 	<div class="container-fluid col-centered" style="margin-top:30px;">
 		<div class="col-md-3">
 			<?php
-				if($carinfo["offerpic"]!=""){
+				if($carinfo["offerpic"]!=""){}
 			?>
 			<h3>Offers for <?php echo $carinfo["name"]; ?></h3>
 			<hr>
 			<img src="<?php echo $carinfo["offerpic"]; ?>" alt="Ola Offer" style="padding-bottom:20px;">
 			<?php
-				}
+				//EDIT - Shifted the closing bracket up as that if condition was not being satisfied
 			?>
 
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-6">
 			<?php
-				if(User::isloginas("u")) {
+				if(User::isloginas("u")) {}
 			?>
 			<h4>Write a Review</h4>
 			<form role="form" style="padding-top:5px; padding-bottom:5px;" method="post"  data-res='obj.reset();div.load($("#loadreviews")[0], 0, 1);' onsubmit="return form.req(this);" data-action="review" >
@@ -82,7 +82,7 @@ load_view("template/header.php", $inp);
 						 </select>
 						</div>
 						<div class="col-md-4 col-sm-4 stat-rate" style="" >
-							<input class="rating" min="0" max="5" step="1" data-size="xs" data-default-caption="{rating}" data-star-captions="{}" name="rating" >
+							<input class="rating" min="0" max="5" step="1" data-size="xs" data-default-caption="{rating}" data-star-captions="{}" name="rating">
 						</div>
 					 </div>
 
@@ -93,7 +93,7 @@ load_view("template/header.php", $inp);
 				</div>
 			</form>
 			<?php
-				}
+				//EDIT - Shifted the closing bracket up as that if condition was not being satisfied
 			?>
 
 
@@ -101,38 +101,39 @@ load_view("template/header.php", $inp);
 			
 			<h3 style="padding-bottom:10px;">Reviews by other users</h3>
 
-			<div class="row" id="loadreviews" data-action="carreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-cid="<?php echo $carinfo["cid"]; ?>" >
-				<img src="photo/loading.gif" >
+			<div class="row">
+				<div id="loadreviews" data-action="carreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-cid="<?php echo $carinfo["cid"]; ?>">
+					<!-- <img src="photo/loading.gif" > --> 
 
 
-<!--  				<div class="col-xs-12">
-					<div class="col-xs-1" style="font-size:30px;">
-						<span class="glyphicon glyphicon-user"></span>
+	  				<div class="col-xs-12">
+						<div class="col-xs-1" style="font-size:30px;">
+							<span class="glyphicon glyphicon-user"></span>
+						</div>
+						<div class="col-xs-11" >
+							<h4><strong>Mike</strong></h4>
+							Rating : <span class="label label-warning">2</span>
+						</div>
 					</div>
-					<div class="col-xs-11" >
-						<h4><strong>Mike</strong></h4>
-						Rating : <span class="label label-warning">2</span>
+					<div class="col-xs-12">
+						<p>Debitis assumenda illo, commodi quisquam, molestias vitae ipsa. Delectus soluta molestias ab, minima illum, harum voluptatibus eaque. Nobis cum, corporis voluptatibus quod!</p>	
 					</div>
-				</div>
-				<div class="col-xs-12">
-					<p>Debitis assumenda illo, commodi quisquam, molestias vitae ipsa. Delectus soluta molestias ab, minima illum, harum voluptatibus eaque. Nobis cum, corporis voluptatibus quod!</p>	
-				</div>
 
-				<div class="col-xs-12">
-					<div class="col-xs-1" style="font-size:30px;">
-						<span class="glyphicon glyphicon-user"></span>
+					<div class="col-xs-12">
+						<div class="col-xs-1" style="font-size:30px;">
+							<span class="glyphicon glyphicon-user"></span>
+						</div>
+						<div class="col-xs-11">
+							<h4><strong>Paul</strong></h4>
+							Rating : <span class="label label-info">4</span>
+						</div>
 					</div>
-					<div class="col-xs-11">
-						<h4><strong>Paul</strong></h4>
-						Rating : <span class="label label-info">4</span>
+
+					<div class="col-xs-12">
+						<p>Quod, quaerat iusto aut doloremque perferendis fugiat odio excepturi facilis aliquid perspiciatis explicabo soluta inventore delectus voluptatibus temporibus, eius debitis laboriosam voluptates.</p>	
 					</div>
+	 				
 				</div>
-
-				<div class="col-xs-12">
-					<p>Quod, quaerat iusto aut doloremque perferendis fugiat odio excepturi facilis aliquid perspiciatis explicabo soluta inventore delectus voluptatibus temporibus, eius debitis laboriosam voluptates.</p>	
-				</div>
- --> 				
-
 			</div>
 			<button onclick="loadreview(this);" id="loadmorereviews" >Load more</button>
 			
@@ -142,7 +143,7 @@ load_view("template/header.php", $inp);
 		</div>
 				
 
-		<div class="col-md-3" style='display:none;' >
+		<div class="col-md-3"  ><!-- EDIT - Removed Style hidden -->
 			<p class="text-muted">Sponsored Ads</p>
 			<div class="row" style="padding-top:5px; padding-bottom:5px;">
 				<div class="col-xs-12">
