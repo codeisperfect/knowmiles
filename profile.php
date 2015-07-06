@@ -28,15 +28,6 @@ if(Fun::isSetP("bookcab","lat1","lat2","lon1","lon2","fare","start_add","end_add
 }
 
 
-if(Fun::isSetP("rating","carId","cityId","content")){
-	$ins_data=Fun::getflds(array("rating","carId","cityId","content"),$_POST);
-	$ins_data["time"]=time();
-	$ins_data["uid"]=User::loginId();
-	$ins_data['carId']=0+lastelm(explode("-",$ins_data["carId"]));
-	Sqle::insertVal("review",$ins_data);
-	Fun::redirect($cururl);
-}
-
 if(User::isloginas("c") ){
 	if(isset($_FILES["bgpic"]) && $_FILES["bgpic"]["size"]>0 )
 		Fun::uploadpic($_FILES["bgpic"], "bgpic", null, 100, array(), "company", "cid");
@@ -50,7 +41,7 @@ $temp=explode(" ",$myf["name"]." ");
 $myf["fname"]=$temp[0];
 $myf["lname"]=$temp[1];
 
-$allcar = Fun::dbarrtooption( Sqle::getA( "select CarTypeID, concat(Name, ' : ', TypeName) as car_name from ".gtable("carmaps") ), "CarTypeID", "car_name" );
+$allcar = Fun::dbarrtooption( Sqle::getA( "select CarTypeID, CarID, concat(Name, ' : ', TypeName) as car_name from ".gtable("carmaps") ), "CarTypeID", "car_name", array("CarID") );
 
 $myreview=array();//reviewprintable(Help::myreviewlist(User::loginId()));
 

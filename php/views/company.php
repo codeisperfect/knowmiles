@@ -92,22 +92,15 @@ load_view("template/header.php", $inp);
 			?>
 			<h4>Write a Review</h4>
 			<form role="form" style="padding-top:5px; padding-bottom:5px;" method="post"  data-res='obj.reset();div.load($("#loadreviews")[0], 0, 1);' onsubmit="return form.req(this);" data-action="review" >
+				<?php
+					hidinps(array("cid" => $carinfo["cid"], "city" => $carinfo["city"]));
+				?>
 				<div class="form-group">
 					 <div class="row">
 						<div class="col-md-4 col-sm-4">
 						 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="carTypeId" >
 							<?php
 								disp_olist($cabtypes);
-							?>
-						 </select>
-						</div>
-						<div class="col-md-4 col-sm-4">
-						 <select class="text-from-1 search-text-1 common-dropdown-project-select-3" name="cityId" data-condition='simple' >
-							<option value="" selected="selected">
-							 Select City
-							</option>
-							<?php
-								disp_olist($cityolist,array("selected"=>gets("city")));
 							?>
 						 </select>
 						</div>

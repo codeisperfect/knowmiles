@@ -374,5 +374,21 @@
 			return $toprint_false;
 	}
 
+	function makealnum($inp){
+		$outp="";
+		for($i=0; $i<strlen($inp); $i++){
+			if(ctype_alnum($inp[ $i ])) {
+				$outp.=$inp[$i];
+			}
+		}
+		return $outp;
+	}
 
+	function arr2dataarr($inp = array()) {
+		$outp = array();
+		foreach( $inp as $i => $val) {
+			$outp["data-".$i]=$val;
+		}
+		return $outp;
+	}
 ?>

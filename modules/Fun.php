@@ -426,13 +426,15 @@ abstract class Fun{
 			return $query;
 		}
 	}
-	public static function dbarrtooption($arr,$id,$val){
+
+	public static function dbarrtooption($arr,$id,$val, $add=array()){
 		$outp=array();
 		foreach($arr as $i=>$row){
-			$outp[]=array("disptext"=>$row[$val],"val"=>$row[$id]);
+			$outp[]=array("disptext"=>$row[$val],"val"=>$row[$id], "add" => $add);
 		}
 		return $outp;
 	}
+
 	public static function idtovalarr($qresult,$id,$val){
 		$outp=array();
 		foreach($qresult as $i=>$row)

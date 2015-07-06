@@ -3,7 +3,9 @@ include "includes/app.php";
 
 
 
-Disp::disp_table(Sqle::getA("select *, ({uid}=1) as mohit from users", array("uid" => 1)));
+echo gtable("allreviews");
+
+Disp::disp_table(Sqle::getA(gtable("allreviews", false), array("uid" => 3)));
 
 
 if(0){

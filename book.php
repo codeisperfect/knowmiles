@@ -31,8 +31,8 @@ $extra_time_charge="extra_charge*$timetaken";
 
 $charge="(case when ".$is_day." then ($day_charge) else ($night_charge) end)";
 
-$query="select * from (select cardata.day_waiting_charge, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, $charge as charge, $base_charge as base_charge, $base_km as base_km, $is_day as isday, $perkm_charge as perkm_charge, extra_charge as extramin_charge, $extra_min as extra_min, extra_charge*$timetaken as extra_time_charge, $extra_km_charge as extra_km_charge, $extra_km as extra_km from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID where CityID=$cityid ) carresult order by charge asc ";//It is not SQL injection ( why ? ask mohit :p ) , so chill  :P 
-//echo $query;
+$query="select * from (select cardata.day_waiting_charge, company.cid, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, $charge as charge, $base_charge as base_charge, $base_km as base_km, $is_day as isday, $perkm_charge as perkm_charge, extra_charge as extramin_charge, $extra_min as extra_min, extra_charge*$timetaken as extra_time_charge, $extra_km_charge as extra_km_charge, $extra_km as extra_km from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID left join company on (company.carid = cardata.CarID AND company.city=cardata.CityID ) where CityID=$cityid  ) carresult order by charge asc ";
+
 
 $carresult=Sql::getArray($query);
 $needtofloor=array("charge","base_charge","base_km","extra_km_charge","extra_km","extra_time_charge","extra_min","extramin_charge");

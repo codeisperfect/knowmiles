@@ -272,13 +272,22 @@
 	function hinp($name,$val){
 		return "<input type=hidden name='$name' value='$val' />";
 	}
+
 	function hidinp($name,$val,$params=array()){
 		$params=Fun::mergeifunset($params,array("type"=>"hidden","name"=>$name,"value"=>$val));
 		opent("input",$params);
 	}
+
+	function hidinps($arr=array(),$params=array()){
+		foreach($arr as $key => $val){
+			hidinp($key, $val, $params);
+		}
+	}
+
 	function print_name_link($name,$link=HOST,$attrs=array()){
 		return "<a href='$link' ".paramdict_to_str($attrs)." >$name</a>";
 	}
+
 	function span($inp,$attrs=array()){
 		$attrs=Fun::setifunset($attrs,"lname","span");
 		opent($attrs["lname"],$attrs);
@@ -333,7 +342,8 @@
 			array_unshift($inp, array("val"=>"", "disptext"=>$option["addtext"]));
 		$olist=$inp;
 		foreach($olist as $key=>$val){
-			$param=array("value"=>$val["val"]);
+			setifunset($val, "add", array());
+			$param = array("value"=>$val["val"]);
 			if($option["selected"]==$val["val"])
 				$param["selected"]="";
 			ocloset("option",$val["disptext"],$param);

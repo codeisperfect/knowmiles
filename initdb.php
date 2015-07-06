@@ -35,23 +35,25 @@ function makesomeaccounts(){
 	print_r(User::signUp(array("email"=>"mohit@t.com","password"=>"p","type"=>"u")));
 	print_r(User::signUp(array("email"=>"mohit@s.com","password"=>"p","type"=>"u","name"=>"Mohit Saini")));
 
-	print_r(handle_request(array("emailId"=>"ola@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"Ola Cabs", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
-
-	print_r(handle_request(array("emailId"=>"tfs@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
-
-	for($i=1; $i<=2; $i++){
-		Sqle::updateVal("company", array("carid" => $i), array("cid" => $i+3));
-	}
 
 }
+
+function makecompanyprofile(){
+	$cardata = Sqle::getA("select car.CarID, cardata.CityID, car.Name as carname, city.Name as cityname from cardata left join car on car.CarID = cardata.CarID left join city on city.CityID=cardata.CityID group by car.CarID, cardata.CityID");
+	foreach($cardata as $i => $val){
+		$temp = handle_request(array("emailId"=>makealnum($val["carname"].$val["cityname"])."@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>$val["carname"] , "lName" => $val["cityname"], "telephone" => "", "accept_conditions_1"=>"", "action" => "signup"));
+		Sqle::updateVal("company", array("city" => $val["CityID"], "carid" => $val["CarID"]), array("cid" => $temp["data"]["id"]), 1);
+	}
+}
+
 
 //print_r(handle_request(array("emailId"=>"tfs1@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
 
 
-makecitycar();
-makesomeaccounts();
+//makecitycar();
+//makesomeaccounts();
 
-
+makecompanyprofile();
 
 
 closedb();

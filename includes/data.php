@@ -44,7 +44,7 @@ $_ginfo["attrs_shortcut"]=array("ph"=>"placeholder","dc"=>"data-condition");
 $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("fName", "lName", "emailId", "telephone", "passOne", "accept_conditions_1")),
 	"login"=>array("need"=>array("email","password")),
-	"review" => array("need" => array("rating","carTypeId","cityId","content"), "users"=>"all"),
+	"review" => array("need" => array("rating", "carTypeId", "cid", "content"), "users"=>"all"),
 	"carreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "carid")), //display reviews of a given car.
 	"userreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "userid")), //display reviews of a user
 	"like"=>array("need"=>array("bid","type"), "users"=>"all"),

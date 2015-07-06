@@ -3,7 +3,7 @@
            <div class="row">
             <div class= "col-xs-4 col-sm-4 col-md-4 col-lg-2 name-cab div-centering" align="center" style="margin-top:0; padding:10px;"> <!-- Company Name -->
              <span>
-              <a href="<?php echo "company.php?CarID=".$CarID."&CarTypeID=".$CarTypeID; ?>" style='color:black;' ><?php echo $Name; ?></a>
+              <a href="<?php echo "company.php?cid=".$cid; ?>" style='color:black;' ><?php echo $Name; ?></a>
              </span>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 cad-pad div-centering" align="center" style="margin-top:0; padding:10px;"> <!-- Car Image -->
