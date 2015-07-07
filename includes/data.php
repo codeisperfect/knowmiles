@@ -45,10 +45,12 @@ $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("fName", "lName", "emailId", "telephone", "passOne", "accept_conditions_1")),
 	"login"=>array("need"=>array("email","password")),
 	"review" => array("need" => array("rating", "carTypeId", "cid", "content"), "users"=>"all"),
-	"carreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "carid")), //display reviews of a given car.
+	"carreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "cid")), //display reviews of a given car.
 	"userreview" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "userid")), //display reviews of a user
 	"like"=>array("need"=>array("bid","type"), "users"=>"all"),
-	"dislike" => array("need" => array("bid", "type"), "users"=>"all")
+	"dislike" => array("need" => array("bid", "type"), "users"=>"all"),
+	"reviewcomment" => array("need" => array("bid", "content"), "users" => "all"),
+	"reviewreply" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "bid"))
 );
 
 
@@ -109,6 +111,13 @@ $_ginfo["autoscroll"]=array(
 		"key"=>"id",
 		"load_view"=>"template/dispuserreview.php",
 		"filterfunc"=>"reviewprintable"
+		),
+	"reviewreply" => array(
+		"query" => "myreviewreply",
+		"sort" => "order by id asc",
+		"key" => "id",
+		"load_view" => "template/dispcomment.php",
+		"filterfunc" => null
 		)
 	);
 

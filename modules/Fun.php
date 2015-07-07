@@ -480,6 +480,9 @@ abstract class Fun{
 		}
 		return $a;
 	}
+	public static function autodb($post_data, $action_spec, $isinsert=true, $addinfo=array()){
+		
+	}
 }
 
 

@@ -27,13 +27,13 @@
                 </div>
                 <div class="col-xs-12">
                   <p>
-                    <?php echo $rating;?> Ratings.
+                    <?php echo $rating/2;?> Ratings.
                   </p>
                 </div>
               </div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 tooltip-options div-centering" align="center" style="margin-top:0; padding:10px;"> <!-- Offer -->
-             <a  class="off-it" data-toggle="tooltip" data-placement="bottom" title="" style="<?php echo $isoffer?"display:none;":""; ?>" >
+             <a  class="off-it" data-toggle="tooltip" data-placement="bottom" title="" style="<?php echo pit("display:none;", !$isoffer); ?>" >
               <h3>
                 <span class="label label-info">
                  Offers!!!

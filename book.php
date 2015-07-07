@@ -31,17 +31,22 @@ $extra_time_charge="extra_charge*$timetaken";
 
 $charge="(case when ".$is_day." then ($day_charge) else ($night_charge) end)";
 
-$query="select * from (select cardata.day_waiting_charge, company.cid, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, $charge as charge, $base_charge as base_charge, $base_km as base_km, $is_day as isday, $perkm_charge as perkm_charge, extra_charge as extramin_charge, $extra_min as extra_min, extra_charge*$timetaken as extra_time_charge, $extra_km_charge as extra_km_charge, $extra_km as extra_km from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID left join company on (company.carid = cardata.CarID AND company.city=cardata.CityID ) where CityID=$cityid  ) carresult order by charge asc ";
+$query="select * from (select cardata.day_waiting_charge, company.cid, (company.offerpic is not null) as isoffer, carratings.avgrating, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, $charge as charge, $base_charge as base_charge, $base_km as base_km, $is_day as isday, $perkm_charge as perkm_charge, extra_charge as extramin_charge, $extra_min as extra_min, extra_charge*$timetaken as extra_time_charge, $extra_km_charge as extra_km_charge, $extra_km as extra_km from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID left join company on (company.carid = cardata.CarID AND company.city=cardata.CityID ) left join ".gtable("carratings")." on carratings.cid=company.cid where CityID=$cityid  ) carresult order by charge asc ";
 
 
-$carresult=Sql::getArray($query);
-$needtofloor=array("charge","base_charge","base_km","extra_km_charge","extra_km","extra_time_charge","extra_min","extramin_charge");
+
+
+$carresult=Sqle::getA($query, array("uid" => User::loginId() ));
+
+
+$needtofloor=array("base_charge","base_km","extra_km_charge","extra_km","extra_time_charge","extra_min","extramin_charge");
 foreach($carresult as $i=>$row){
   $imgf=Funs::carpic($row["Name"],$row["TypeName"]);
   $carresult[$i]["image"]=$imgf[0];
   $carresult[$i]["filter"]=$imgf[1];
-  $carresult[$i]["rating"]=mt_rand(1,10);
-  $carresult[$i]["isoffer"]=(rand(1,100)<=60);
+  $carresult[$i]["rating"]=2*$row["avgrating"];//mt_rand(1,10);
+  //$carresult[$i]["isoffer"]=(rand(1,100)<=60);
+  $carresult[$i]["charge"] = intval($row["charge"]);
   
   foreach($needtofloor as $j=>$val){
     $carresult[$i][$val]=number_format($row[$val],1);

@@ -206,6 +206,52 @@ var button={
 				mohit.alert("Unexpected Error");
 		}});
 	},
+	sendreq_v3:function(obj){
+		var allattrs=this.attrs(obj);
+		if(!button.hasattr(allattrs,"data-params"))
+			var params=this.tosendattrs(obj,allattrs);
+		else{
+			eval("var params="+allattrs["data-params"]);
+		}
+		if(button.hasattr(allattrs,"data-eparams")){
+			eval("var eparams="+allattrs["data-eparams"]);
+			params=others.mergeifunset(params,eparams);
+		}
+		params['action']=allattrs["data-action"];
+		obj.disabled=true;
+		var prvvalue=obj.innerHTML;
+		mergeifunset(allattrs,{"data-waittext":" ... "});
+		if(allattrs["data-waittext"]!=""){
+			obj.innerHTML=allattrs["data-waittext"];
+		}
+		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){
+			obj.disabled=false;
+			var respo=button.parse(d);
+			if(allattrs["data-waittext"]!=""){
+				obj.innerHTML=prvvalue;
+			}
+			if(respo){
+				if(respo.ec<0){
+					if(button.hasattr(allattrs,"data-error")){
+						var ec=respo.ec;
+						eval(allattrs["data-error"]);
+					}
+					else
+						mohit.alert(ecn[respo.ec]);
+				}
+				else{
+					if(allattrs["data-waittext"]!=""){
+						obj.innerHTML=(typeof(allattrs["data-restext"])=='undefined')?prvvalue:allattrs["data-restext"];
+					}
+					if(button.hasattr(allattrs,"data-res")){
+						var data=respo.data;
+						eval(allattrs["data-res"]);
+					}
+				}
+			}
+			
+		}});
+	},
 	selectme:function (obj){
 		$(obj).repClass("btn-default","btn-primary");
 		$(obj).siblings().repClass("btn-primary","btn-default");
@@ -327,6 +373,9 @@ var form={
 				success.push(dispmsg,true);
 			}
 			return !(errors.length>0);
+		},
+		action1:function(obj){
+			return !(form.valid.is(obj).length>0);
 		}
 	}
 };

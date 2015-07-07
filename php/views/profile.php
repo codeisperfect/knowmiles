@@ -81,10 +81,19 @@ foreach($tabs as $id=>$value){
 						</h4>
 					</div>
 					<div id="collapse1" class="panel-collapse collapse in">
-						<div class="panel-body"><div class="col-sm-3 col-md-3">Date</div>
-						<div class="col-sm-3 col-md-3">Destination</div>
-						<div class="col-sm-3 col-md-3">Fleet</div>
-						<div class="col-sm-3 col-md-3">Fare</div></div>
+						<div class="panel-body">
+
+							<?php
+								$ordertabs = array("Date", "Destination", "", "Fleet", "Fare");
+								foreach($ordertabs as $i => $val){
+							?>
+							<div class="<?php pit("col-sm-2 col-md-2", ($i>=3 || $i==0) , "col-sm-3 col-md-3"); ?>">
+								<?php echo $val; ?>
+							</div>
+							<?php
+								}
+							?>
+						</div>
 					</div>
 				</div>
 				<?php
@@ -92,11 +101,17 @@ foreach($tabs as $id=>$value){
 				?>
 				<div class="panel panel-default">
 					<div id="collapse1" class="panel-collapse collapse in panle-bg">
-						<div class="panel-body"><div class="col-sm-3 col-md-3 ico"><i class="fa fa-play fon"></i>
-						 <?php echo Fun::timetostr($row["time"]); ?></div>
-						<div class="col-sm-3 col-md-3"><?php echo $row["start_add"]; ?></div>
-						<div class="col-sm-3 col-md-3"><?php echo $row["end_add"]; ?></div>
-						<div class="col-sm-3 col-md-3 know"><strong><i class="fa fa-inr"></i></strong> <span><?php echo $row["fare"]; ?></span></div></div>
+						<div class="panel-body">
+							<div class="col-sm-2 col-md-2 ico">
+								<i class="fa fa-play fon"></i><?php echo Fun::timetostr($row["time"]); ?>
+							</div>
+							<div class="col-sm-3 col-md-3"><?php echo $row["start_add"]; ?></div>
+							<div class="col-sm-3 col-md-3"><?php echo $row["end_add"]; ?></div>
+							<div class="col-sm-2 col-md-2"><?php echo $row["carname"]; ?></div>
+							<div class="col-sm-2 col-md-2 know">
+								<strong><i class="fa fa-inr"></i></strong> <span><?php echo $row["fare"]; ?></span>
+							</div>
+						</div>
 					</div>
 				</div>
 				<?php

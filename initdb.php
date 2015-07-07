@@ -46,15 +46,13 @@ function makecompanyprofile(){
 	}
 }
 
+//print_r(handle_request(array("emailId"=>"tfs1@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
 
 //print_r(handle_request(array("emailId"=>"tfs1@mail.com", "passOne"=>"p", "type"=>"c", "fName"=>"TexiForSure", "lName" => "", "telephone" => "", "accept_conditions_1"=>"", "action" => "signup")));
 
-
-//makecitycar();
-//makesomeaccounts();
-
+makecitycar();
+makesomeaccounts();
 makecompanyprofile();
-
 
 closedb();
 ?>

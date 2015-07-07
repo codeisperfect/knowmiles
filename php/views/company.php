@@ -1,29 +1,9 @@
 <?php
 
-load_view("template/index_top.php");
+load_view("template/company_top.php");
 
 ?>
 
-<style>
-.btn-trans{
-
-	background: transparent;
-	color: #FFFFFF;
-
-	-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
-	-moz-transition: background .2s ease-in-out, border .2s ease-in-out;
-	-ms-transition: background .2s ease-in-out, border .2s ease-in-out;
-	-o-transition: background .2s ease-in-out, border .2s ease-in-out;
-	transition: background .2s ease-in-out, border .2s ease-in-out;
-
-}
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
-}
-
-</style>
 <body id="top" class="home page page-template page-template-homepage-php no-js"  >
 
 <?php
@@ -45,7 +25,7 @@ load_view("template/header.php", $inp);
 	 			</h1>
 	 		</div>
 	 		<div class="col-sm-1" >
-	 			<h1><span class="label label-success">4.4</span></h1>
+	 			<h1><span class="label label-success"><?php echo number_format($carinfo["avgrating"],1); ?></span></h1>
 	 		</div>
  		</div>
  	</div>
@@ -67,9 +47,6 @@ load_view("template/header.php", $inp);
  </h2> -->
 </section>
 
-<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
-
-<script src="js/star-rating.js" type="text/javascript"></script>
 
 
 <div style="width:95%; margin: 0 auto;" >
@@ -124,7 +101,7 @@ load_view("template/header.php", $inp);
 			
 			<h3 style="padding-bottom:10px;">Reviews by other users</h3>
 
-			<div class="row" id="loadreviews" data-action="carreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-carid="<?php echo $carinfo["carid"]; ?>" >
+			<div class="row" id="loadreviews" data-action="carreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-cid="<?php echo $carinfo["cid"]; ?>" >
 				<img src="photo/loading.gif" >
 
 
@@ -165,7 +142,7 @@ load_view("template/header.php", $inp);
 		</div>
 				
 
-		<div class="col-md-3">
+		<div class="col-md-3" style='' >
 			<p class="text-muted">Sponsored Ads</p>
 			<div class="row" style="padding-top:5px; padding-bottom:5px;">
 				<div class="col-xs-12">

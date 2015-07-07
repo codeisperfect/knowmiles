@@ -36,16 +36,13 @@ if(User::isloginas("c") ){
 }
 
 
-$myf=User::myprofile();
-$temp=explode(" ",$myf["name"]." ");
-$myf["fname"]=$temp[0];
-$myf["lname"]=$temp[1];
+$myf=Funs::headerinfo(User::myprofile());
 
 $allcar = Fun::dbarrtooption( Sqle::getA( "select CarTypeID, CarID, concat(Name, ' : ', TypeName) as car_name from ".gtable("carmaps") ), "CarTypeID", "car_name", array("CarID") );
 
 $myreview=array();//reviewprintable(Help::myreviewlist(User::loginId()));
 
-$mybooking=Sql::getArray("select * from booking where UID=? order by time desc ",'i',array(&$uid));
+$mybooking=Sql::getArray("select car.Name as carname, booking.* from booking left join car on car.CarID = booking.CarID where UID=? order by time desc ",'i',array(&$uid));
 $pageinfo=array('myreview'=>$myreview,'mybooking'=>$mybooking,'myf'=>$myf,"cityolist"=>$_ginfo["allcity"],"qargs"=>$qargs,'allcar'=>$allcar );
 
 
@@ -59,7 +56,7 @@ $pageinfo["tabs"]=array(
 	"tabs2-pane6"=>"Manage company",
 	);
 
-$save_details=Sql::getArray("select car.*,mycabdetails.email,mycabdetails.password,mycabdetails.time,(mycabdetails.CarId is not NULL) issaved  from car left join (select * from cabdetails where uid=?)mycabdetails on mycabdetails.CarID=car.CarID order by car.CarID",'i',array(&$uid));
+$save_details=Sql::getArray("select car.*, mycabdetails.email,mycabdetails.password,mycabdetails.time,(mycabdetails.CarId is not NULL) issaved  from car left join (select * from cabdetails where uid=?)mycabdetails on mycabdetails.CarID=car.CarID order by car.CarID",'i',array(&$uid));
 
 
 for($i=0;$i<count($save_details);$i++){

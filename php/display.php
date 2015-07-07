@@ -352,6 +352,7 @@
 
 
 	function addmycss(){
+		addcss("css/lib.css");
 		addcss("css/main.css");
 	}
 
@@ -367,7 +368,7 @@
 		opent("span");
 		ocloset("span",$fhalf);
 		if(strlen($content)>$len){
-			ocloset("a"," Read more",array("onclick"=>"a.readmore(this);"));
+			ocloset("span"," Read more",array("onclick"=>"a.readmore(this);", "style" => "cursor:pointer;"));
 			$shalf=Fun::smilymsg(substr($content,$llen));
 			ocloset("span",$shalf,array("style"=>"display:none;"));
 		}
