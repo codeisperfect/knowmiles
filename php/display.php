@@ -343,7 +343,7 @@
 		$olist=$inp;
 		foreach($olist as $key=>$val){
 			setifunset($val, "add", array());
-			$param = array("value"=>$val["val"]);
+			$param = Fun::mergeifunset(array("value"=>$val["val"]), $val["add"]);
 			if($option["selected"]==$val["val"])
 				$param["selected"]="";
 			ocloset("option",$val["disptext"],$param);

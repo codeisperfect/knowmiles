@@ -171,7 +171,7 @@ foreach($tabs as $id=>$value){
 
 
  <div class="row">
-	<form action="<?php echo HOST."profile.php?tab=tabs2-pane4"; ?>" method="post" onsubmit="if(submitForm(this)){ form.req(this); };return false;" data-res="obj.reset();div.load($('#loadreviews')[0], 0, 1);" data-action="review" >
+	<form action="<?php echo HOST."profile.php?tab=tabs2-pane4"; ?>" method="post" onsubmit="if(submitForm(this)){ form.req(this); };return false;" data-res="obj.reset();div.load($('#loadreviews')[0], 0, 1);" data-action="profilereview" >
 	<div class="col-md-1 col-sm-1">
 	 <img src="images/nib.png" class="img-circle" />
 	</div>

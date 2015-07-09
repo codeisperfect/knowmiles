@@ -204,5 +204,13 @@ class Sqle extends Sql{
 		return Sqle::selectVal($table, '*', array($key => $val), 1);
 	}
 
+	public static function getR($query, $param = array(), $getkey=null) {
+		$qoutp=Sqle::getA($query, $param);
+		if(count($qoutp) > 0)
+			return ($getkey == null ? $qoutp[0]:getval($getkey, $qoutp[0]) );
+		else
+			return null;
+	}
+
 }
 ?>

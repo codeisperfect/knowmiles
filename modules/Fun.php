@@ -137,7 +137,7 @@ abstract class Fun{
 		else
 			return self::timetostr(time()-$s);
 	}
-	public static function timepassed_t2($s){
+	public static function timepassed_t2($s) {
 		if($s<5)
 			return "Just";
 		else if($s<60)
@@ -146,7 +146,7 @@ abstract class Fun{
 			return floor($s/60)."m";
 		else if($s<60*60*24)
 			return floor($s/3600)."h";
-		else if($s<60*60*24*5)
+		else if($s<60*60*24*30)
 			return floor($s/(60*60*24))."d";
 		else
 			return self::timetostr(time()-$s);
@@ -430,7 +430,8 @@ abstract class Fun{
 	public static function dbarrtooption($arr,$id,$val, $add=array()){
 		$outp=array();
 		foreach($arr as $i=>$row){
-			$outp[]=array("disptext"=>$row[$val],"val"=>$row[$id], "add" => $add);
+			$outp[]=array("disptext"=>$row[$val],"val"=>$row[$id], "add" => map(Fun::getflds($add, $row), f('"data-".$inp'), array(
+				"ismapkey" => true) ));
 		}
 		return $outp;
 	}

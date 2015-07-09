@@ -167,6 +167,7 @@
 			if(method_exists($autos, $funcname))
 				$qoutput=$autos->$funcname($qoutput);
 		}
+		$qoutput["action"]=$post_data["action"];
 		$qoutput["load_view"]=$action_spec["load_view"];
 		return $qoutput;
 	}
@@ -233,7 +234,12 @@
 		$fixvalues=array("time"=>time(),"uid"=>User::loginId());
 		$id_data = Fun::getflds( getmyneed($post_data["action"]), $post_data );
 		if(islset($_ginfo, array("autoinsert", $post_data["action"]))){
-			$action_spec = Fun::mergeifunset( $_ginfo["autoinsert"][$post_data['action']], array("fixed" => array(), "add" => array()));
+			$action_spec = Fun::mergeifunset( $_ginfo["autoinsert"][$post_data['action']], array("fixed" => array(), "add" => array(), "filter"=>null));
+			if($action_spec["filter"] != null) {
+				$filterdata = new Autoaction();
+				$filterfunc = $action_spec["filter"];
+				$id_data = $filterdata->$filterfunc($id_data);
+			}
 			$id_data = Fun::mergeifunset($id_data, $action_spec["add"]);
 			$id_data = Fun::mergeforce($id_data, Fun::getflds( $action_spec["fixed"], $fixvalues ));
 			$outp["data"] = Sqle::insertVal($action_spec['table'], $id_data);
@@ -391,4 +397,95 @@
 		}
 		return $outp;
 	}
+
+	function f($content) {
+		$af = function($inp) use ($content) {
+			$content = '$foutput  = '.$content.';';
+			eval($content);
+			return $foutput;
+		};
+		return $af;
+	}
+
+	function s($inp, $val=null) {
+		global $$inp;
+		$$inp = $val;
+	}
+
+	function gi($inp) {
+		return getval($inp, g("_ginfo"));
+	}
+
+	function listget() {
+		$args = func_get_args();
+		$inplist = array_slice($args, 1);
+		$outp = getval(0,$args);
+		foreach($inplist as $i => $val) {
+			$outp = getval( $val, $outp );
+		}
+		return $outp;
+	}
+
+	function gget() {
+		$args = func_get_args();
+		$args[0] = g(getval(0, $args));
+		return call_user_func_array("listget", $args);
+	}
+
+	function giget() {
+		$args = func_get_args();
+		$args[0] = gi(getval(0, $args));
+		return call_user_func_array("listget", $args);
+	}
+	
+	function filter($list, $boolfunc) {
+		$outp = array();
+		foreach($list as $i => $val) {
+			if($boolfunc($val) === true) {
+				$outp[] = $val;
+			}
+		}
+		return $outp;
+	}
+
+	function map($list ,$func, $custom=array()) {
+		mergeifunset($custom, array("isindexed" => false, "ismapkey"=>false));
+		$outp = array();
+		foreach($list as $i => $val) {
+			if($custom["ismapkey"] )
+				$outp[ $func($i) ] = $val;
+			else
+				$outp[($custom["isindexed"]?$val:$i)] = $func($val);
+		}
+		return $outp;
+	}
+
+
+	function add($a, $b) {
+		if(gettype($a) == "array" && gettype($b) == "array" ) {
+			return Fun::array_append($a, $b);
+		} else if (gettype($a) == "array" && gettype($b) == "integer") {
+			return Fun::array_addinall($a, $b);
+		}
+	}
+
+	function msvalprint($inp) {//recursive function.
+		if(gettype($inp) == "array") {
+			$isnindex = (array_keys($inp) == Fun::oneToN(count($inp)-1, 0));//is natural indexed
+			$otext = map(array_keys($inp), function($ind) use($isnindex, $inp) {
+				return ($isnindex?"":"'".$ind."'=>").msvalprint($inp[$ind]);
+			});
+			return "array(".implode(", ", $otext).")";
+		} else if(gettype($inp) == 'integer') {
+			return $inp;
+		} else {
+			$inp = str_replace("'", "\\'", "".$inp);
+			return "'".$inp."'";
+		}
+	}
+
+	function msimplode($glue, $inp, $defval=null) {
+		 return (count($inp) == 0 && $defval != null ) ? $defval : implode($glue, $inp);
+	}
+
 ?>

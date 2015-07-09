@@ -38,7 +38,7 @@ if(User::isloginas("c") ){
 
 $myf=Funs::headerinfo(User::myprofile());
 
-$allcar = Fun::dbarrtooption( Sqle::getA( "select CarTypeID, CarID, concat(Name, ' : ', TypeName) as car_name from ".gtable("carmaps") ), "CarTypeID", "car_name", array("CarID") );
+$allcar = Fun::dbarrtooption( Sqle::getA( "select CarTypeID, CarID, concat(Name, ' : ', TypeName) as car_name from ".gtable("carmaps") ), "CarTypeID", "car_name", array("cid") );
 
 $myreview=array();//reviewprintable(Help::myreviewlist(User::loginId()));
 

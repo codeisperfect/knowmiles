@@ -50,12 +50,14 @@ $_ginfo["action_constrain"]=array(
 	"like"=>array("need"=>array("bid","type"), "users"=>"all"),
 	"dislike" => array("need" => array("bid", "type"), "users"=>"all"),
 	"reviewcomment" => array("need" => array("bid", "content"), "users" => "all"),
-	"reviewreply" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "bid"))
+	"reviewreply" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "bid")),
+	"profilereview" => array("need" => array("rating", "carTypeId", "cityId", "content"), "users"=>"all")
 );
 
 
 $_ginfo["autoinsert"]=array(
 	"review" => array("fixed"=>array("time","uid"),"table"=>"review"),
+	"profilereview" => array("fixed"=>array("time","uid"),"table"=>"review", "filter" => "profilereview"),
 	"like" => array("fixed"=>array("time","uid"),"table"=>"likes")
 );
 

@@ -2,18 +2,20 @@
 include "includes/app.php";
 
 
+//$myf = f('("(".(5*$inp).")")');
 
-<<<<<<< HEAD
-echo gtable("allreviews");
+$myf = f(' "(".(5*$inp).")" ');
 
-Disp::disp_table(Sqle::getA(gtable("allreviews", false), array("uid" => 3)));
-=======
 
-Disp::disp_table(Sqle::getA(gtable("carratings", false), array("uid" => 3)));
->>>>>>> 9c50ba08c43a7df8e2413cbddd77183c12270b86
+echo $myf(11);
 
 
 if(0){
+
+	echo gtable("allreviews");
+
+	Disp::disp_table(Sqle::getA(gtable("allreviews", false), array("uid" => 3)));
+
 	Disp::disp_table(Sqle::getA(gtable("allreviews", false), array("carid" => 8)));
 	
 	function f($b, $a){

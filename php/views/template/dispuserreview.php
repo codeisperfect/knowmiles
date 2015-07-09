@@ -1,14 +1,18 @@
 <?php
-$iscpage = true;
+$iscpage = ($action == "carreview");
 foreach( $qresult as $i => $row ){
 ?>
 			<div>
 			 <div class="row">
-				<div class="col-md-1 col-sm-1">
-				 <img src="<?php echo $row["profilepic"]; ?>" width="50" class="img-circle" />
-				 <p class="hour">
-					<?php echo $row["timepassed"]; ?>
-				 </p>
+				<div class="col-md-1 col-sm-1 " align="center" >
+					<div>
+						<img src="<?php echo $row["profilepic"]; ?>" width="50" class="img-circle" />
+					</div>
+					<div  >
+						<span class="hour" style='padding:0px;margin:0px;' >
+							<?php echo $row["timepassed"]; ?>
+						</span>
+					</div>
 				</div>
 				<div class="col-md-7 col-sm-7">
 				<?php
