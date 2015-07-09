@@ -121,6 +121,16 @@ abstract class Funs{
 	public static function mycartypes($carid) {
 		return Fun::dbarrtooption( Sqle::getA("select * from ".gtable("carmaps")." where CarId={carid} or ".tf($carid == -1)." ", array("carid" => $carid)), "CarTypeID", "TypeName");
 	}
+
+	public static function updatedata() {
+		$data=(array)json_decode(file_get_contents("crawler/cars/crawldata.json"));
+		$data = $data["data"];
+		for($data as $i => $row) {
+			$insert_info["CarID"] = Sqle::insertValUniq( "car", array("Name" => $row[0]), "CarID" );
+			$insert_info["CityID"] = Sqle::insertValUniq( "city", array("Name" => $row[0]), "CityID" );
+			$insert_info["CarTypeID"] = Sqle::insertValUniq( "cartype", array("TypeName" => $row[0]), "CarTypeID" );
+		}
+	}
 }
 
 ?>

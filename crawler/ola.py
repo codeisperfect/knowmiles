@@ -28,32 +28,35 @@ for i in allcity:
 
 count=0;
 for j in data['ola']['city']:
-	if(count>1 and 0 ):
-		break;
-	count+=1;
-	url=data['ola']['city'][j]['url']
-	data['ola']['city'][j]['cartypes']={};
+	try:
+		if(count>1 and 0 ):
+			break;
+		count+=1;
+		url=data['ola']['city'][j]['url']
+		data['ola']['city'][j]['cartypes']={};
 
-	soup=BeautifulSoup(curl(url));
-	clist=soup.findAll(attrs={"id":"container"})[0].findAll("table")[0].findAll(recursive=False)[2:]
-	print j;
-	for i in clist:
-		clms=i.findAll("td");
-		cname=str(clms[0].text);
-		(temp1,base_fair,temp2,base_km,temp3) = re.search('^([^\d]+) (\d+) ([^\d]+) (\d+) ([^\d]+)$',clms[1].text).groups()
-		(temp1,perkm,temp2)=re.search('^([^\d]+) (\d+) ([^\d]+)$',clms[2].text).groups()
-		if(clms[3].text!="N/A"):
-			waiting_charge=re.search('(\d+)',clms[3].text).groups()[0]
-		else:
-			waiting_charge=0;
-		if(clms[4].text!="N/A"):
-			(ride_charge,temp,ride_charge_after)=re.search('(\d+)([^\d]+)(\d+)',clms[4].text+"_0").groups()
-		else:
-			ride_charge=0;
-			ride_charge_after=0;
+		soup=BeautifulSoup(curl(url));
+		clist=soup.findAll(attrs={"id":"container"})[0].findAll("table")[0].findAll(recursive=False)[2:]
+		print j;
+		for i in clist:
+			clms=i.findAll("td");
+			cname=str(clms[0].text);
+			(temp1,base_fair,temp2,base_km,temp3) = re.search('^([^\d]+) (\d+) ([^\d]+) (\d+) ([^\d]+)$',clms[1].text).groups()
+			(temp1,perkm,temp2)=re.search('^([^\d]+) (\d+) ([^\d]+)$',clms[2].text).groups()
+			if(clms[3].text!="N/A"):
+				waiting_charge=re.search('(\d+)',clms[3].text).groups()[0]
+			else:
+				waiting_charge=0;
+			if(clms[4].text!="N/A"):
+				(ride_charge,temp,ride_charge_after)=re.search('(\d+)([^\d]+)(\d+)',clms[4].text+"_0").groups()
+			else:
+				ride_charge=0;
+				ride_charge_after=0;
 
-		data['ola']['city'][j]['cartypes'][cname]={"base_fair":base_fair,"base_km":base_km,"perkm":perkm,"waiting_charge":waiting_charge,"nbase_fair":base_fair,"nbase_km":base_km,"nperkm":perkm,"nwaiting_charge":waiting_charge,"ride_charge":ride_charge,"nride_charge":ride_charge,"ride_charge_after":ride_charge_after,"nride_charge_after":ride_charge_after};
-		print cname,base_fair,base_km,perkm,waiting_charge,ride_charge,ride_charge_after
+			data['ola']['city'][j]['cartypes'][cname]={"base_fair":base_fair,"base_km":base_km,"perkm":perkm,"waiting_charge":waiting_charge,"nbase_fair":base_fair,"nbase_km":base_km,"nperkm":perkm,"nwaiting_charge":waiting_charge,"ride_charge":ride_charge,"nride_charge":ride_charge,"ride_charge_after":ride_charge_after,"nride_charge_after":ride_charge_after};
+#			print cname,base_fair,base_km,perkm,waiting_charge,ride_charge,ride_charge_after
+	except:
+		print "Error in this city", j;
 
 
 

@@ -1,0 +1,10 @@
+
+easycabs,Delhi,Sedan,23:00,86.25,3,28.75,0.5,69,3,23,0.5,5:00
+easycabs,Mumbai,Sedan,00:00,33.75,1,25,2.5,27,1,20,2,5:00
+easycabs,Hyderabad,Sedan,23:00,50,2,26.25,1,40,2,21,1,5:00
+easycabs,Bangalore,Sedan,00:00,88,4,21.45,0.67,80,4,19.5,0.67,6:00
+blueskycabs,Delhi,Sedan,,500,25,16,2,500,25,16,2
+yocabs,Delhi,Sedan,23:00,21.25,1.25,21.25,2.08,17,1,17,1.67,5:00,,100
+wowcabs,Delhi,Sedan,23:00,300,20,15,1.67,250,20,12.5,1.67,05:00
+sachincabs,Delhi,AC Sedan,23:00,250,15,13.75,2.08,200,15,11,1.67,5:00,,100
+sachincabs,Delhi,non-AC Sedan,23:00,250,15,12.5,2.08,200,15,10,1.67,5:00,,100

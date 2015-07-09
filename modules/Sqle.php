@@ -212,5 +212,14 @@ class Sqle extends Sql{
 			return null;
 	}
 
+	public static function insertValUniq($table, $data, $key=null, $match=null ){
+		if($match==null)
+			$match=$data;
+		$isfound=Sqle::selectVal($table, rit($key, $key!=null, "*"), $match, 1);
+		if($isfound != null)
+			return rit(getval($key, $isfound), $key!=null, 0);
+		else
+			return Sqle::insertVal($table, $data);
+	}
 }
 ?>
