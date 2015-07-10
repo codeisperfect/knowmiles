@@ -68,6 +68,7 @@ load_view("template/header.php", $inp);
 				if(User::isloginas("u")) {
 			?>
 			<h4>Write a Review</h4>
+
 			<form role="form" style="padding-top:5px; padding-bottom:5px;" method="post"  data-res='obj.reset();div.load($("#loadreviews")[0], 0, 1);' onsubmit="return form.req(this);" data-action="review" >
 				<?php
 					hidinps(array("cid" => $carinfo["cid"], "city" => $carinfo["city"]));
@@ -81,8 +82,8 @@ load_view("template/header.php", $inp);
 							?>
 						 </select>
 						</div>
-						<div class="col-md-4 col-sm-4 stat-rate" style="" >
-							<input class="rating" min="0" max="5" step="1" data-size="xs" data-default-caption="{rating}" data-star-captions="{}" name="rating" >
+						<div class="col-md-8 col-sm-8 stat-rate" style="cursor:pointer;" >
+							<input class="rating" min="0" max="5" step="1" data-size="xs" data-default-caption="{rating}" data-star-captions="{}" name="rating" style='cursor:pointer;' >
 						</div>
 					 </div>
 
@@ -100,6 +101,7 @@ load_view("template/header.php", $inp);
 			<hr>
 			
 			<h3 style="padding-bottom:10px;">Reviews by other users</h3>
+			<br><br>
 
 			<div class="row" id="loadreviews" data-action="carreview" data-min="-1" data-max="-1" data-minl="3" data-maxl="-1" data-cid="<?php echo $carinfo["cid"]; ?>" >
 				<img src="photo/loading.gif" >

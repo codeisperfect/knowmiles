@@ -12,7 +12,7 @@ foreach( $qresult as $i => $row ){
 						</span>
 					</div>
 				</div>
-				<div class="col-md-7 col-sm-7">
+				<div class="col-md-11 col-sm-11">
 				<h5>
 					<?php echo convchars($row["name"]); ?>
 				</h5>

@@ -394,4 +394,10 @@
 		echo msvalprint($inp);
 	}
 
+	function dummyheight($inp,$params=array()){
+		$inp=0+$inp;
+		mergeifunset($params,array("style"=>"height:".$inp."px",'innerHTML'=>''));
+		ocloset("div",$params['innerHTML'],$params);
+	}
+
 ?>
