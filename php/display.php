@@ -390,5 +390,8 @@
 	function pit($toprint, $cond=true, $toprint_false=''){
 		echo rit($toprint, $cond, $toprint_false);
 	}
+	function msprint($inp) {
+		echo msvalprint($inp);
+	}
 
 ?>

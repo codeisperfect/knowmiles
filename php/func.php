@@ -399,7 +399,8 @@
 	}
 
 	function f($content) {
-		$af = function($inp) use ($content) {
+		global $msvar;
+		$af = function($inp, $ind) use ($content, $msvar) {
 			$content = '$foutput  = '.$content.';';
 			eval($content);
 			return $foutput;
@@ -455,7 +456,7 @@
 			if($custom["ismapkey"] )
 				$outp[ $func($i) ] = $val;
 			else
-				$outp[($custom["isindexed"]?$val:$i)] = $func($val);
+				$outp[($custom["isindexed"]?$val:$i)] = $func($val, $i);
 		}
 		return $outp;
 	}

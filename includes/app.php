@@ -21,6 +21,8 @@
 		$config=array();
 	$config=Fun::mergeifunset($config,array("session_start"=>true,"set_session_id"=>0,'calallcity'=>false, "addccode"=>true));
 
+	$msvar = null;
+
 	if($config["session_start"])
 		@session_start();
 	else if($config["session_start"]!=0)
@@ -29,7 +31,6 @@
 	if(!isses("city"))
 		sets("city",9);
 
-
 	include_once( 'includes/data_loadonce.php' );
 	include_once('includes/initdb.php');
 	include "php/display.php";
@@ -37,7 +38,5 @@
 	if($config["addccode"]){
 		include "includes/ccode.php";
 	}
-
-
 
 ?>
