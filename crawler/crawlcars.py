@@ -25,18 +25,20 @@ def writefd(fd,data):
 	fd.close();
 
 pyfiles=["ola", "tfs", "easycabs", "blueskycabs", "yocabs", "wowcabs", "sachincabs", "hellocabs", "megacabs"];
-dontdo=["tfs"];
+dontdo=[];
+
 
 def crawlall():
 	for i in pyfiles:
 		if i not in dontdo:
 			print "Crawling ",i,"...";
-			elc("python "+i+".py");
+			os.system("timeout 500 python "+i+".py");
 
 def convcsv():
 	xlsfiles = pyfiles[2:]
 	for i in xlsfiles:
-		print elc("libreoffice --headless --convert-to csv "+i+".xls --outdir cars");
+#		print elc("libreoffice --headless --convert-to csv "+i+".xls --outdir cars");
+		print elc("python xsl2csv.py "+i+".xls --outdir cars/"+i+".csv");
 
 def mergeall(outpfile, jsonfile):
 	data="\n";
@@ -50,5 +52,5 @@ def mergeall(outpfile, jsonfile):
 
 
 #crawlall();
-#convcsv();
+convcsv();
 mergeall("cars/crawldata.csv", "cars/crawldata.json");
