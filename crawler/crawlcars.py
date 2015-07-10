@@ -25,7 +25,7 @@ def writefd(fd,data):
 	fd.close();
 
 pyfiles=["ola", "tfs", "easycabs", "blueskycabs", "yocabs", "wowcabs", "sachincabs", "hellocabs", "megacabs"];
-dontdo=[];
+dontdo=["ola", "tfs"];
 
 
 def crawlall():
@@ -53,6 +53,7 @@ def mergeall(outpfile, jsonfile):
 	writefd( open(jsonfile,'w'), json.dumps({"data":cdata}) );
 
 
-#crawlall();
+crawlall();
+print "Crawling finished.";
 convcsv();
 mergeall("cars/crawldata.csv", "cars/crawldata.json");
