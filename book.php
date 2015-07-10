@@ -44,7 +44,7 @@ foreach($carresult as $i=>$row){
   $imgf=Funs::carpic($row["Name"],$row["TypeName"]);
   $carresult[$i]["image"]=$imgf[0];
   $carresult[$i]["filter"]=$imgf[1];
-  $carresult[$i]["rating"]=2*$row["avgrating"];//mt_rand(1,10);
+  $carresult[$i]["rating"]=number_format( $row["avgrating"],1 );//mt_rand(1,10);
   //$carresult[$i]["isoffer"]=(rand(1,100)<=60);
   $carresult[$i]["charge"] = intval($row["charge"]);
   

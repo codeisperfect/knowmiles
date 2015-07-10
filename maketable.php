@@ -10,9 +10,10 @@ function dt($tn){
 
 
 function drop_table(){
-	$tl=array("company", "review", "users");
+//	$tl=array("company", "users");
+	$tl=array("comments");
 //	$tl=array("car","cartype","cardata","city");
-	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
+//	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
 	foreach($tl as $i=>$val){
 		dt($val);
 	}

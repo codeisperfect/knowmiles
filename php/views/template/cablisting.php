@@ -21,13 +21,13 @@
                 <div class="col-xs-12">
                   <p>
                     <?php
-                    disp_rating($rating/2);
+                    disp_rating($rating);
                     ?>
                   </p>
                 </div>
                 <div class="col-xs-12">
                   <p>
-                    <?php echo $rating/2;?> Ratings.
+                    <?php echo $rating;?> Ratings.
                   </p>
                 </div>
               </div>
