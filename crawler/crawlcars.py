@@ -37,8 +37,10 @@ def crawlall():
 def convcsv():
 	xlsfiles = pyfiles[2:]
 	for i in xlsfiles:
+		needfile = i+".xls";
+		if(os.path.isfile(needfile)):
 #		print elc("libreoffice --headless --convert-to csv "+i+".xls --outdir cars");
-		print elc("python xsl2csv.py "+i+".xls --outdir cars/"+i+".csv");
+			print elc("python xsl2csv.py "+needfile+" cars/"+i+".csv");
 
 def mergeall(outpfile, jsonfile):
 	data="\n";
