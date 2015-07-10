@@ -219,7 +219,7 @@ class Sqle extends Sql{
 		if($isfound != null)
 			return rit(getval($key, $isfound), $key!=null, 0);
 		else
-			return Sqle::insertVal($table, $data);
+			return Sqle::insertVal($table, Fun::mergeifunset($data, $match) );
 	}
 }
 ?>

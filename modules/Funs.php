@@ -125,10 +125,14 @@ abstract class Funs{
 	public static function updatedata() {
 		$data=(array)json_decode(file_get_contents("crawler/cars/crawldata.json"));
 		$data = $data["data"];
+		$data = array_slice($data, 1);
 		foreach($data as $i => $row) {
 			$insert_info["CarID"] = Sqle::insertValUniq( "car", array("Name" => $row[0]), "CarID" );
 			$insert_info["CityID"] = Sqle::insertValUniq( "city", array("Name" => $row[0]), "CityID" );
 			$insert_info["CarTypeID"] = Sqle::insertValUniq( "cartype", array("TypeName" => $row[0]), "CarTypeID" );
+			s("msvar", add($row, 0));
+			$pushrow = map(array('nighttime_start', 'night_base_fare', 'night_base_km', 'night_fare_per_km', 'night_waiting_charge', 'day_base_fare', 'day_base_km', 'day_fare_per_km', 'day_waiting_charge', 'nighttime_end', 'min_bill', 'cancel_charge', 'extra_charge', 'extra_charge_after', 'night_extra_charge', 'night_extra_charge_after'), f('getval($ind+3, $msvar)'), array("isindexed" => true));
+			Sqle::insertValUniq("cardata", $insert_info, null, $pushrow);
 		}
 	}
 }

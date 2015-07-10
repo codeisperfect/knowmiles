@@ -2,12 +2,8 @@
 include "includes/app.php";
 
 
-//$myf = f('("(".(5*$inp).")")');
+Funs::updatedata();
 
-$myf = f(' "(".(5*$inp).")" ');
-
-
-echo $myf(11);
 
 
 if(0){

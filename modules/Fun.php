@@ -474,6 +474,24 @@ abstract class Fun{
 		return firstelm(explode(".php",lastelm(explode("/",$inp))));
 	}
 
+	public static function autodb($post_data, $action_spec, $isinsert=true, $addinfo=array()){
+		
+	}
+
+	public static function array_append($a, $b) {
+		for($i=0; $i<count($b); $i++) {
+			$a[] = $b[$i];
+		}
+		return $a;
+	}
+
+	public static function array_addinall($a, $val) {
+		foreach($a as $i => $v) {
+			$a[$i]+=$val;
+		}
+		return $a;
+	}
+
 	public static function mergeforce($a,$b){
 		$keys=array_keys($b);
 		for($i=0;$i<count($keys);$i++){
@@ -481,9 +499,7 @@ abstract class Fun{
 		}
 		return $a;
 	}
-	public static function autodb($post_data, $action_spec, $isinsert=true, $addinfo=array()){
-		
-	}
+
 }
 
 
