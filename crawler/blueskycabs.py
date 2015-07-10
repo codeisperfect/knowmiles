@@ -35,12 +35,13 @@ div = soup.find_all('div', attrs = {'class':'Tax2'})
 print len(div)
 
 company = "blueskycabs"
+
 initial = 0
 
 workbook = xlwt.Workbook()
 sheet = workbook.add_sheet(company+".xls")
 
-sheet.write(initial,0,company)
+sheet.write(initial,0, "BlueSky Cabs")
 sheet.write(initial,1,"Delhi")
 sheet.write(initial,2,"Sedan")
 

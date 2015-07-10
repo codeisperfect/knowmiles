@@ -11,8 +11,7 @@ function dt($tn){
 
 function drop_table(){
 //	$tl=array("company", "users");
-	$tl=array("comments");
-//	$tl=array("car","cartype","cardata","city");
+	$tl=array("car", "cartype", "cardata", "city");
 //	$tl=array("car","cartype","cardata","city", "users", "booking", "review", "company" );
 	foreach($tl as $i=>$val){
 		dt($val);
@@ -42,9 +41,9 @@ function make_table(){
 
 
 
-	echo Sql::query("create table cartype ( CarTypeID int not null UNIQUE, TypeName varchar(100) ) ");
-	echo Sql::query("create table city (  CityID int not null UNIQUE, Name varchar(1000) ) ");
-	echo Sql::query("create table car (  CarID int  not null UNIQUE, Name varchar(1000) ) ");
+	echo Sql::query("create table cartype ( CarTypeID int not null AUTO_INCREMENT, TypeName varchar(100) , PRIMARY KEY ( CarTypeID )) ");
+	echo Sql::query("create table city (  CityID int not null AUTO_INCREMENT, Name varchar(1000), PRIMARY KEY ( CityID ) ) ");
+	echo Sql::query("create table car (  CarID int  not null AUTO_INCREMENT, Name varchar(1000), PRIMARY KEY ( CarID ) ) ");
 
 
 	echo Sql::query("create table cardata ( CarID int, CityID int, CarTypeID int, nighttime_start int,  night_base_fare int, night_base_km int, night_fare_per_km int, night_waiting_charge int, day_base_fare int, day_base_km int, day_fare_per_km int, day_waiting_charge int, nighttime_end int, min_bill int, cancel_charge int   ) ");
@@ -69,7 +68,6 @@ function make_table(){
 
 drop_table();
 make_table();
-
 
 
 
