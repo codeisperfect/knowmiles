@@ -62,5 +62,18 @@ class Actions{
 			$outp["ec"] = -2;
 		return $outp;
 	}
+
+	function deleterc($data) {
+		$outp = array("ec" => 1, "data" => 0);
+		$outp["data"] = Sqle::deleteVal(rit("review", $data["type"]=="r", "comments"), array("uid" => User::loginId(), "id" => $data["id"] )  );
+		return $outp;
+	}
+
+	function editcr($data) {
+		$outp = array("ec" => 1, "data" => 0);
+		$outp["data"] = Sqle::updateVal(rit("review", $data["type"]=="r", "comments"), array("content" => $data["content"]), array("uid" => User::loginId(), "id" => $data["id"] ) );
+		return $outp;
+	}
+
 }
 ?>

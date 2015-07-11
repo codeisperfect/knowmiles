@@ -51,7 +51,9 @@ $_ginfo["action_constrain"]=array(
 	"dislike" => array("need" => array("bid", "type"), "users"=>"all"),
 	"reviewcomment" => array("need" => array("bid", "content"), "users" => "all"),
 	"reviewreply" => array("need" => array("min", "max", "minl", "maxl", "isloadold", "bid")),
-	"profilereview" => array("need" => array("rating", "carTypeId", "cityId", "content"), "users"=>"all")
+	"profilereview" => array("need" => array("rating", "carTypeId", "cityId", "content"), "users"=>"all"),
+	"deleterc" => array("need" => array("id", "type")),
+	"editcr" => array("need" => array("type", "id", "content"))
 );
 
 

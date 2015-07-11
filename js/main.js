@@ -1,3 +1,8 @@
+function hideshowdown(h,s,timetaken){
+	$("#"+h).slideUp(timetaken);
+	$("#"+s).slideDown(timetaken);
+}
+
 
 function isallfilled(obj){
 	return ($("#pac-input").val()!='' && $("#pac-input2").val()!='' );
