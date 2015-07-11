@@ -4,14 +4,13 @@ include "includes/app.php";
 Funs::setcity();
 
 $distance=(0+get("dist"));//in KM.
-$timetaken=(0+get("duration_min"));//in Min
+$timetaken=intval(0+get("duration_min"));//in Min
 $cityid=0+gets("city");
 $myf=User::myprofile();
 
-
 $day_charge="case when day_base_km>$distance then day_base_fare else day_base_fare+($distance-day_base_km)*day_fare_per_km end+extra_charge*$timetaken ";
-$night_charge="case when night_base_km>$distance then night_base_fare else night_base_fare+($distance-night_base_km)*night_fare_per_km end+extra_charge*$timetaken ";
 
+$night_charge="case when night_base_km>$distance then night_base_fare else night_base_fare+($distance-night_base_km)*night_fare_per_km end+extra_charge*$timetaken ";
 
 $booktime=strtotime(get("time"));
 $booktime=($booktime==0?time():$booktime);
@@ -27,13 +26,12 @@ $extra_km="(case when $base_km > $distance then 0 else $distance-$base_km end )"
 $extra_km_charge=" $extra_km * $perkm_charge";
 
 $extra_min="$timetaken";
-$extra_time_charge="extra_charge*$timetaken";
+$extra_time_charge="((case when extra_charge is null then 0 else extra_charge end )*$timetaken)";
 
-$charge="(case when ".$is_day." then ($day_charge) else ($night_charge) end)";
+//$charge="(case when ".$is_day." then ($day_charge) else ($night_charge) end)";
+$charge= "($base_charge + $extra_km_charge + $extra_time_charge )" ;
 
 $query="select * from (select cardata.day_waiting_charge, company.cid, (company.offerpic is not null) as isoffer, carratings.avgrating, cardata.CarID, cardata.CityID, cardata.CarTypeID, car.Name, cartype.TypeName, $charge as charge, $base_charge as base_charge, $base_km as base_km, $is_day as isday, $perkm_charge as perkm_charge, extra_charge as extramin_charge, $extra_min as extra_min, extra_charge*$timetaken as extra_time_charge, $extra_km_charge as extra_km_charge, $extra_km as extra_km from cardata left join car on cardata.CarID=car.CarID left join cartype on cartype.CarTypeID=cardata.CarTypeID left join company on (company.carid = cardata.CarID AND company.city=cardata.CityID ) left join ".gtable("carratings")." on carratings.cid=company.cid where CityID=$cityid  ) carresult order by charge asc ";
-
-
 
 
 $carresult=Sqle::getA($query, array("uid" => User::loginId() ));
