@@ -14,7 +14,7 @@ $_ginfo["query"]["carmaps"] = "select car.*,cartype.* from cartype left join (se
 
 $_ginfo["query"]["reviewlikes"] = "select bid, count(uid) as numlikes, sum(uid={uid}) as amiliked from likes where type='r' group by bid";
 
-$_ginfo["query"]["allreviews"] = "select users.name, users.profilepic, city.Name as cityname, carmaps.Name as carname, carmaps.TypeName, carmaps.CarID, reviewlikes.numlikes, reviewlikes.amiliked, review.* from review left join company on review.cid = company.cid left join ".gtable("carmaps")." on carmaps.CarTypeId=review.carTypeId left join city on city.CityID=company.city left join users on users.id=review.uid left join ".gtable("reviewlikes")." on reviewlikes.bid = review.id order by review.id desc";
+$_ginfo["query"]["allreviews"] = "select users.name, users.profilepic, city.Name as cityname, carmaps.Name as carname, carmaps.TypeName, carmaps.CarID, reviewlikes.numlikes, reviewlikes.amiliked, review.* from review left join company on review.cid = company.cid left join ".gtable("carmaps")." on (carmaps.CarTypeId=review.carTypeId AND carmaps.CarID = company.carid ) left join city on city.CityID=company.city left join users on users.id=review.uid left join ".gtable("reviewlikes")." on reviewlikes.bid = review.id order by review.id desc";
 
 
 $_ginfo["query"]["carratings"] = "select cid, avg(rating) as avgrating, count(rating) as numpeople from ".gtable("allreviews")." where rating is not null AND rating>0 group by cid";
