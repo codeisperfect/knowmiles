@@ -77,15 +77,13 @@ $pageinfo["myf"]=$myf;
 $pageinfo["distance"]=$distance;
 $pageinfo["timetaken"]=$timetaken;
 
-load_view("book.php",$pageinfo);
 
+if(get("format") != "json") {
+load_view("book.php",$pageinfo);
 load_view("template/footer.php");
 load_view("template/bottom.php", Fun::mergeifunset($pageinfo, array("dispbody" => false)));
 
-closedb();
 ?>
-
-
   <script>
       $(function () { $('.tooltip-show').tooltip('show');});
       $(function () { $('.tooltip-hide').tooltip('hide');});
@@ -97,3 +95,11 @@ closedb();
 
 </body>
 </html>
+<?php
+} else {
+
+  print_r(json_encode($pageinfo));
+}
+
+closedb();
+?>
